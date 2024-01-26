@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# www.888.de
+marketing pages and content to be migrated, not including linked urls and functionality
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--888de--aemsites.hlx.page/
+- Live: https://main--888de--aemsites.hlx.live/
 
 ## Installation
 
