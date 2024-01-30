@@ -1,9 +1,12 @@
+[Add to Sidekick](https://www.aem.live/tools/sidekick/?project=&from=&giturl=https%3A%2F%2Fgithub.com%2Faemsites%2F888de%2Ftree%2Fmain)
+
 # www.888.de
-marketing pages and content to be migrated, not including linked urls and functionality
+marketing pages and content to be migrated, not including linked urls and functionality.
 
 ## Environments
 - Preview: https://main--888de--aemsites.hlx.page/
 - Live: https://main--888de--aemsites.hlx.live/
+- Customer development URL: https://eds-dev-www.888.de
 
 ## Installation
 
