@@ -3,7 +3,7 @@ Please always provide the [GitHub issue(s)](../issues) your PR is for, as well a
 Fix #<gh-issue-id>
 
 ## Test URLs
-- Before: https://main--888de--aemsites.hlx.live/
-- After: https://<branch>--888de--aemsites.hlx.live/
+- Before: https://main--888de--aemsites.hlx.page/
+- After: https://<branch>--888de--aemsites.hlx.page/
 
 ## Testing instructions
