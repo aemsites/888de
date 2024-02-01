@@ -10,6 +10,51 @@
  * governing permissions and limitations under the License.
  */
 
+
+/* fallback font for 888-black */
+@font-face {
+  font-family: "default888-Fallback";
+  src: local('Arial');
+  font-weight: 800;
+  ascent-override: 82.23%;
+  descent-override: 21.64%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.52%;
+}
+
+/* fallback font for 888-medium */
+@font-face {
+  font-family: "default888-Fallback";
+  src: local('Arial');
+  font-weight: 400;
+  ascent-override: 83.10%;
+  descent-override: 21.87%;
+  line-gap-override: 0.00%;
+  size-adjust: 114.32%;
+}
+
+/* fallback font for 888-bold */
+@font-face {
+  font-family: "default888-Fallback";
+  src: local('Arial');
+  font-weight: 700;
+  ascent-override: 82.52%;
+  descent-override: 21.72%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.12%;
+}
+
+/* fallback font for 888-ultra */
+@font-face {
+  font-family: "default888-Fallback";
+  src: local('Arial');
+  font-weight: 900;
+  ascent-override: 82.52%;
+  descent-override: 21.72%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.12%;
+}
+
 :root {
   /* colors */
   --link-color: #035fe6;
@@ -20,50 +65,31 @@
   --text-color: black;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback;
+  --body-font-family: "default888", "default888-Fallback";
   --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+  --fixed-font-family: menlo, consolas, monospace;
 
   /* body sizes */
   --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 16px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
   /* heading sizes */
   --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
+  --heading-font-size-xl: 40px; /* h2 home */
   --heading-font-size-l: 32px;
   --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 14px;
 
   /* nav height */
   --nav-height: 64px;
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 100.06%;
-  ascent-override: 95%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 48px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
-  }
-}
-
 body {
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   margin: 0;
   font-family: var(--body-font-family);
-  line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
@@ -80,8 +106,7 @@ header {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 800;
   margin-top: 1em;
   margin-bottom: .5em;
   scroll-margin: calc(var(--nav-height) + 1em);
@@ -89,7 +114,7 @@ h4, h5, h6 {
 
 h1 { font-size: var(--heading-font-size-xxl) }
 h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
+h3 { font-size: var(--heading-font-size-s) }
 h4 { font-size: var(--heading-font-size-m) }
 h5 { font-size: var(--heading-font-size-s) }
 h6 { font-size: var(--heading-font-size-xs) }
