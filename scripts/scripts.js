@@ -11,6 +11,8 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
+  toClassName,
 } from './aem.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -70,6 +72,23 @@ export function decorateMain(main) {
 }
 
 /**
+ * Decorates per the template.
+ */
+async function loadTemplate(main) {
+  try {
+    const templateName = toClassName(getMetadata('template'));
+    const template = await import(`../templates/${templateName}/${templateName}.js`);
+    loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
+    if (template.default) {
+      await template.default(main);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('template loading failed', error);
+  }
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -97,6 +116,11 @@ async function loadEager(doc) {
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
+const templateName = getMetadata('template');
+if (templateName) {
+  await loadTemplate(templateName);
+}
+
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
