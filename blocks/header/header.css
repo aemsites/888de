@@ -55,10 +55,6 @@ nav .login {
 
 
 
-
-
-
-
 /* burger menu */
 nav .menu-btn {
   align-self: center;
@@ -111,10 +107,6 @@ body .main-nav .not-active span:nth-child(3) {
   -webkit-animation: ease .4s bottom-2 forwards;
   animation: ease .4s bottom-2 forwards
 }
-
-
-
-
 
 .nav-menu {
   display: none;
