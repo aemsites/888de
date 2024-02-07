@@ -30,6 +30,26 @@ function buildHeroBlock(main) {
   }
 }
 
+/** allow for link attributes to be added into link text
+ * ex: Link Text{target=blank,rel=noopener}
+ * @param main
+ */
+export function buildLinks(main) {
+  main.querySelectorAll('a').forEach((a) => {
+    const match = a.textContent.match(/(.*){([^}]*)}/);
+    if (match) {
+      // eslint-disable-next-line no-unused-vars
+      const [_, linkText, attrs] = match;
+      a.textContent = linkText;
+      a.title = linkText;
+      attrs.split(',').forEach((attr) => {
+        const [key, value] = attr.split('=');
+        a.setAttribute(key.trim(), value.trim());
+      });
+    }
+  });
+}
+
 /**
  * load fonts.css and set a session storage flag
  */
@@ -67,6 +87,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  buildLinks(main);
 }
 
 /**
