@@ -472,6 +472,20 @@ function decorateSections(main) {
 }
 
 /**
+ * when a link is immediately following an icon or picture and
+ the link text contains the URL, link it.
+ */
+
+export function wrapSpanLink(element = document) {
+  element.querySelectorAll('span.icon + a, picture + a').forEach((a) => {
+    if (a.href === a.innerHTML) {
+      a.innerHTML = '';
+      a.append(a.previousElementSibling);
+    }
+  });
+}
+
+/**
  * Gets placeholders object.
  * @param {string} [prefix] Location of placeholders
  * @returns {object} Window placeholders object

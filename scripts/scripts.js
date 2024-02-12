@@ -44,9 +44,10 @@ export function buildLinks(main) {
       const [_, linkText, attrs] = match;
       a.textContent = linkText;
       a.title = linkText;
-      attrs.split(',').forEach((attr) => {
+      attrs.split('}{').forEach((attr) => {
         const [key, value] = attr.split('=');
-        a.setAttribute(key.trim(), value.trim());
+        //  a.setAttribute(key.trim(), value.trim());
+        a.setAttribute(key, value);
       });
     }
   });
