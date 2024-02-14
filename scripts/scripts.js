@@ -46,7 +46,7 @@ function buildHeroBlock(main) {
 }
 
 /** allow for link attributes to be added into link text
- * ex: Link Text{target=blank}{rel=noopener}
+ * ex: Link Text{target=blank|rel=noopener}
  * @param main
  */
 export function buildLinks(main) {

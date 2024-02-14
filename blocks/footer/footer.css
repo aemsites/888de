@@ -34,7 +34,7 @@ footer .sbt-main .columns-container {
 
 footer .license {
   text-align: center;
-  color: #666;
+  color: var(--dark-color);
   padding: 15px 0;
 }
 
@@ -295,7 +295,7 @@ footer .payment-strip .icon {
   }
 
   footer .site-map details a {
-    color: #666;
+    color: var(--dark-color)
     line-height: unset;
   }
 
