@@ -149,7 +149,6 @@ footer .regulation li {
 footer .site-map details {
   color: #d2d2d2;
   transition: all .3s ease-in-out;
-  padding: 0 0.834rem;
   font-size: var(--body-font-size-s);
   border-bottom: 1px solid #232323;
 }
@@ -157,11 +156,10 @@ footer .site-map details {
 footer .site-map details summary {
   padding-left: 0.834rem;
   list-style: none;
-  line-height: 4.4;
+  line-height: 4;
   transition: all .3s ease-in-out;
   cursor: pointer;
   font-size: 1.083rem;
-  margin-bottom: -10px;
 }
 
 footer .site-map details[open] summary {
@@ -170,6 +168,21 @@ footer .site-map details[open] summary {
 
 footer .site-map details summary a {
   transition: all .3s ease-in-out;
+  /*
+  border-right: 1px solid #232323;
+  width: calc(100% - 55px);
+  display: inline-block;
+
+   */
+}
+
+footer .site-map details summary a::after {
+  content: "|";
+  position: absolute;
+  right: 45px;
+  color: #232323;
+  font-size: 38px;
+  line-height: 1.75;
 }
 
 footer .site-map details summary.accordion-header::-webkit-details-marker {
@@ -179,14 +192,14 @@ footer .site-map details summary.accordion-header::-webkit-details-marker {
 footer .site-map details summary::after {
   content: "";
   position: absolute;
-  right: 18px;
+  right: 22px;
   transform: translateY(-50%) rotate(135deg);
   width: 6px;
   height: 6px;
   border: 2px var(--background-color) solid;
   border-width: 2px 2px 0 0;
   transition: all .3s ease-in-out;
-  margin-top: 28px;
+  margin-top: 34px;
 }
 
 footer .site-map details[open] summary::after {
@@ -199,9 +212,9 @@ footer .site-map details ul a:hover {
 
 footer .site-map details ul {
   background-color: #181818;
-  margin: 0;
-  padding: 0.834rem;
-  transition: all .3s ease-in-out;
+  padding: 0.95rem 0.834rem;
+  transition: all .3s ease-in;
+  margin: -10px 0 0;
 }
 
 footer .site-map details li {
@@ -244,16 +257,35 @@ footer .payment-strip .icon {
 }
 
 @media (width >= 1024px) {
+  footer .regulation ul {
+    padding: 20px 0 10px;
+  }
+
   footer .sbt-main .columns > div {
     padding: 16px;
   }
 
-  footer .site-map ul li {
-    padding: 0;
-    font-size: var(--body-font-size-s);
+  footer .site-map details {
+    border-bottom: none;
   }
 
-  footer .site-map ul > li > ul {
+  footer .site-map details summary {
+    padding: 0;
+    font-size: var(--body-font-size-s);
+    line-height: 1rem;
+  }
+
+  footer .site-map details ul {
+    background-color: unset;
+    padding: 0;
+    margin: 0;
+  }
+
+  footer .site-map details li {
+    padding: .125rem 0 ;
+  }
+
+  footer .site-map details summary ul {
     display: block;
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -262,22 +294,31 @@ footer .payment-strip .icon {
     padding-top: 0;
   }
 
-  footer .site-map ul > li > ul > li {
-    font-size: var(--body-font-size-xs);
-  }
-
   footer .site-map .default-content-wrapper {
     display: flex;
     justify-content: space-around;
+    padding: 30px 0 0;
   }
 
-  footer .site-map .default-content-wrapper ul li a {
+  footer .site-map details a {
     color: #666;
     line-height: unset;
   }
 
-  footer .site-map .default-content-wrapper ul li a:hover {
+  footer .site-map details a:hover {
     color: var(--background-color);
     transition: all .3s ease-in-out;
+  }
+
+  footer .site-map details ul a:hover {
+    text-decoration: none;
+  }
+
+  footer .site-map details summary::after {
+    display: none;
+  }
+
+  footer .site-map details summary a::after {
+    display: none;
   }
 }

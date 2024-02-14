@@ -1,22 +1,20 @@
-import { getMetadata, wrapSpanLink } from '../../scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { wrapSpanLink } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
-// accordion for mobile
+// convert the sitemap links to an accordion
 function createMobileMenu(block) {
-  const isMobileScreen = window.matchMedia('(max-width: 1024px)').matches;
-  if (isMobileScreen) {
-    const accordionItems = block.querySelectorAll('.section-outer:nth-child(2) .default-content-wrapper > ul');
-    for (let i = 0; i < accordionItems.length; i += 1) {
-      const accordionItem = accordionItems[i];
-      const details = document.createElement('details');
-      details.className = 'accordion-item';
-      const summary = document.createElement('summary');
-      summary.className = 'accordion-header';
-      summary.innerHTML = accordionItem.querySelector('strong').outerHTML;
-      details.append(accordionItem.querySelector('li > ul'));
-      details.prepend(summary);
-      accordionItem.replaceWith(details);
-    }
+  const accordionItems = block.querySelectorAll('.section-outer:nth-child(2) .default-content-wrapper > ul');
+  for (let i = 0; i < accordionItems.length; i += 1) {
+    const accordionItem = accordionItems[i];
+    const details = document.createElement('details');
+    details.className = 'accordion-item';
+    const summary = document.createElement('summary');
+    summary.className = 'accordion-header';
+    summary.innerHTML = accordionItem.querySelector('strong').outerHTML;
+    details.append(accordionItem.querySelector('li > ul'));
+    details.prepend(summary);
+    accordionItem.replaceWith(details);
   }
 }
 
@@ -48,4 +46,22 @@ export default async function decorate(block) {
   sbtMain.classList.add('sbt-main');
   license.classList.add('license');
 
+  // open all accordions on desktop, close them all on mobile
+  function checkWindowSize() {
+    const isMobileScreen = window.matchMedia('(max-width: 1024px)').matches;
+    if (!isMobileScreen) {
+      const details = document.querySelectorAll('details');
+      details.forEach((detail) => {
+        detail.setAttribute('open', '');
+      });
+    } else {
+      const details = document.querySelectorAll('details');
+      details.forEach((detail) => {
+        detail.removeAttribute('open');
+      });
+    }
+  }
+  checkWindowSize();
+  window.addEventListener('load', checkWindowSize);
+  window.addEventListener('resize', checkWindowSize);
 }
