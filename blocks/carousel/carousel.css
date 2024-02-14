@@ -1,0 +1,72 @@
+.carousel.block .mobile-slides-wrapper {
+    display: block;
+    width: calc(100% + 1px);
+    background-color: #232323;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel.block .slide {
+    width: 100%;
+    top:0;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel.block .mobile-slides-wrapper .brand-logo{
+    max-width: 25%;
+    left: 5%;
+    top: 5%;
+    min-width: 24%;
+}
+
+.carousel.block .brand-logo{
+    position: absolute;
+}
+
+.carousel.block .brand-logo .icon{
+    height: auto;
+    width: auto;
+}
+
+.carousel.block .mobile-slides-wrapper video{
+    min-height: 170px;
+}
+
+.carousel.block video{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel.block .mobile-slides-wrapper .mobile-v2 {
+    display: block;
+    width: 100%;
+    background-color: #232323;
+    color: #666;
+    padding-top: 5px;
+    background-image: linear-gradient(#232323, #000000);
+    padding-bottom: 20px;
+}
+
+.carousel.block .mobile-slides-wrapper .mobile-v2 p {
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.carousel.block .mobile-slides-wrapper .mobile-v2 h2 {
+   margin: 0;
+   font-size: 34px;
+   font-family: var(--ff-888-ultra);
+   color: var(--green-color);
+   line-height: 1.1;
+}
+
+.carousel.block .mobile-slides-wrapper .mobile-v2 a {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    line-height: 1.1;
+}

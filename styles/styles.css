@@ -46,7 +46,7 @@
 
 /* fallback font for 888-ultra */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "ultra888-Fallback";
   src: local('Arial');
   font-weight: 900;
   ascent-override: 82.52%;
@@ -73,6 +73,7 @@
   --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: menlo, consolas, monospace;
+  --ff-888-ultra: "ultra888", "ultra888-Fallback";
 
   /* body sizes */
   --body-font-size-l: 30px;
@@ -104,6 +105,12 @@ body {
 
 body.appear {
   display: block;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
 }
 
 header {
