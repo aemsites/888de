@@ -18,6 +18,19 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
+ * when a link is immediately following an icon or picture and
+ the link text contains the URL, link it.
+ */
+export function wrapSpanLink(element = document) {
+  element.querySelectorAll('span.icon + a, picture + a').forEach((a) => {
+    if (a.href === a.innerHTML) {
+      a.innerHTML = '';
+      a.append(a.previousElementSibling);
+    }
+  });
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
@@ -33,7 +46,7 @@ function buildHeroBlock(main) {
 }
 
 /** allow for link attributes to be added into link text
- * ex: Link Text{target=blank,rel=noopener}
+ * ex: Link Text{target=blank|rel=noopener}
  * @param main
  */
 export function buildLinks(main) {
@@ -44,9 +57,11 @@ export function buildLinks(main) {
       const [_, linkText, attrs] = match;
       a.textContent = linkText;
       a.title = linkText;
-      attrs.split(',').forEach((attr) => {
+      // match all attributes between curly braces
+      attrs.split('|').forEach((attr) => {
         const [key, value] = attr.split('=');
-        a.setAttribute(key.trim(), value.trim());
+        //  a.setAttribute(key.trim(), value.trim());
+        a.setAttribute(key, value);
       });
     }
   });
@@ -90,6 +105,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   buildLinks(main);
+  wrapSpanLink(document);
 }
 
 /**
