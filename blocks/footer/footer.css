@@ -295,7 +295,7 @@ footer .payment-strip .icon {
   }
 
   footer .site-map details a {
-    color: var(--dark-color)
+    color: var(--dark-color);
     line-height: unset;
   }
 
