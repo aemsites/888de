@@ -168,12 +168,6 @@ footer .site-map details[open] summary {
 
 footer .site-map details summary a {
   transition: all .3s ease-in-out;
-  /*
-  border-right: 1px solid #232323;
-  width: calc(100% - 55px);
-  display: inline-block;
-
-   */
 }
 
 footer .site-map details summary a::after {
