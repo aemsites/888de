@@ -4,9 +4,9 @@ function createMobileSlide(slide, slideContent) {
     slide.innerHTML = `<div class="brand-logo">
     ${slideContent.icon.outerHTML||''}
  </div>
- <video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.pic}">
+ ${(slideContent.mobVideolink || slideContent.dtVideoLink) ? `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg  : slideContent.img}">
     <source src="${slideContent.mobVideolink ? slideContent.mobVideolink : slideContent.dtVideoLink}" type="video/mp4">
- </video>
+ </video>` : (slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML)}
  <div class="mobile-v2">
     ${slideContent.offer.outerHTML}
     <div class="mobile">${slideContent.termsLink.outerHTML}</div>
@@ -36,19 +36,21 @@ export default function decorate(block) {
         [...row.children].forEach((col) => {
             const pic = col.querySelector('picture');
             if (pic) {
-                console.log(col);
-                //get src from picture
+                slideContent.pic = pic;
                 const img = pic.querySelector('img');
-                slideContent.pic = img.getAttribute('src');
+                slideContent.img = img.getAttribute('src');
+                const mobilePic = col.querySelectorAll('picture')[1];
+                if (mobilePic) {
+                    slideContent.mobilePic = mobilePic;
+                    const mobileImg = mobilePic.querySelector('img');
+                    slideContent.mobileImg = mobileImg.getAttribute('src');
+                }
                 const dtVideoLink = col.querySelector('a');
                 if (dtVideoLink) {
-                    console.log('dtVideoLink', dtVideoLink.getAttribute('href'));
                     slideContent.dtVideoLink = dtVideoLink.getAttribute('href');
                 }
-                //select the second a tag
                 const mobVideolink = col.querySelectorAll('a')[1];
                 if (mobVideolink) {
-                    console.log('mobVideolink', mobVideolink.getAttribute('href'));
                     slideContent.mobVideolink = mobVideolink.getAttribute('href');
                 }
 

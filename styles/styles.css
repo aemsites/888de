@@ -35,7 +35,7 @@
 
 /* fallback font for 888-bold */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "bold888-Fallback";
   src: local('Arial');
   font-weight: 700;
   ascent-override: 82.52%;
@@ -68,15 +68,19 @@
   --green-color: #80ff00;
   --yellow-color: #fce403;
   --light-black-color: #141414;
+  --pumpkin-orange-color: #ff6400;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: menlo, consolas, monospace;
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
+  --ff-888-bold: "bold888", "bold888-Fallback";
 
   /* body sizes */
-  --body-font-size-l: 30px;
+  --body-font-size-xl: 30px;
+  --body-font-size-l: 24px;
+  --body-font-size-m: 22px;
   --body-font-size-m: 22px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
@@ -189,9 +193,10 @@ a:hover {
 /* buttons */
 a.button:any-link, button {
   font-family: var(--body-font-family);
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   text-decoration: none;
+  font-size: var(--body-font-size-l);
   border: 2px solid transparent;
   padding: 5px 30px;
   text-align: center;
@@ -205,6 +210,9 @@ a.button:any-link, button {
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 30px;
+  line-height: 1;
+  border-color: var(--yellow-color);
+  background-color: var(--yellow-color);
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
@@ -230,7 +238,7 @@ main img {
 }
 
 .icon {
-  display: inline-block;
+  display: block;
   height: 24px;
   width: 24px;
 }
