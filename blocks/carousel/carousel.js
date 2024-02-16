@@ -2,9 +2,9 @@ import { readBlockConfig } from '../../scripts/aem.js';
 
 function createMobileSlide(slide, slideContent) {
     slide.innerHTML = `<div class="brand-logo">
-    ${slideContent.icon.outerHTML||''}
+    ${slideContent.icon.outerHTML || ''}
  </div>
- ${(slideContent.mobVideolink || slideContent.dtVideoLink) ? `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg  : slideContent.img}">
+ ${(slideContent.mobVideolink || slideContent.dtVideoLink) ? `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
     <source src="${slideContent.mobVideolink ? slideContent.mobVideolink : slideContent.dtVideoLink}" type="video/mp4">
  </video>` : (slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML)}
  <div class="mobile-v2">
@@ -14,10 +14,79 @@ function createMobileSlide(slide, slideContent) {
  </div>`;
 }
 
+function populateDtSlidesWrapper(dtSlidesWrapper, slideContent) {
+    dtSlidesWrapper.innerHTML = `
+    ${slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML}
+    <div id="left">
+       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.589" height="44.614" viewBox="0 0 31.589 44.614">
+          <defs>
+             <filter id="a" x="0" y="0" width="31.589" height="44.614" filterUnits="userSpaceOnUse">
+                <feOffset dy="3" input="SourceAlpha"></feOffset>
+                <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
+                <feFlood flood-opacity="0.302"></feFlood>
+                <feComposite operator="in" in2="b"></feComposite>
+                <feComposite in="SourceGraphic"></feComposite>
+             </filter>
+          </defs>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#a)">
+             <path d="M8194.854,13316.641l9.773,13.262-9.773,13.353h3.737l9.852-13.308-9.852-13.307Z" transform="translate(8217.44 13349.25) rotate(180)" fill="#fff"></path>
+          </g>
+       </svg>
+    </div>
+    <div id="right">
+       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.589" height="44.614" viewBox="0 0 31.589 44.614">
+          <defs>
+             <filter id="a" x="0" y="0" width="31.589" height="44.614" filterUnits="userSpaceOnUse">
+                <feOffset dy="3" input="SourceAlpha"></feOffset>
+                <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
+                <feFlood flood-opacity="0.302"></feFlood>
+                <feComposite operator="in" in2="b"></feComposite>
+                <feComposite in="SourceGraphic"></feComposite>
+             </filter>
+          </defs>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#a)">
+             <path d="M8194.854,13316.641l9.773,13.262-9.773,13.353h3.737l9.852-13.308-9.852-13.307Z" transform="translate(-8185.85 -13310.64)" fill="#fff"></path>
+          </g>
+       </svg>
+    </div>`;
+}
+
+function createDesktopSlide(slide, slideContent) {
+    slide.innerHTML = `
+         <div class="brand-logo">
+            ${slideContent.icon.outerHTML || ''}
+            <div class="brand-logo-line">&nbsp;</div>
+         </div>
+         <div class="banner-offer">
+         ${slideContent.offer.outerHTML}
+         </div>
+         <div class="banner-cta-terms">
+            ${slideContent.button.outerHTML}
+            <div class="banner-terms">${slideContent.termsLink.outerHTML}</div>
+         </div>
+         ${(slideContent.dtVideoLink) ? `
+         <video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.img ? slideContent.img : ''}">
+            <source src="${slideContent.dtVideoLink ? slideContent.dtVideoLink : ''}" type="video/mp4">
+        </video>` : (slideContent.pic ? slideContent.pic.outerHTML : '')}
+    `;
+}
+
+function createBoxOffer(boxOffer, slideContent) {
+    boxOffer.innerHTML = `
+    ${slideContent.offer.outerHTML}
+    ${slideContent.button.outerHTML}
+    <div class="pc">${slideContent.termsLink.outerHTML}</div>
+    `;
+}
+
 export default function decorate(block) {
     const cols = [...block.firstElementChild.children];
     const dtSlidesWrapper = document.createElement('div');
     dtSlidesWrapper.classList.add('dt-slides-wrapper');
+    const dtDotsWrapper = document.createElement('div');
+    dtDotsWrapper.classList.add('dt-dots-wrapper');
+    const dtBannerBoxWrapper = document.createElement('div');
+    dtBannerBoxWrapper.classList.add('dt-banner-box-wrapper');
     const mobileSlidesWrapper = document.createElement('div');
     mobileSlidesWrapper.classList.add('mobile-slides-wrapper');
     const configs = readBlockConfig(block);
@@ -74,10 +143,44 @@ export default function decorate(block) {
                 slideContent.offer = col;
             }
         });
-        const slide = document.createElement('div');
-        slide.className = `slide slide-${slideIndex++}`;
-        createMobileSlide(slide, slideContent);
-        mobileSlidesWrapper.append(slide);
+        const mobSlide = document.createElement('div');
+        mobSlide.className = `slide slide-${slideIndex}`;
+
+        // create mobile view
+        createMobileSlide(mobSlide, slideContent);
+        mobileSlidesWrapper.append(mobSlide);
+
+        // create desktop view
+        if (slideIndex === 1) {
+            populateDtSlidesWrapper(dtSlidesWrapper, slideContent);
+        }
+
+        const dtSlide = document.createElement('div');
+        dtSlide.className = `slide slide-${slideIndex}`;
+        if(slideIndex === 1) {
+            dtSlide.classList.add('active');
+        }
+        createDesktopSlide(dtSlide, slideContent);
+        dtSlidesWrapper.append(dtSlide);
+
+        const dot = document.createElement('span');
+        dot.className = `dot dot-${slideIndex}`;
+        if(slideIndex === 1) {
+            dot.classList.add('active');
+        }
+        dtDotsWrapper.append(dot);
+
+        const boxOffer = document.createElement('div');
+        boxOffer.className = `box-offer box-offer-${slideIndex}`;
+        if(slideIndex === 1) {
+            boxOffer.classList.add('active');
+        }
+        createBoxOffer(boxOffer, slideContent);
+        dtBannerBoxWrapper.append(boxOffer);
+
+        slideIndex++;
     });
-    block.replaceChildren(mobileSlidesWrapper);
+    dtSlidesWrapper.append(dtDotsWrapper);
+    dtSlidesWrapper.append(dtBannerBoxWrapper);
+    block.replaceChildren(dtSlidesWrapper, mobileSlidesWrapper);
 }

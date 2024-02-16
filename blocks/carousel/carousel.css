@@ -1,39 +1,47 @@
-.carousel.block .mobile-slides-wrapper {
-    display: block;
-    width: calc(100% + 1px);
+.carousel.block .mobile-slides-wrapper,
+.carousel.block .dt-slides-wrapper {
+    width: 100%;
     background-color: #232323;
     position: relative;
     overflow: hidden;
 }
 
+.carousel.block .mobile-slides-wrapper {
+    display: block;
+}
+
+.carousel.block .dt-slides-wrapper {
+    display: none;
+}
+
 .carousel.block .slide {
     width: 100%;
-    top:0;
+    top: 0;
     overflow: hidden;
     position: relative;
 }
 
-.carousel.block .mobile-slides-wrapper .brand-logo{
+.carousel.block .mobile-slides-wrapper .brand-logo {
     max-width: 25%;
     left: 5%;
     top: 5%;
     min-width: 24%;
 }
 
-.carousel.block .brand-logo{
+.carousel.block .brand-logo {
     position: absolute;
 }
 
-.carousel.block .brand-logo .icon{
+.carousel.block .brand-logo .icon {
     height: auto;
     width: auto;
 }
 
-.carousel.block .mobile-slides-wrapper video{
+.carousel.block .mobile-slides-wrapper video {
     min-height: 170px;
 }
 
-.carousel.block video{
+.carousel.block video {
     width: 100%;
     height: 100%;
 }
@@ -57,12 +65,12 @@
 }
 
 .carousel.block .mobile-slides-wrapper .mobile-v2 h2 {
-   margin: 0;
-   font-size: 34px;
-   font-family: var(--ff-888-ultra);
-   color: var(--green-color);
-   line-height: 1.1;
-   text-align: center;
+    margin: 0;
+    font-size: 34px;
+    font-family: var(--ff-888-ultra);
+    color: var(--green-color);
+    line-height: 1.1;
+    text-align: center;
 }
 
 .carousel.block .mobile-slides-wrapper .slide-2 .mobile-v2 h2,
@@ -70,7 +78,7 @@
     color: var(--blue-color);
 }
 
-.carousel.block .mobile-slides-wrapper .slide-3 .mobile-v2 h2{
+.carousel.block .mobile-slides-wrapper .slide-3 .mobile-v2 h2 {
     color: var(--pumpkin-orange-color);
 }
 
@@ -117,4 +125,99 @@
 .carousel.block .mobile-slides-wrapper .slide-3 .mobile-v2 .button-container a {
     border-color: var(--pumpkin-orange-color);
     background-color: var(--pumpkin-orange-color);
+}
+
+/* Desktop view */
+
+.carousel.block .dt-slides-wrapper>picture>img {
+    visibility: hidden;
+}
+
+.carousel.block .dt-slides-wrapper #left,
+.carousel.block .dt-slides-wrapper #right {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+    cursor: pointer;
+    padding: 1px;
+}
+
+.carousel.block .dt-slides-wrapper #left {
+    left: 0;
+}
+
+.carousel.block .dt-slides-wrapper #right {
+    right: 0;
+}
+
+.carousel.block .dt-slides-wrapper .slide {
+    width: 100%;
+    animation: fadeout 2s;
+    position: absolute;
+    top: 0;
+    z-index: 7;
+    overflow: hidden;
+    opacity: 0;
+}
+
+
+
+.carousel.block .dt-slides-wrapper .slide.active {
+    display: block;
+    animation: fadein 2s;
+    z-index: 8;
+    opacity: 1;
+}
+
+.carousel.block .dt-slides-wrapper .brand-logo {
+    max-width: 12vw;
+    left: 2.4vw;
+    top: 17.2%;
+    min-width: 11.8vw;
+}
+
+.carousel.block .dt-slides-wrapper .brand-logo-line {
+    position: absolute;
+    top: 0;
+    background-color: #80ff00;
+    width: .22vw;
+    height: 92%;
+    right: -16px;
+}
+
+.carousel.block .dt-slides-wrapper .banner-offer {
+    position: absolute;
+    left: 17%;
+    top: 18.5%;
+}
+
+.carousel.block .dt-slides-wrapper .banner-offer p {
+    text-align: left;
+    color: #fff;
+    font-size: 2vw;
+    font-family: var(--body-font-family);
+    line-height: 1;
+    margin: 0;
+}
+
+.carousel.block .dt-slides-wrapper .banner-offer h2 {
+    color: var(--green-color);
+    text-align: left;
+    font-size: 4vw;
+    font-family: var(--ff-888-ultra);
+    line-height: 1;
+    margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+    .carousel.block .mobile-slides-wrapper {
+        display: none;
+    }
+
+    .carousel.block .dt-slides-wrapper {
+        display: block;
+    }
+
 }
