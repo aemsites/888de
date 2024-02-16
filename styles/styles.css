@@ -69,6 +69,7 @@
   --yellow-color: #fce403;
   --light-black-color: #141414;
   --pumpkin-orange-color: #ff6400;
+  --dark-grey-color: #232323;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
@@ -257,6 +258,25 @@ main .section {
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+}
+
+
+@keyframes fadeout {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 
 @media (width >= 600px) {

@@ -79,6 +79,26 @@ function createBoxOffer(boxOffer, slideContent) {
     `;
 }
 
+// function to change slide on click of dot activating slide, dot and box offer
+function changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper) {
+    const slides = dtSlidesWrapper.querySelectorAll('.slide');
+    const dots = dtDotsWrapper.querySelectorAll('.dot');
+    const boxOffers = dtBannerBoxWrapper.querySelectorAll('.box-offer');
+    slides.forEach((slide) => {
+        slide.classList.remove('active');
+    });
+    dots.forEach((dot) => {
+        dot.classList.remove('active');
+    });
+    boxOffers.forEach((boxOffer) => {
+        boxOffer.classList.remove('active');
+    });
+    console.log(slideIndex, slides[slideIndex - 1]);
+    slides[slideIndex - 1].classList.add('active');
+    dots[slideIndex - 1].classList.add('active');
+    boxOffers[slideIndex - 1].classList.add('active');
+}
+
 export default function decorate(block) {
     const cols = [...block.firstElementChild.children];
     const dtSlidesWrapper = document.createElement('div');
@@ -183,4 +203,39 @@ export default function decorate(block) {
     dtSlidesWrapper.append(dtDotsWrapper);
     dtSlidesWrapper.append(dtBannerBoxWrapper);
     block.replaceChildren(dtSlidesWrapper, mobileSlidesWrapper);
+
+    // call change slide on click of dot, click of left and right arrow, on hover of box offer
+    const dtLeft = dtSlidesWrapper.querySelector('#left');
+    const dtRight = dtSlidesWrapper.querySelector('#right');
+    dtLeft.addEventListener('click', () => {
+        slideIndex = slideIndex > 1 ? slideIndex - 1 : dtSlidesWrapper.querySelectorAll('.slide').length;
+        changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+    });
+    dtRight.addEventListener('click', () => {
+        slideIndex = slideIndex < dtSlidesWrapper.querySelectorAll('.slide').length ? slideIndex + 1 : 1;
+        changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+    });
+    dtDotsWrapper.addEventListener('click', (e) => {
+        slideIndex = parseInt(e.target.className.split(' ')[1].split('-')[1]);
+        changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+    });
+    dtBannerBoxWrapper.addEventListener('mouseover', (e) => {
+        const boxOffer = e.target.closest('.box-offer');
+        slideIndex = parseInt(boxOffer.className.split(' ')[1].split('-')[2]);
+        changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+    });
+
+    console.log(transitionDuration);
+
+    //auto rotate slides
+    const dtSlides = dtSlidesWrapper.querySelectorAll('.slide');
+    slideIndex = 1;
+    setInterval(() => {
+        if (slideIndex > dtSlides.length) {
+            slideIndex = 1;
+        }
+        changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+        slideIndex++;
+    }, transitionDuration*1000);
+
 }

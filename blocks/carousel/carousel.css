@@ -169,10 +169,19 @@
 }
 
 .carousel.block .dt-slides-wrapper .brand-logo-line {
-    background-color: #80ff00;
+    background-color: var(--green-color);
     width: .22vw;
     height: 92%;
     right: -16px;
+}
+
+.carousel.block .dt-slides-wrapper .slide-2 .brand-logo-line,
+.carousel.block .dt-slides-wrapper .slide-5 .brand-logo-line{
+    background-color: var(--blue-color);
+}
+
+.carousel.block .dt-slides-wrapper .slide-3 .brand-logo-line {
+    background-color: var(--pumpkin-orange-color);
 }
 
 .carousel.block .dt-slides-wrapper .banner-offer {
@@ -198,6 +207,15 @@
     color: var(--green-color);
     font-size: 4vw;
     font-family: var(--ff-888-ultra);
+}
+
+.carousel.block .dt-slides-wrapper .slide-2 .banner-offer h2,
+.carousel.block .dt-slides-wrapper .slide-5 .banner-offer h2 {
+    color: var(--blue-color);
+}
+
+.carousel.block .dt-slides-wrapper .slide-3 .banner-offer h2 {
+    color: var(--pumpkin-orange-color);
 }
 
 .carousel.block .dt-slides-wrapper .button-container a {
@@ -306,11 +324,28 @@
     font-family: var(--ff-888-ultra);
     margin: 0;
     font-size: 2.2vw;
+    text-align: center;
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .button-container a {
     color: #80ff00;
     border-color: #80ff00;
+}
+
+.carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .button-container a:hover {
+    background-color: var(--green-color);
+    color: var(--dark-grey-color);
+}
+
+.carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a:hover,
+.carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-5 .button-container a:hover {
+    background-color: var(--blue-color);
+    color: var(--dark-grey-color);
+}
+
+.carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-3 .button-container a:hover {
+    background-color: var(--pumpkin-orange-color);
+    color: var(--dark-grey-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a,
