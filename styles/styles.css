@@ -273,24 +273,6 @@ main .section.highlight {
   }
 }
 
-@media (width >= 1024px) {
-  main {
-    margin-top: 15px;
-    transition: .3s all;
-    position: relative;
-    left: 0;
-  }
-
-  main .section {
-    padding: 64px 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-  }
-}
-
 @media (width >= 1200px) {
   h1, h2 {
     text-align: left;
