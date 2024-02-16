@@ -111,6 +111,8 @@ export default function decorate(block) {
     mobileSlidesWrapper.classList.add('mobile-slides-wrapper');
     const configs = readBlockConfig(block);
     const transitionDuration = configs['transition-duration'];
+    const slider = document.createElement('div');
+    slider.className = 'slider';
 
     // add index to each slide
     let slideIndex = 1;
@@ -172,7 +174,7 @@ export default function decorate(block) {
 
         // create desktop view
         if (slideIndex === 1) {
-            populateDtSlidesWrapper(dtSlidesWrapper, slideContent);
+            populateDtSlidesWrapper(slider, slideContent);
         }
 
         const dtSlide = document.createElement('div');
@@ -181,7 +183,8 @@ export default function decorate(block) {
             dtSlide.classList.add('active');
         }
         createDesktopSlide(dtSlide, slideContent);
-        dtSlidesWrapper.append(dtSlide);
+        slider.append(dtSlide);
+        dtSlidesWrapper.append(slider);
 
         const dot = document.createElement('span');
         dot.className = `dot dot-${slideIndex}`;
@@ -224,8 +227,6 @@ export default function decorate(block) {
         slideIndex = parseInt(boxOffer.className.split(' ')[1].split('-')[2]);
         changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
     });
-
-    console.log(transitionDuration);
 
     //auto rotate slides
     const dtSlides = dtSlidesWrapper.querySelectorAll('.slide');
