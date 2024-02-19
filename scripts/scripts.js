@@ -92,6 +92,72 @@ function buildAutoBlocks(main) {
   }
 }
 
+const resizeListeners = new WeakMap();
+
+/**
+ * Sets section metadata background-image's optimized size from the provided breakpoints.
+ *
+ * @param {HTMLElement} section - The section element to which the background image will be applied.
+ * @param {string} bgImage - The base URL of the background image.
+ * @param {Array<{width: string, media?: string}>} [breakpoints=[
+ *  { width: '450' },
+ *  { media: '(min-width: 450px)', width: '750' },
+ *  { media: '(min-width: 750px)', width: '2000' }
+ * ]] - An array of breakpoint objects which contain a `width` value of the requested image, and
+ * an optional `media` query string indicating which breakpoint to use that image.
+ */
+function createOptimizedBackgroundImage(section, bgImage, breakpoints = [
+  { width: '750' },
+  { media: '(min-width: 600px)', width: '2000' },
+]) {
+  const updateBackground = () => {
+    const url = new URL(bgImage, window.location.href);
+    const pathname = encodeURI(url.pathname);
+
+    // Filter all matching breakpoints + pick the one with the highest resolution
+    const matchedBreakpoints = breakpoints
+      .filter((breakpoint) => !breakpoint.media || window.matchMedia(breakpoint.media).matches);
+    let matchedBreakpoint;
+    if (matchedBreakpoints.length) {
+      matchedBreakpoint = matchedBreakpoints
+        .reduce((acc, curr) => (parseInt(curr.width, 10) > parseInt(acc.width, 10) ? curr : acc));
+    } else {
+      [matchedBreakpoint] = breakpoints;
+    }
+
+    const adjustedWidth = matchedBreakpoint.width * window.devicePixelRatio;
+    section.style.backgroundImage = `url(${pathname}?width=${adjustedWidth}&format=webply&optimize=medium)`;
+    section.style.backgroundSize = 'cover';
+  };
+
+  // If a listener already exists for this section, remove it
+  if (resizeListeners.has(section)) {
+    window.removeEventListener('resize', resizeListeners.get(section));
+  }
+
+  // Store this function in the WeakMap for this section, attach + update background
+  resizeListeners.set(section, updateBackground);
+  window.addEventListener('resize', updateBackground);
+  updateBackground();
+}
+
+/**
+ * Finds all sections in the main element of the document
+ * that require additional decoration: adding
+ * a background image or an arc effect.
+ * @param {Element} main
+ */
+
+function decorateStyledSections(main) {
+  Array.from(main.querySelectorAll('.section-outer[data-background-image]'))
+    .forEach((section) => {
+      const bgImage = section.dataset.backgroundImage;
+      if (bgImage) {
+        createOptimizedBackgroundImage(section, bgImage);
+      }
+    });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -106,6 +172,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   buildLinks(main);
   wrapSpanLink(document);
+  decorateStyledSections(main);
 }
 
 /**
