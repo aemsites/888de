@@ -34,7 +34,6 @@ footer .sbt-main .columns-container {
 
 footer .license a {
   text-align: center;
-  color: var(--dark-color);
   padding: 15px 0;
 }
 
@@ -57,7 +56,7 @@ footer .sbt-main .default-content-wrapper a {
 
 footer .license {
   text-align: center;
-  color: var(--med-gray-color);
+  color: var(--footer-text-color);
   padding: 15px 0 60px;
 }
 
@@ -349,7 +348,7 @@ footer .payment-strip .icon {
   }
 
   footer .site-map details a {
-    color: var(--dark-color);
+    color:var(--footer-text-color);
     line-height: unset;
     width: unset;
   }
