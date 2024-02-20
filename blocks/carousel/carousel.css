@@ -136,7 +136,7 @@ main .section.carousel-container {
 
 /* Desktop view */
 
-.carousel.block .dt-slides-wrapper>picture>img {
+.carousel.block .dt-slides-wrapper > .slider > picture > img {
     visibility: hidden;
 }
 
