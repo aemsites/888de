@@ -68,7 +68,6 @@ function changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrap
   boxOffers.forEach((boxOffer) => {
     boxOffer.classList.remove('active');
   });
-  console.log(slideIndex, slides[slideIndex - 1]);
   slides[slideIndex - 1].classList.add('active');
   dots[slideIndex - 1].classList.add('active');
   boxOffers[slideIndex - 1].classList.add('active');
