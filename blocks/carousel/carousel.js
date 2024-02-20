@@ -19,36 +19,10 @@ function populateDtSlidesWrapper(dtSlidesWrapper, slideContent) {
   dtSlidesWrapper.innerHTML = `
     ${slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML}
     <div id="left">
-       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.589" height="44.614" viewBox="0 0 31.589 44.614">
-          <defs>
-             <filter id="a" x="0" y="0" width="31.589" height="44.614" filterUnits="userSpaceOnUse">
-                <feOffset dy="3" input="SourceAlpha"></feOffset>
-                <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
-                <feFlood flood-opacity="0.302"></feFlood>
-                <feComposite operator="in" in2="b"></feComposite>
-                <feComposite in="SourceGraphic"></feComposite>
-             </filter>
-          </defs>
-          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#a)">
-             <path d="M8194.854,13316.641l9.773,13.262-9.773,13.353h3.737l9.852-13.308-9.852-13.307Z" transform="translate(8217.44 13349.25) rotate(180)" fill="#fff"></path>
-          </g>
-       </svg>
+    <span class="icon icon-carousel-chevron"></span>
     </div>
     <div id="right">
-       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.589" height="44.614" viewBox="0 0 31.589 44.614">
-          <defs>
-             <filter id="a" x="0" y="0" width="31.589" height="44.614" filterUnits="userSpaceOnUse">
-                <feOffset dy="3" input="SourceAlpha"></feOffset>
-                <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
-                <feFlood flood-opacity="0.302"></feFlood>
-                <feComposite operator="in" in2="b"></feComposite>
-                <feComposite in="SourceGraphic"></feComposite>
-             </filter>
-          </defs>
-          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#a)">
-             <path d="M8194.854,13316.641l9.773,13.262-9.773,13.353h3.737l9.852-13.308-9.852-13.307Z" transform="translate(-8185.85 -13310.64)" fill="#fff"></path>
-          </g>
-       </svg>
+    <span class="icon icon-carousel-chevron"></span>
     </div>`;
 }
 
