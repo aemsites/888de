@@ -141,6 +141,7 @@ footer .site-map details ul {
   padding: 0.95rem 0.834rem;
   transition: all .3s ease-in;
   margin: -10px 0 0;
+  color: transparent;
 }
 
 footer .sbt-main .default-content-wrapper ul {
@@ -261,23 +262,12 @@ footer .site-map details[open] summary::after {
   transform: translateY(-50%) rotate(-45deg);
 }
 
-footer .site-map details ul a:hover {
- text-decoration: underline;
-}
-
-footer .site-map details ul {
-  background-color: #181818;
-  padding: 0.95rem 0.834rem;
-  margin: -10px 0 0;
-  color: transparent;
-}
-
 footer .site-map details[open] ul {
   color: inherit;
 }
-footer .site-map details li {
- padding: .25rem 0;
-  font-size: 13px;
+
+footer .site-map details ul a:hover {
+  text-decoration: underline;
 }
 
 footer .payment-strip .icon {
@@ -346,16 +336,6 @@ footer .payment-strip .icon {
   footer .site-map details li {
     padding: .125rem 0 ;
   }
-/*
-  footer .site-map details summary ul {
-    display: block;
-    cursor: pointer;
-    line-height: 1.5;
-    margin: 6px 0 0;
-    padding-top: 0;
-  }
-
- */
 
   footer .site-map .default-content-wrapper {
     display: flex;
