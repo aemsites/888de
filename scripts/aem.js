@@ -461,9 +461,9 @@ function decorateSections(main) {
             .split(',')
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
-          styles.forEach((style) => section.classList.add(style));
+          styles.forEach((style) => sectionOuter.classList.add(style));
         } else {
-          section.dataset[toCamelCase(key)] = meta[key];
+          sectionOuter.dataset[toCamelCase(key)] = meta[key];
         }
       });
       sectionMeta.parentNode.remove();

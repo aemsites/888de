@@ -13,7 +13,7 @@
 
 /* fallback font for 888-black */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "black888-Fallback";
   src: local('Arial');
   font-weight: 800;
   ascent-override: 82.23%;
@@ -74,6 +74,7 @@
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
+  --black-font-family: "black888", "black888-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
   --ff-888-bold: "bold888", "bold888-Fallback";
@@ -126,8 +127,6 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--body-font-family);
   font-weight: 700;
-  margin-top: 1em;
-  margin-bottom: 1em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
@@ -290,6 +289,21 @@ main .section.highlight {
     font-size: var(--heading-font-size-l);
     text-align: center;
     font-weight: 500;
+  }
+}
+
+@media (width >= 1024px) {
+  main {
+    margin-top: 15px;
+    transition: .3s all;
+    position: relative;
+    left: 0;
+  }
+
+  main .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
   }
 }
 
