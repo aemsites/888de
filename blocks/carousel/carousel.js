@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
+import { readBlockConfig } from '../../scripts/aem.js';
 
 function createMobileSlide(slide, slideContent) {
   slide.innerHTML = `<div class="brand-logo">
@@ -210,6 +210,4 @@ export default function decorate(block) {
     changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
     slideIndex += 1;
   }, transitionDuration * 1000);
-
-  decorateIcons(block);
 }

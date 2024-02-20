@@ -1,6 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 main .section.carousel-container {
     max-width: 100%;
+    padding: 0;
 }
 
 .carousel.block .mobile-slides-wrapper,
@@ -64,7 +65,7 @@ main .section.carousel-container {
     display: block;
     width: 100%;
     background-color: var(--very-dark-grey-color);
-    color: var(--med-grey-color);
+    color: var(--med-gray-color);
     padding-top: 5px;
     background-image: linear-gradient(var(--very-dark-grey-color), black);
     padding-bottom: 20px;
@@ -101,7 +102,7 @@ main .section.carousel-container {
 .carousel.block .mobile-slides-wrapper .mobile-v2 a {
     font-size: 11px;
     padding: 5px 8px 0;
-    color: var(--med-grey-color);
+    color: var(--med-gray-color);
 }
 
 .carousel.block .mobile-slides-wrapper .button-container a,
@@ -150,14 +151,34 @@ main .section.carousel-container {
     padding: 1px;
 }
 
-.carousel.block .dt-slides-wrapper .slider #left .icon {
-    transform: rotate(180deg);
+/* use a border to draw the chevron for left and right arrows */
+.carousel.block .dt-slides-wrapper .slider #left::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 18px;
+  transform: translateY(-50%) rotate(225deg);
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-width: 3px 3px 0 0;
+  transition: transform 0.3s;
 }
 
-.carousel.block .dt-slides-wrapper .slider #left .icon, .carousel.block .dt-slides-wrapper .slider #right .icon {
-    width: 31.589px;
-    height: 44.614px;
-}
+.carousel.block .dt-slides-wrapper .slider #right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    right: 18px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    border-width: 3px 3px 0 0;
+    transition: transform 0.3s;
+  }
 
 .carousel.block .dt-slides-wrapper .slider #left {
     left: 0;
@@ -182,6 +203,11 @@ main .section.carousel-container {
     animation: fadein 2s;
     z-index: 8;
     opacity: 1;
+}
+
+.carousel.block .dt-slides-wrapper .slide img{
+    width: 100%;
+    height: 100%;
 }
 
 .carousel.block .dt-slides-wrapper .brand-logo-line {
@@ -253,13 +279,17 @@ main .section.carousel-container {
 }
 
 .carousel.block .dt-slides-wrapper .banner-terms {
-    color: var(--med-grey-color);
+    color: var(--med-gray-color);
     font-size: .95vw;
     position: relative;
     text-align: center;
     z-index: 998;
     cursor: pointer;
     transition: all .3s ease-in-out;
+}
+
+.carousel.block .dt-slides-wrapper .banner-terms a{
+    text-decoration: none;
 }
 
 .carousel.block .dt-slides-wrapper .banner-cta-terms {
