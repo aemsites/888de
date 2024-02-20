@@ -1,7 +1,10 @@
+main .section.carousel-container {
+    max-width: 100%;
+}
 .carousel.block .mobile-slides-wrapper,
 .carousel.block .dt-slides-wrapper {
     width: 100%;
-    background-color: #232323;
+    background-color: var(--very-dark-grey-color);
     position: relative;
     overflow: hidden;
     height: 100%;
@@ -65,10 +68,10 @@
 .carousel.block .mobile-slides-wrapper .mobile-v2 {
     display: block;
     width: 100%;
-    background-color: #232323;
-    color: #666;
+    background-color: var(--very-dark-grey-color);
+    color: var(--dark-grey-color);
     padding-top: 5px;
-    background-image: linear-gradient(#232323, #000000);
+    background-image: linear-gradient(var(--very-dark-grey-color), black);
     padding-bottom: 20px;
     text-align: center;
 }
@@ -80,12 +83,12 @@
 }
 
 .carousel.block .mobile-slides-wrapper .mobile-v2 p {
-    font-size: 16px;
-    color: #fff;
+    font-size: var(--body-font-size-s);
+    color: white;
 }
 
 .carousel.block .mobile-slides-wrapper .mobile-v2 h2 {
-    font-size: 34px;
+    font-size: var(--heading-font-size-xl);
     font-family: var(--ff-888-ultra);
     color: var(--green-color);
     text-align: center;
@@ -103,13 +106,13 @@
 .carousel.block .mobile-slides-wrapper .mobile-v2 a {
     font-size: 11px;
     padding: 5px 8px 0 8px;
-    color: #666;
+    color: var(--dark-grey-color);
 }
 
 .carousel.block .mobile-slides-wrapper .mobile-v2 .button-container a,
 .carousel.block .dt-slides-wrapper .button-container a {
-    border-color: #80ff00;
-    background-color: #80ff00;
+    border-color: var(--green-color);
+    background-color: var(--green-color);
     font-family: var(--ff-888-bold);
     border-radius: 100px;
     font-size: 24px;
@@ -121,7 +124,7 @@
     transition: all .3s ease-in-out;
     max-width: 70%;
     margin: 10px auto 20px;
-    color: #000;
+    color: black;
 }
 
 .carousel.block .mobile-slides-wrapper .slide-2 .mobile-v2 .button-container a,
@@ -220,7 +223,7 @@
 }
 
 .carousel.block .dt-slides-wrapper .banner-offer p {
-    color: #fff;
+    color: white;
     font-size: 2vw;
     font-family: var(--body-font-family);
 }
@@ -241,16 +244,16 @@
 }
 
 .carousel.block .dt-slides-wrapper .button-container a {
-    background-color: #fce403;
+    background-color: var(--yellow-color);
     margin: 5px auto 25px;
-    border-color: #fce403;
+    border-color: var(--yellow-color);
     font-size: 1.6vw;
     padding: .8vw 2vw;
     max-width: 20vw;
 }
 
 .carousel.block .dt-slides-wrapper .banner-terms {
-    color: #666;
+    color: var(--dark-grey-color);
     font-size: .95vw;
     position: relative;
     text-align: center;
@@ -268,7 +271,7 @@
 
 .carousel.block .dt-slides-wrapper .dt-dots-wrapper {
     width: 100%;
-    background-color: #232323;
+    background-color: var(--very-dark-grey-color);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -276,7 +279,7 @@
 }
 
 .carousel.block .dt-slides-wrapper .dt-dots-wrapper .dot {
-    background-color: #fff;
+    background-color: white;
     width: 8px;
     height: 8px;
     margin: 6px 5px;
@@ -304,14 +307,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #232323;
+    background-color: var(--very-dark-grey-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer {
-    color: #fff;
+    color: white;
     width: 33.3%;
     padding: 20px 10px 10px 10px;
-    background-color: #070707;
+    background-color: var(--vv-dark-grey-color);
     opacity: .6;
     transition: .5s ease-in;
     cursor: pointer;
@@ -319,7 +322,7 @@
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer.active {
-    background-color: #232323;
+    background-color: var(--very-dark-grey-color);
     opacity: 1;
 }
 
@@ -350,24 +353,24 @@
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .button-container a {
-    color: #80ff00;
-    border-color: #80ff00;
+    color: var(--green-color);
+    border-color: var(--green-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .button-container a:hover {
     background-color: var(--green-color);
-    color: var(--dark-grey-color);
+    color: var(--very-dark-grey-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a:hover,
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-5 .button-container a:hover {
     background-color: var(--blue-color);
-    color: var(--dark-grey-color);
+    color: var(--very-dark-grey-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-3 .button-container a:hover {
     background-color: var(--pumpkin-orange-color);
-    color: var(--dark-grey-color);
+    color: var(--very-dark-grey-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a,
@@ -392,7 +395,7 @@
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .pc>a {
     font-size: 12px;
     padding: 10px;
-    color: #666;
+    color: var(--dark-grey-color);
     transition: all .3s ease-in-out;
 }
 
