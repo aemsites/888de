@@ -69,7 +69,7 @@ main .section.carousel-container {
     display: block;
     width: 100%;
     background-color: var(--very-dark-grey-color);
-    color: var(--dark-grey-color);
+    color: var(--med-grey-color);
     padding-top: 5px;
     background-image: linear-gradient(var(--very-dark-grey-color), black);
     padding-bottom: 20px;
@@ -106,7 +106,7 @@ main .section.carousel-container {
 .carousel.block .mobile-slides-wrapper .mobile-v2 a {
     font-size: 11px;
     padding: 5px 8px 0 8px;
-    color: var(--dark-grey-color);
+    color: var(--med-grey-color);
 }
 
 .carousel.block .mobile-slides-wrapper .mobile-v2 .button-container a,
@@ -253,7 +253,7 @@ main .section.carousel-container {
 }
 
 .carousel.block .dt-slides-wrapper .banner-terms {
-    color: var(--dark-grey-color);
+    color: var(--med-grey-color);
     font-size: .95vw;
     position: relative;
     text-align: center;
@@ -395,7 +395,7 @@ main .section.carousel-container {
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .pc>a {
     font-size: 12px;
     padding: 10px;
-    color: var(--dark-grey-color);
+    color: var(--med-grey-color);
     transition: all .3s ease-in-out;
 }
 

@@ -61,8 +61,8 @@
   --link-hover-color: #000;
   --background-color: white;
   --light-color: #f7f7f7;
-  --dark-color: #dfdfdf;
   --vv-dark-grey-color: #070707;
+  --dark-color: #d2d2d2;
   --text-color: black;
   --orange-color: #fa6200;
   --blue-color: #0080ff;
@@ -71,11 +71,15 @@
   --light-black-color: #141414;
   --pumpkin-orange-color: #ff6400;
   --very-dark-grey-color: #232323;
-  --dark-grey-color: #666;
+  --light-black-color: #181818;
+  --med-gray-color: #666;
+  --footer-text-color: #777;
+  --dark-gray-color: #2c2c2c;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
+  --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
