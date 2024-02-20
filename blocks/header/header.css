@@ -1,12 +1,35 @@
-* {
-  box-sizing: border-box;
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable declaration-block-single-line-max-declarations */
+
+body {
+  background: rgb(35 35 35);
 }
 
-nav {
+body.nav-open {
+  overflow: hidden;
+  background: rgb(35 35 35);
+}
+
+body main {
+  background: #fff;
+  transition: .4s;  
+}
+
+body.nav-open main {
+  width: 100vw;
+  margin-left: 250px;
+  opacity: .3;
+}
+
+/* fix when helix toolbar shown */
+helix-sidekick[pushdown] ~ header, 
+helix-sidekick[pushdown] ~ nav { top: 49px; }
+
+header {
   position: fixed;
   left: 0;
   top: 0;
-  background: #232323;
+  background: rgb(35 35 35 / 90%);
   width: 100%;
   height: 60px;
   display: flex;
@@ -14,15 +37,13 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 999;
+  z-index: 2;
 }
 
-
-nav .logo {
+header .logo {
   max-width: 100px;
   align-self: center;
   position: absolute;
-  z-index: 9;
   width: 60px;
   height: 100%;
   left: 50%;
@@ -32,9 +53,9 @@ nav .logo {
   font-size: 0;
 }
 
-nav .login {
+header .login {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 10px;
   font-family: "888medium";
   font-weight: 500;
@@ -53,61 +74,86 @@ nav .login {
   color: #fff;
 }
 
-
-
-/* burger menu */
-nav .menu-btn {
+/* nav button - burger */
+header .nav-btn {
   align-self: center;
   cursor: pointer;
   color: #fff;
   position: relative;
-  z-index: 9;
   width: 33px
 }
 
-nav .menu-btn span {
+header .nav-btn span {
   display: block;
   width: 100%;
   height: 4px;
   background: #fff;
   transition: all .3s;
-  position: relative
+  position: relative;
 }
 
-nav .menu-btn span+span {
-  margin-top: 6px
+header .nav-btn span+span {
+  margin-top: 6px;
 }
 
-body .main-nav .active span:nth-child(1) {
-  -webkit-animation: ease .4s top forwards;
-  animation: ease .4s top forwards
+header .nav-btn span:nth-child(1) { animation: ease .4s span1 forwards; }
+header .nav-btn span:nth-child(2) { animation: ease .4s span2 forwards; }
+header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
+
+.nav-open header .nav-btn span:nth-child(1) { animation: ease .4s span1-x forwards; }
+.nav-open header .nav-btn span:nth-child(2) { animation: ease .4s span2-x forwards; }
+.nav-open header .nav-btn span:nth-child(3) { animation: ease .4s span3-x forwards; }
+
+@keyframes span1 {
+  0% { top: 10px; transform: rotate(45deg) }
+  50% { top: 10px; transform: rotate(0deg) }
+  100% { top: 0; transform: rotate(0deg) }
 }
 
-body .main-nav .active span:nth-child(2) {
-  -webkit-animation: ease .4s scaled forwards;
-  animation: ease .4s scaled forwards
+@keyframes span1-x {
+  0% { top: 0; transform: rotate(0) }
+  50% { top: 10px; transform: rotate(0) }
+  100% { top: 10px; transform: rotate(45deg) }
 }
 
-body .main-nav .active span:nth-child(3) {
-  -webkit-animation: ease .4s bottom forwards;
-  animation: ease .4s bottom forwards
+@keyframes span2 {
+  0% { transform: scale(0) }
+  50% { transform: scale(0) }
+  100% { transform: scale(1) }
 }
 
-body .main-nav .not-active span:nth-child(1) {
-  -webkit-animation: ease .4s top-2 forwards;
-  animation: ease .4s top-2 forwards
+@keyframes span2-x {
+  50% { transform: scale(0) }
+  100% { transform: scale(0) }
 }
 
-body .main-nav .not-active span:nth-child(2) {
-  -webkit-animation: ease .4s scaled-2 forwards;
-  animation: ease .4s scaled-2 forwards
+@keyframes span3 {
+  0% { bottom: 10px; transform: rotate(135deg) }
+  50% { bottom: 10px; transform: rotate(0) }
+  100% { bottom: 0; transform: rotate(0) }
 }
 
-body .main-nav .not-active span:nth-child(3) {
-  -webkit-animation: ease .4s bottom-2 forwards;
-  animation: ease .4s bottom-2 forwards
+@keyframes span3-x {
+  0% { bottom: 0; transform: rotate(0) }
+  50% { bottom: 10px; transform: rotate(0) }
+  100% { bottom: 10px; transform: rotate(135deg) }
 }
 
-.nav-menu {
-  display: none;
+
+
+/* sidebar nav */
+nav {
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  width: 250px;
+  inset: 0 auto auto -250px;
+  padding: 60px 0 0;
+  background: #fff;
+  transition: 0.4s;
 }
+
+.nav-open nav {
+  left: 0;
+}
+
