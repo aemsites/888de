@@ -32,23 +32,45 @@ footer .sbt-main .columns-container {
   margin: 0 auto;
 }
 
+footer .license a {
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer .site-map a {
+  text-decoration: none;
+}
+
+footer .site-map li a {
+  display: inline-block;
+  width: 90%;
+}
+
+footer .site-map details summary a {
+  transition: all .3s ease-in-out;
+}
+
+footer .sbt-main .default-content-wrapper a {
+  text-decoration: none;
+}
+
 footer .license {
   text-align: center;
-  color: var(--dark-color);
-  padding: 15px 0;
+  color: var(--footer-text-color);
+  padding: 15px 0 60px;
 }
 
 footer .sbt-main .columns > div {
   display: flex;
   flex-flow: row;
-  background-color: #141414;
+  background-color: var(--light-black-color);
   margin: 0 auto;
   color: var(--background-color);
   line-height: 1.2;
   text-align: left;
   align-items: center;
   border-radius: 10px;
-  border: 0.5px solid #666;
+  border: 0.5px solid var(--med-gray-color);
   padding: 10px;
   gap: 0;
 }
@@ -109,15 +131,30 @@ footer .payment-strip ul {
 
 footer .regulation ul {
   padding: 20px 0;
-  border-top: 1px solid #232323;
-  border-bottom: 1px solid #232323;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-footer .site-map a {
-  text-decoration: none;
+footer .site-map details ul {
+  background-color: var(--light-black-color);
+  padding: 0.95rem 0.834rem;
+  transition: all .3s ease-in;
+  margin: -10px 0 0;
+}
+
+footer .sbt-main .default-content-wrapper ul {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  height: 30px;
+  margin-bottom: 0;
+  background-color: var(--text-color);
 }
 
 footer .site-map .default-content-wrapper {
@@ -135,7 +172,7 @@ footer .payment-strip li {
 footer .regulation li {
   display: inline-block;
   text-align: center;
-  border: 1px solid #121212;
+  border: 1px solid var(--light-black-color);
   border-radius: 2px;
   width: 48%;
   margin: 4px 2px;
@@ -143,14 +180,39 @@ footer .regulation li {
   height: 55px;
   cursor: pointer;
   transition: all .3s ease-in-out;
-  background-color: #181818;
+  background-color: var(--light-black-color);
+}
+
+footer .site-map details li {
+  padding: .25rem 0;
+  font-size: 13px;
+}
+
+footer .sbt-main .default-content-wrapper li {
+  width: 33%;
+  font-family: var(--bold-font-family);
+  font-size: 15px;
+}
+
+footer .sbt-main .default-content-wrapper ul li:nth-child(1) {
+  color: var(--orange-color);
+}
+
+footer .sbt-main .default-content-wrapper ul li:nth-child(2) {
+  color: var(--green-color);
+  border-right: 1px solid var(--med-gray-color);
+  border-left: 1px solid var(--med-gray-color);
+}
+
+footer .sbt-main .default-content-wrapper ul li:nth-child(3) {
+  color: var(--blue-color);
 }
 
 footer .site-map details {
-  color: #d2d2d2;
+  color: var(--dark-color);
   transition: all .3s ease-in-out;
   font-size: var(--body-font-size-s);
-  border-bottom: 1px solid #232323;
+  border-bottom: 1px solid var(--dark-gray-color);
 }
 
 footer .site-map details summary {
@@ -173,7 +235,7 @@ footer .site-map details summary a::after {
   content: "|";
   position: absolute;
   right: 45px;
-  color: #232323;
+  color: var(--dark-gray-color);
   font-size: 38px;
   line-height: 1.75;
 }
@@ -189,8 +251,8 @@ footer .site-map details summary::after {
   transform: translateY(-50%) rotate(135deg);
   width: 6px;
   height: 6px;
-  border: 2px var(--background-color) solid;
-  border-width: 2px 2px 0 0;
+  border: var(--background-color) solid;
+  border-width: 2px 2px 0 0; /* needs to be separate */
   transition: all .3s ease-in-out;
   margin-top: 34px;
 }
@@ -217,7 +279,6 @@ footer .site-map details li {
  padding: .25rem 0;
   font-size: 13px;
 }
-
 
 footer .payment-strip .icon {
   height: 41px;
@@ -265,6 +326,10 @@ footer .payment-strip .icon {
     border-bottom: none;
   }
 
+  footer .license {
+    padding-bottom: 15px;
+  }
+
   footer .site-map details summary {
     padding: 0;
     font-size: var(--body-font-size-s);
@@ -299,8 +364,9 @@ footer .payment-strip .icon {
   }
 
   footer .site-map details a {
-    color: var(--dark-color);
+    color: var(--footer-text-color);
     line-height: unset;
+    width: unset;
   }
 
   footer .site-map details a:hover {
