@@ -14,7 +14,7 @@
 .section.columns-container h2 {
   text-align: center;
   font-family: var(--black-font-family);
-  font-size: var(--heading-font-size-xl);
+  font-size: var(--heading-font-size-xxl);
 }
 
 .columns > div > div {
