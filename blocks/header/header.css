@@ -15,11 +15,13 @@ body main {
   transition: .4s;  
 }
 
-body.nav-open main {
+body.nav-open main,
+body.nav-open footer {
   width: 100vw;
-  margin-left: 250px;
+  left: 250px;
   opacity: .3;
 }
+
 
 /* fix when helix toolbar shown */
 helix-sidekick[pushdown] ~ header, 
@@ -37,7 +39,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 2;
+  z-index: 99;
 }
 
 header .logo {
@@ -143,7 +145,7 @@ header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
 
 /* sidebar nav */
 nav {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   height: 100vh;
   width: 250px;
@@ -153,7 +155,5 @@ nav {
   transition: 0.4s;
 }
 
-.nav-open nav {
-  left: 0;
-}
+.nav-open nav { left: 0 }
 
