@@ -68,7 +68,6 @@
   --blue-color: #0080ff;
   --green-color: #80ff00;
   --yellow-color: #fce403;
-  --light-black-color: #141414;
   --pumpkin-orange-color: #ff6400;
   --very-dark-grey-color: #232323;
   --light-black-color: #181818;
@@ -88,7 +87,6 @@
   /* body sizes */
   --body-font-size-xl: 30px;
   --body-font-size-l: 24px;
-  --body-font-size-m: 22px;
   --body-font-size-m: 22px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
@@ -211,7 +209,6 @@ a.button:any-link, button {
   font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
-  background-color: var(--link-color);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -271,6 +268,7 @@ main .section.highlight {
   0% {
       opacity: 1;
   }
+  
   100% {
       opacity: 0;
   }
@@ -280,6 +278,7 @@ main .section.highlight {
   0% {
       opacity: 0;
   }
+  
   100% {
       opacity: 1;
   }
