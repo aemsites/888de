@@ -77,6 +77,7 @@
   --heading-font-family: var(--body-font-family);
   --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
+  --ultra-font-family: "ultra888", "ultra-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
 
   /* body sizes */
@@ -87,7 +88,7 @@
   --body-font-size-xxs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 48px;
+  --heading-font-size-xxl: 51px; /* h1 FAQ */
   --heading-font-size-xl: 40px; /* h2 home */
   --heading-font-size-l: 1.67rem; /* 27.77px */
   --heading-font-size-m: 1.5rem; /* 24px */
@@ -115,7 +116,7 @@ header {
   height: var(--nav-height);
 }
 
-h1, h2, h3,
+h2, h3,
 h4, h5, h6 {
   font-family: var(--body-font-family);
   font-weight: 700;
@@ -123,11 +124,12 @@ h4, h5, h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-m);
-  text-align: center;
+  font-size: var(--heading-font-size-xxl);
+  font-family: var(--ultra-font-family);
   margin-bottom: 1.67rem;
   margin-top: 0;
   word-wrap: break-word;
+  scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h2 {
@@ -247,13 +249,25 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
-@media (width >= 600px) {
-  h1 {
-    font-size: var(--heading-font-size-xl);
-    text-align: center;
-    line-height: 1.2;
+@keyframes accordion-details-show {
+  from {
+    opacity: 0;
   }
+}
 
+details > *:not(summary) {
+  animation: accordion-details-show 500ms ease-in-out;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  color: transparent;
+  overflow: hidden;
+}
+
+details[open] > *:not(summary) {
+  color: inherit;
+}
+
+@media (width >= 600px) {
   h2 {
     font-size: var(--heading-font-size-l);
     text-align: center;
@@ -273,11 +287,5 @@ main .section.highlight {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-  }
-}
-
-@media (width >= 1200px) {
-  h1, h2 {
-    text-align: left;
   }
 }

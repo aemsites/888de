@@ -141,6 +141,7 @@ footer .site-map details ul {
   padding: 0.95rem 0.834rem;
   transition: all .3s ease-in;
   margin: -10px 0 0;
+  color: transparent;
 }
 
 footer .sbt-main .default-content-wrapper ul {
@@ -218,14 +219,17 @@ footer .site-map details {
 footer .site-map details summary {
   padding-left: 0.834rem;
   list-style: none;
-  line-height: 4;
+  position: relative;
+  line-height: 4em;
   transition: all .3s ease-in-out;
   cursor: pointer;
   font-size: 1.083rem;
+  z-index: 1;
 }
 
 footer .site-map details[open] summary {
   margin-bottom: 10px;
+  transition: all .3s ease-in-out;
 }
 
 footer .site-map details summary a::after {
@@ -258,8 +262,12 @@ footer .site-map details[open] summary::after {
   transform: translateY(-50%) rotate(-45deg);
 }
 
+footer .site-map details[open] ul {
+  color: inherit;
+}
+
 footer .site-map details ul a:hover {
- text-decoration: underline;
+  text-decoration: underline;
 }
 
 footer .payment-strip .icon {
@@ -316,6 +324,7 @@ footer .payment-strip .icon {
     padding: 0;
     font-size: var(--body-font-size-s);
     line-height: 1rem;
+    z-index: 2;
   }
 
   footer .site-map details ul {
@@ -326,19 +335,6 @@ footer .payment-strip .icon {
 
   footer .site-map details li {
     padding: .125rem 0 ;
-  }
-
-  footer .site-map details summary ul {
-    display: block;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    line-height: 1.5;
-    margin: 6px 0 0;
-    padding-top: 0;
-  }
-
-  footer .sbt-main .default-content-wrapper ul {
-    display: none;
   }
 
   footer .site-map .default-content-wrapper {

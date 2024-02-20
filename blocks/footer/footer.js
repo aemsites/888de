@@ -50,12 +50,12 @@ export default async function decorate(block) {
   function checkWindowSize() {
     const isMobileScreen = window.matchMedia('(max-width: 1024px)').matches;
     if (!isMobileScreen) {
-      const details = document.querySelectorAll('details');
+      const details = document.querySelectorAll('footer details');
       details.forEach((detail) => {
         detail.setAttribute('open', '');
       });
     } else {
-      const details = document.querySelectorAll('details');
+      const details = document.querySelectorAll('footer details');
       details.forEach((detail) => {
         detail.removeAttribute('open');
       });
