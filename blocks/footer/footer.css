@@ -354,6 +354,10 @@ footer .payment-strip .icon {
     transition: all .3s ease-in-out;
   }
 
+  footer .sbt-main .default-content-wrapper ul {
+    display: none;
+  }
+
   footer .site-map details ul a:hover {
     text-decoration: none;
   }
