@@ -13,7 +13,7 @@
 
 /* fallback font for 888-black */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "black888-Fallback";
   src: local('Arial');
   font-weight: 800;
   ascent-override: 82.23%;
@@ -24,7 +24,7 @@
 
 /* fallback font for 888-medium */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "medium888-Fallback";
   src: local('Arial');
   font-weight: 400;
   ascent-override: 83.10%;
@@ -35,7 +35,7 @@
 
 /* fallback font for 888-bold */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "bold888-Fallback";
   src: local('Arial');
   font-weight: 700;
   ascent-override: 82.52%;
@@ -46,7 +46,7 @@
 
 /* fallback font for 888-ultra */
 @font-face {
-  font-family: "default888-Fallback";
+  font-family: "ultra888-Fallback";
   src: local('Arial');
   font-weight: 900;
   ascent-override: 82.52%;
@@ -57,33 +57,52 @@
 
 :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #000;
+  --link-hover-color: #000;
   --background-color: white;
-  --light-color: #eee;
-  --dark-color: #ccc;
+  --light-color: #f7f7f7;
+  --vv-dark-grey-color: #070707;
+  --dark-color: #d2d2d2;
   --text-color: black;
+  --blue-color: #0080ff;
+  --green-color: #80ff00;
+  --yellow-color: #fce403;
+  --pumpkin-orange-color: #ff6400;
+  --very-dark-grey-color: #232323;
+  --light-black-color: #181818;
+  --med-gray-color: #666;
+  --footer-text-color: #777;
+  --dark-gray-color: #2c2c2c;
 
   /* fonts */
-  --body-font-family: "default888", "default888-Fallback";
+  --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
+  --bold-font-family: "bold888", "bold888-Fallback";
+  --black-font-family: "black888", "black888-Fallback";
+  --ultra-font-family: "ultra888", "ultra-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
+  --ff-888-ultra: "ultra888", "ultra888-Fallback";
+  --ff-888-bold: "bold888", "bold888-Fallback";
 
   /* body sizes */
+  --body-font-size-xl: 30px;
+  --body-font-size-l: 24px;
   --body-font-size-m: 22px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
+  --body-font-size-xxs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px; /* h2 home */
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
+  --heading-font-size-xxxl: 51px; /* h1 FAQ */
+  --heading-font-size-xxl: 40px; /* h2 home */
+  --heading-font-size-xl: 34px; /* h2 carousel */
+  --heading-font-size-l: 1.67rem; /* 27.77px */
+  --heading-font-size-m: 1.5rem; /* 24px */
   --heading-font-size-s: 18px;
   --heading-font-size-xs: 14px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 45px;
 }
 
 body {
@@ -99,22 +118,37 @@ body.appear {
   display: block;
 }
 
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 header {
   height: var(--nav-height);
 }
 
-h1, h2, h3,
+h2, h3,
 h4, h5, h6 {
-  font-family: var(--heading-font-family);
-  font-weight: 800;
-  margin-top: 1em;
-  margin-bottom: .5em;
+  font-family: var(--body-font-family);
+  font-weight: 700;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-s) }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-family: var(--ultra-font-family);
+  margin-bottom: 1.67rem;
+  margin-top: 0;
+  word-wrap: break-word;
+  scroll-margin: calc(var(--nav-height) + 1em);
+}
+
+h2 {
+  font-size: var(--heading-font-size-l);
+  text-align: center;
+  font-weight: 500;
+}
 h4 { font-size: var(--heading-font-size-m) }
 h5 { font-size: var(--heading-font-size-s) }
 h6 { font-size: var(--heading-font-size-xs) }
@@ -122,6 +156,12 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
+  font-size: var(--body-font-size-xs);
+}
+
+li {
+  padding: 0.416rem 0;
+  font-size: var(--body-font-size-xs);
 }
 
 code, pre {
@@ -147,21 +187,22 @@ main pre {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
 }
 
 a:hover {
   text-decoration: underline;
-  color: var(--link-hover-color);
+  color: inherit;
 }
 
 /* buttons */
 a.button:any-link, button {
   font-family: var(--body-font-family);
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   text-decoration: none;
+  font-size: var(--body-font-size-l);
   border: 2px solid transparent;
   padding: 5px 30px;
   text-align: center;
@@ -169,12 +210,14 @@ a.button:any-link, button {
   font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
-  background-color: var(--link-color);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 30px;
+  line-height: 1;
+  border-color: var(--yellow-color);
+  background-color: var(--yellow-color);
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
@@ -200,7 +243,7 @@ main img {
 }
 
 .icon {
-  display: inline-block;
+  display: block;
   height: 24px;
   width: 24px;
 }
@@ -212,24 +255,81 @@ main img {
 
 /* sections */
 main .section {
-  padding: 64px 16px;
-}
-
-@media (width >= 600px) {
-  main .section {
-    padding: 64px 32px;
-  }
-}
-
-@media (width >= 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
-  }
+  padding: 20px 10px;
 }
 
 /* section metadata */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+}
+
+
+@keyframes fadeout {
+  0% {
+      opacity: 1;
+  }
+  
+  100% {
+      opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+  
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes accordion-details-show {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (width >= 600px) {
+  h1 {
+    font-size: var(--heading-font-size-xxl);
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+details > *:not(summary) {
+  animation: accordion-details-show 500ms ease-in-out;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  color: transparent;
+  overflow: hidden;
+}
+
+details[open] > *:not(summary) {
+  color: inherit;
+}
+
+@media (width >= 600px) {
+  h2 {
+    font-size: var(--heading-font-size-l);
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+@media (width >= 1024px) {
+  main {
+    margin-top: 15px;
+    transition: .3s all;
+    position: relative;
+    left: 0;
+  }
+
+  main .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
 }

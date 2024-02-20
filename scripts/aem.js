@@ -399,14 +399,14 @@ function decorateButtons(element) {
  * @param {string} [prefix] prefix to be added to icon src
  * @param {string} [alt] alt text to be added to icon
  */
-function decorateIcon(span, prefix = '', alt = '') {
+function decorateIcon(span, prefix = '') {
   const iconName = Array.from(span.classList)
     .find((c) => c.startsWith('icon-'))
     .substring(5);
   const img = document.createElement('img');
   img.dataset.iconName = iconName;
   img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
-  img.alt = alt;
+  img.alt = `${iconName}`;
   img.loading = 'lazy';
   span.append(img);
 }
@@ -429,6 +429,9 @@ function decorateIcons(element, prefix = '') {
  */
 function decorateSections(main) {
   main.querySelectorAll(':scope > div').forEach((section) => {
+    // wrapping the section with section-outer for background styling
+    const sectionOuter = document.createElement('div');
+    sectionOuter.classList.add('section-outer');
     const wrappers = [];
     let defaultContent = false;
     [...section.children].forEach((e) => {
@@ -440,10 +443,13 @@ function decorateSections(main) {
       }
       wrappers[wrappers.length - 1].append(e);
     });
+    // wrap section content and its children in section-outer
+    sectionOuter.append(section);
+    main.append(sectionOuter);
     wrappers.forEach((wrapper) => section.append(wrapper));
     section.classList.add('section');
-    section.dataset.sectionStatus = 'initialized';
-    section.style.display = 'none';
+    sectionOuter.dataset.sectionStatus = 'initialized';
+    sectionOuter.style.display = 'none';
 
     // Process section metadata
     const sectionMeta = section.querySelector('div.section-metadata');
@@ -455,9 +461,9 @@ function decorateSections(main) {
             .split(',')
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
-          styles.forEach((style) => section.classList.add(style));
+          styles.forEach((style) => sectionOuter.classList.add(style));
         } else {
-          section.dataset[toCamelCase(key)] = meta[key];
+          sectionOuter.dataset[toCamelCase(key)] = meta[key];
         }
       });
       sectionMeta.parentNode.remove();
@@ -507,7 +513,7 @@ async function fetchPlaceholders(prefix = 'default') {
  * @param {Element} main The container element
  */
 function updateSectionsStatus(main) {
-  const sections = [...main.querySelectorAll(':scope > div.section')];
+  const sections = [...main.querySelectorAll(':scope > div.section-outer')];
   for (let i = 0; i < sections.length; i += 1) {
     const section = sections[i];
     const status = section.dataset.sectionStatus;

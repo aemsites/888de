@@ -11,9 +11,24 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
+  toClassName,
 } from './aem.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
+
+/**
+ * when a link is immediately following an icon or picture and
+ the link text contains the URL, link it.
+ */
+export function wrapSpanLink(element = document) {
+  element.querySelectorAll('span.icon + a, picture + a').forEach((a) => {
+    if (a.href === a.innerHTML) {
+      a.innerHTML = '';
+      a.append(a.previousElementSibling);
+    }
+  });
+}
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -28,6 +43,28 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
+}
+
+/** allow for link attributes to be added into link text
+ * ex: Link Text{target=blank|rel=noopener}
+ * @param main
+ */
+export function buildLinks(main) {
+  main.querySelectorAll('a').forEach((a) => {
+    const match = a.textContent.match(/(.*){([^}]*)}/);
+    if (match) {
+      // eslint-disable-next-line no-unused-vars
+      const [_, linkText, attrs] = match;
+      a.textContent = linkText;
+      a.title = linkText;
+      // match all attributes between curly braces
+      attrs.split('|').forEach((attr) => {
+        const [key, value] = attr.split('=');
+        //  a.setAttribute(key.trim(), value.trim());
+        a.setAttribute(key, value);
+      });
+    }
+  });
 }
 
 /**
@@ -55,6 +92,72 @@ function buildAutoBlocks(main) {
   }
 }
 
+const resizeListeners = new WeakMap();
+
+/**
+ * Sets section metadata background-image's optimized size from the provided breakpoints.
+ *
+ * @param {HTMLElement} section - The section element to which the background image will be applied.
+ * @param {string} bgImage - The base URL of the background image.
+ * @param {Array<{width: string, media?: string}>} [breakpoints=[
+ *  { width: '450' },
+ *  { media: '(min-width: 450px)', width: '750' },
+ *  { media: '(min-width: 750px)', width: '2000' }
+ * ]] - An array of breakpoint objects which contain a `width` value of the requested image, and
+ * an optional `media` query string indicating which breakpoint to use that image.
+ */
+function createOptimizedBackgroundImage(section, bgImage, breakpoints = [
+  { width: '750' },
+  { media: '(min-width: 600px)', width: '2000' },
+]) {
+  const updateBackground = () => {
+    const url = new URL(bgImage, window.location.href);
+    const pathname = encodeURI(url.pathname);
+
+    // Filter all matching breakpoints + pick the one with the highest resolution
+    const matchedBreakpoints = breakpoints
+      .filter((breakpoint) => !breakpoint.media || window.matchMedia(breakpoint.media).matches);
+    let matchedBreakpoint;
+    if (matchedBreakpoints.length) {
+      matchedBreakpoint = matchedBreakpoints
+        .reduce((acc, curr) => (parseInt(curr.width, 10) > parseInt(acc.width, 10) ? curr : acc));
+    } else {
+      [matchedBreakpoint] = breakpoints;
+    }
+
+    const adjustedWidth = matchedBreakpoint.width * window.devicePixelRatio;
+    section.style.backgroundImage = `url(${pathname}?width=${adjustedWidth}&format=webply&optimize=medium)`;
+    section.style.backgroundSize = 'cover';
+  };
+
+  // If a listener already exists for this section, remove it
+  if (resizeListeners.has(section)) {
+    window.removeEventListener('resize', resizeListeners.get(section));
+  }
+
+  // Store this function in the WeakMap for this section, attach + update background
+  resizeListeners.set(section, updateBackground);
+  window.addEventListener('resize', updateBackground);
+  updateBackground();
+}
+
+/**
+ * Finds all sections in the main element of the document
+ * that require additional decoration: adding
+ * a background image or an arc effect.
+ * @param {Element} main
+ */
+
+function decorateStyledSections(main) {
+  Array.from(main.querySelectorAll('.section-outer[data-background-image]'))
+    .forEach((section) => {
+      const bgImage = section.dataset.backgroundImage;
+      if (bgImage) {
+        createOptimizedBackgroundImage(section, bgImage);
+      }
+    });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -67,6 +170,26 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  buildLinks(main);
+  wrapSpanLink(document);
+  decorateStyledSections(main);
+}
+
+/**
+ * Decorates per the template.
+ */
+async function loadTemplate(main) {
+  try {
+    const templateName = toClassName(getMetadata('template'));
+    const template = await import(`../templates/${templateName}/${templateName}.js`);
+    loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
+    if (template.default) {
+      await template.default(main);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('template loading failed', error);
+  }
 }
 
 /**
@@ -97,6 +220,11 @@ async function loadEager(doc) {
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
+const templateName = getMetadata('template');
+if (templateName) {
+  await loadTemplate(templateName);
+}
+
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);

@@ -1,0 +1,22 @@
+
+h1 {
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  margin-bottom: 1.67rem;
+  margin-top: 0;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+@media (width >= 600px) {
+  h1 {
+    font-size: var(--heading-font-size-xl);
+    line-height: 1.2;
+  }
+}
+
+@media (width >= 1200px) {
+  h1, h2 {
+    text-align: left;
+  }
+}
