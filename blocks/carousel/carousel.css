@@ -150,6 +150,15 @@ main .section.carousel-container {
     padding: 1px;
 }
 
+.carousel.block .dt-slides-wrapper .slider #left .icon {
+    transform: rotate(180deg);
+}
+
+.carousel.block .dt-slides-wrapper .slider #left .icon, .carousel.block .dt-slides-wrapper .slider #right .icon {
+    width: 31.589px;
+    height: 44.614px;
+}
+
 .carousel.block .dt-slides-wrapper .slider #left {
     left: 0;
 }
