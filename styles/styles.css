@@ -61,16 +61,15 @@
   --link-hover-color: #000;
   --background-color: white;
   --light-color: #f7f7f7;
-  --vv-dark-grey-color: #070707;
   --dark-color: #d2d2d2;
   --text-color: black;
-  --blue-color: #0080ff;
+  --blue-color: #0080ff; /* customer brand color */
+  --light-blue-color: #3299ff; /* a11y contrast fix */
   --green-color: #80ff00;
   --yellow-color: #fce403;
   --pumpkin-orange-color: #ff6400;
-  --very-dark-grey-color: #232323;
   --light-black-color: #181818;
-  --med-gray-color: #666;
+  --med-gray-color: #aaa;
   --footer-text-color: #777;
   --dark-gray-color: #2c2c2c;
 
@@ -80,9 +79,9 @@
   --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
   --ultra-font-family: "ultra888", "ultra-Fallback";
-  --fixed-font-family: menlo, consolas, monospace;
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
   --ff-888-bold: "bold888", "bold888-Fallback";
+  --fixed-font-family: menlo, consolas, monospace;
 
   /* body sizes */
   --body-font-size-xl: 30px;
@@ -141,13 +140,13 @@ h1 {
   margin-bottom: 1.67rem;
   margin-top: 0;
   word-wrap: break-word;
-  text-align: center;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h1 strong, strong h1 {
   font-size: var(--heading-font-size-xxxl);
   font-family: var(--ultra-font-family);
+  line-height: 1.5;
   font-weight: 900;
 }
 
@@ -317,7 +316,6 @@ main .section.highlight {
 @media (width >= 600px) {
   h1 {
     font-size: var(--heading-font-size-xxl);
-    text-align: center;
     line-height: 1.2;
   }
 }
@@ -349,7 +347,6 @@ details[open] > *:not(summary) {
 
 @media (width >= 1024px) {
   main {
-    margin-top: 15px;
     transition: .3s all;
     position: relative;
     left: 0;

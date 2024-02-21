@@ -3,7 +3,7 @@
 }
 
 .accordion details {
-  border-bottom: 1px solid var(--med-gray-color);
+  border-bottom: 1px solid var(--footer-text-color);
   background: var(--text-color);
   color: var(--background-color);
   font-size: var(--heading-font-size-s);
@@ -27,7 +27,7 @@
 
 .accordion details summary:focus,
 .accordion details summary:hover {
-  background-color: var(--light-black-color);
+  background-color: var(--dark-gray-color);
 }
 
 .accordion details summary::-webkit-details-marker {
@@ -42,7 +42,7 @@
   transform: translateY(-50%) rotate(135deg);
   width: 16px;
   height: 16px;
-  border: 2px solid var(--med-gray-color);
+  border: 2px solid var(--footer-text-color);
   border-width: 1px 1px 0 0;
   transition: transform 0.3s;
 }

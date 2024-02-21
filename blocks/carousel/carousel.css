@@ -7,7 +7,7 @@ main .section.carousel-container {
 .carousel.block .mobile-slides-wrapper,
 .carousel.block .dt-slides-wrapper {
     width: 100%;
-    background-color: var(--very-dark-grey-color);
+    background-color: var(--dark-gray-color);
     position: relative;
     overflow: hidden;
     height: 100%;
@@ -64,10 +64,10 @@ main .section.carousel-container {
 .carousel.block .mobile-slides-wrapper .mobile-v2 {
     display: block;
     width: 100%;
-    background-color: var(--very-dark-grey-color);
+    background-color: var(--dark-gray-color);
     color: var(--med-gray-color);
     padding-top: 5px;
-    background-image: linear-gradient(var(--very-dark-grey-color), black);
+    background-image: linear-gradient(var(--dark-gray-color), black);
     text-align: center;
 }
 
@@ -289,10 +289,6 @@ main .section.carousel-container {
     transition: all .3s ease-in-out;
 }
 
-.carousel.block .dt-slides-wrapper .banner-terms a{
-    text-decoration: none;
-}
-
 .carousel.block .dt-slides-wrapper .banner-cta-terms {
     position: absolute;
     max-width: 35%;
@@ -302,7 +298,7 @@ main .section.carousel-container {
 
 .carousel.block .dt-slides-wrapper .dt-dots-wrapper {
     width: 100%;
-    background-color: var(--very-dark-grey-color);
+    background-color: var(--dark-gray-color);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -337,14 +333,14 @@ main .section.carousel-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--very-dark-grey-color);
+    background-color: var(--light-black-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer {
     color: white;
     width: 33.3%;
-    padding: 20px 10px 10px;
-    background-color: var(--vv-dark-grey-color);
+    padding: 20px 10px;
+    background-color: var(--light-black-color);
     opacity: .6;
     transition: .5s ease-in;
     cursor: pointer;
@@ -352,7 +348,7 @@ main .section.carousel-container {
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer.active {
-    background-color: var(--very-dark-grey-color);
+    background-color: var(--dark-gray-color);
     opacity: 1;
 }
 
@@ -391,24 +387,24 @@ main .section.carousel-container {
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .button-container a:hover {
     background-color: var(--green-color);
-    color: var(--very-dark-grey-color);
+    color: var(--light-black-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a:hover,
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-5 .button-container a:hover {
     background-color: var(--blue-color);
-    color: var(--very-dark-grey-color);
+    color: var(--light-black-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-3 .button-container a:hover {
     background-color: var(--pumpkin-orange-color);
-    color: var(--very-dark-grey-color);
+    color: var(--light-black-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-2 .button-container a,
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-4 .button-container a {
-    color: var(--blue-color);
-    border-color: var(--blue-color);
+    color: var(--light-blue-color);
+    border-color: var(--light-blue-color);
 }
 
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer-3 .button-container a {
@@ -431,9 +427,5 @@ main .section.carousel-container {
 
     .carousel.block .dt-slides-wrapper {
         display: block;
-    }
-
-    .carousel.block .mobile-slides-wrapper .mobile-v2 {
-        padding-bottom: 20px;
     }
 }
