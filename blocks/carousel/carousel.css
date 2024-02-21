@@ -68,7 +68,6 @@ main .section.carousel-container {
     color: var(--med-gray-color);
     padding-top: 5px;
     background-image: linear-gradient(var(--very-dark-grey-color), black);
-    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -432,5 +431,9 @@ main .section.carousel-container {
 
     .carousel.block .dt-slides-wrapper {
         display: block;
+    }
+
+    .carousel.block .mobile-slides-wrapper .mobile-v2 {
+        padding-bottom: 20px;
     }
 }
