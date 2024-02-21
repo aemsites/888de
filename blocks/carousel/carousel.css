@@ -101,7 +101,7 @@ main .section.carousel-container {
 .carousel.block .mobile-slides-wrapper .mobile-v2 a {
     font-size: 11px;
     padding: 5px 8px 0;
-    color: #aaa;
+    color: var(--med-gray-color);
 }
 
 .carousel.block .mobile-slides-wrapper .button-container a,
@@ -419,7 +419,7 @@ main .section.carousel-container {
 .carousel.block .dt-slides-wrapper .dt-banner-box-wrapper .box-offer .pc>a {
     font-size: 12px;
     padding: 10px;
-    color: #aaa;
+    color: var(--med-gray-color);
     transition: all .3s ease-in-out;
 }
 
