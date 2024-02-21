@@ -138,6 +138,8 @@ main .section.carousel-container {
 
 .carousel.block .dt-slides-wrapper > .slider > picture > img {
     visibility: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .carousel.block .dt-slides-wrapper .slider #left,

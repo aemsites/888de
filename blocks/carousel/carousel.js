@@ -106,7 +106,7 @@ export default function decorate(block) {
         slideContent.pic = pic;
         const img = pic.querySelector('img');
         const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
-        slider.style.paddingBottom = `${ratio}%`;
+        pic.style.paddingBottom = `${ratio}%`;
         slider.style.maxHeight = `${img.height}px`;
         slideContent.img = img.getAttribute('src');
         const mobilePic = col.querySelectorAll('picture')[1];
