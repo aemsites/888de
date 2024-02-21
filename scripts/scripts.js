@@ -53,8 +53,7 @@ function decorateButtons(element) {
           up.classList.add('button-container');
           a.append(linkTextEl);
         }
-        if (
-            up.childNodes.length === 1
+        if (up.childNodes.length === 1
             && up.tagName === 'STRONG'
             && twoup.childNodes.length === 1
             && twoup.tagName === 'P'
@@ -62,8 +61,7 @@ function decorateButtons(element) {
           a.className = 'button primary';
           twoup.classList.add('button-container');
         }
-        if (
-            up.childNodes.length === 1
+        if (up.childNodes.length === 1
             && up.tagName === 'EM'
             && twoup.childNodes.length === 1
             && twoup.tagName === 'P'
