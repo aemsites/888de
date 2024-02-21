@@ -17,7 +17,7 @@ function createMobileSlide(slide, slideContent) {
 
 function populateDtSlidesWrapper(dtSlidesWrapper, slideContent) {
   dtSlidesWrapper.innerHTML = `
-    ${slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML}
+    ${slideContent.pic ? slideContent.pic.outerHTML : ''}
     <div id="left">
     <span class="icon icon-carousel-chevron"></span>
     </div>
@@ -100,8 +100,14 @@ export default function decorate(block) {
     [...row.children].forEach((col) => {
       const pic = col.querySelector('picture');
       if (pic) {
+        if (slideIndex === 1) {
+          pic.querySelector('img').setAttribute('loading', 'eager');
+        }
         slideContent.pic = pic;
         const img = pic.querySelector('img');
+        const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
+        slider.style.paddingBottom = `${ratio}%`;
+        slider.style.maxHeight = `${img.height}px`;
         slideContent.img = img.getAttribute('src');
         const mobilePic = col.querySelectorAll('picture')[1];
         if (mobilePic) {
