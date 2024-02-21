@@ -1,7 +1,3 @@
 body.home {
   background-color: black;
 }
-
-.home main .default-content-wrapper p {
-  font-size: var(--body-font-size-s);
-}
