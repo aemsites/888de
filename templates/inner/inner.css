@@ -1,20 +1,39 @@
 
-p, dl, ol, ul, pre, blockquote {
+.inner p,
+.inner dl,
+.inner ol,
+.inner ul,
+.inner pre,
+.inner blockquote {
   font-size: var(--body-font-size-xs);
 }
 
-li {
+.inner li {
+  padding: 0.416rem 0;
   font-size: var(--body-font-size-xs);
 }
 
-code, pre {
+.inner code,
+.inner pre {
   font-family: var(--fixed-font-family);
   font-size: var(--body-font-size-xs);
 }
 
+.inner h1,
+.inner h2 {
+    text-align: center;
+  }
+
 @media (width >= 600px) {
-  h1 {
+  .inner h1 {
     font-size: var(--heading-font-size-xl);
     line-height: 1.2;
+  }
+}
+
+@media (width >= 1200px) {
+  .inner h1,
+  .inner h2 {
+    text-align: left;
   }
 }
