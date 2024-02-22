@@ -19,8 +19,7 @@ body.nav-open footer {
   opacity: .3;
 }
 
-
-/* fix when helix toolbar shown */
+/* adjust when EDS toolbar is enabled */
 helix-sidekick[pushdown] ~ header, 
 helix-sidekick[pushdown] ~ nav { top: 49px; }
 
@@ -73,7 +72,7 @@ header .login {
   color: #fff;
 }
 
-/* nav button - burger */
+/* nav button - hamburger */
 header .nav-btn {
   align-self: center;
   cursor: pointer;
@@ -138,8 +137,6 @@ header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
   100% { bottom: 10px; transform: rotate(135deg) }
 }
 
-
-
 /* sidebar nav */
 nav {
   position: fixed;
@@ -154,31 +151,27 @@ nav {
 
 .nav-open nav { left: 0 }
 
-
-
-
-
-
-
-
-
-
 nav ul {
-  position: relative;
-  font-size: 16px;
-  line-height: 26px;
   list-style: none;
+  font-size: 16px;
   padding: 0;
   margin: 0;
 }
 
 nav ul li {
   position: relative;
-  padding: 0;
   font-weight: bold;
+  font-family: var(--bold-font-family);
   border-bottom: 1px solid #707070;
 }
 
+/* special links */
+nav ul li:nth-child(n+5):nth-child(-n+7) a {
+  padding-left: 5px;
+}
+nav ul li:nth-child(5) { border-left: 5px solid #ff6400 }
+nav ul li:nth-child(6) { border-left: 5px solid #80ff00 }
+nav ul li:nth-child(7) { border-left: 5px solid #0080ff }
 
 nav ul a,
 nav ul span {
@@ -187,10 +180,8 @@ nav ul span {
   height: 100%;
   padding: 10px;
   text-decoration: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
-
-
 
 /* accordion content */
 nav div > ul > li > ul {
@@ -201,91 +192,21 @@ nav div > ul > li > ul {
 }
 nav div > ul > li.open > ul { max-height: 800px }
 
+nav ul li li { 
+  font-family: var(--body-font-family);
+  border: 0;
+}
 
 nav div > ul > li > ul a { transition: all .3s }
 nav div > ul > li.open > ul a { padding-left: 40px }
 
-
-
-
-/* nav div ul li input[type="checkbox"]:checked ~ ul {
-  padding: 0;
-  transition: all 1s ease-in-out;
-} */
-
-/* nav div > ul > li > ul {
-  margin: 0 -10px -10px;
-  padding: 0 0 0 20px;
-  background: #dfdfdf;
-
-}
-
-nav ul > li > ul > li {
-  margin: 0 -10px;
-  padding: 10px 0px 10px 30px;
-  border: 0;
-
-} */
-
-
-
-nav ul li:nth-of-type(5) { border-left: 5px solid #ff6400 }
-nav ul li:nth-of-type(6) { border-left: 5px solid #80ff00 }
-nav ul li:nth-of-type(7) { border-left: 5px solid #0080ff }
-
-/* 
-nav ul li input[type="checkbox"] {
-  position: absolute;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: .2;
-  background-color: green !important;
-}
-
-nav ul li input[type="checkbox"]:checked ~ ul {
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  transition: all 1s ease-in-out;
-}
-
-nav ul li input[type="checkbox"] ~ ul {
-  transition: padding 1s ease-in-out;
-} */
-
-
+/* arrows */
 nav ul li i {
+  font-style: normal;
   position: absolute;
-  transform: translate(-6px, 0);
-  margin-top: 16px;
-  right: 0;
+  top: 10px;
+  right: 20px;
+  transform: rotate(90deg);
+  transition: .3s all;
 }
-
-nav ul li i::before, 
-nav ul li i::after {
-  content: "";
-  position: absolute;
-  background-color: #ff6873;
-  width: 3px;
-  height: 9px;
-  transition: all 0.25s ease-in-out;
-}
-
-nav ul li i::before {
-  transform: translate(-2px, 0) rotate(45deg);
-}
-
-nav ul li i::after {
-  transform: translate(2px, 0) rotate(-45deg);
-}
-
-/* nav ul li input[type="checkbox"]:checked ~ i::before {
-  transform: translate(2px, 0) rotate(45deg);
-}
-
-nav ul li input[type="checkbox"]:checked ~ i::after {
-  transform: translate(-2px, 0) rotate(-45deg);
-} */
-
+nav ul li.open i { transform: rotate(-90deg) }
