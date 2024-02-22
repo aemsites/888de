@@ -1,10 +1,14 @@
 /* eslint-disable object-curly-newline */
 import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js';
 
-function closeNav($body, navTransitionTime) {
+function closeNav($body) {
+  const navTransitionTime = 400; // match --nav-transition-time var in styles.css
   $body.classList.remove('nav-open');
+  $body.classList.add('nav-close');
+
   setTimeout(() => {
     $body.classList.remove('no-scroll');
+    $body.classList.remove('nav-close');
   }, navTransitionTime);
 }
 
@@ -20,18 +24,17 @@ export default async function decorate(block) {
 
   // nav burger menu
   const $navBtn = div({ class: 'nav-btn' }, span(), span(), span());
-  const navTransitionTime = 400; // match --nav-transition-time var in styles.css
   $navBtn.addEventListener('click', () => {
     if (!$body.classList.contains('nav-open')) {
       $body.classList.add('nav-open');
       $body.classList.add('no-scroll');
     } else {
-      closeNav($body, navTransitionTime);
+      closeNav($body);
     }
   });
 
   $main.addEventListener('click', () => {
-    closeNav($body, navTransitionTime);
+    closeNav($body);
   });
 
   const $logo = a({ class: 'logo', href: '/' }, '888.de', img({
