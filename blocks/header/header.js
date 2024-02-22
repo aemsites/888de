@@ -3,6 +3,10 @@ import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js'
 
 function closeNav($body) {
   const navTransitionTime = 400; // match --nav-transition-time var in styles.css
+
+  // ignore if nav is already closed
+  if (!$body.classList.contains('nav-open')) return;
+
   $body.classList.remove('nav-open');
   $body.classList.add('nav-close');
 

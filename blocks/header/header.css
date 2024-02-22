@@ -4,6 +4,8 @@
 body.no-scroll { overflow: hidden }
 
 body main {
+  position: relative;
+  left: 0;
   transition: var(--nav-transition-time);
 }
 
@@ -63,18 +65,15 @@ header .nav-btn span {
   transition: all var(--nav-transition-time);
   position: relative;
 }
-
-header .nav-btn span+span {
-  margin-top: 6px;
-}
-
-.nav-close header .nav-btn span:nth-child(1) { animation: ease .4s span1 forwards; }
-.nav-close header .nav-btn span:nth-child(2) { animation: ease .4s span2 forwards; }
-.nav-close header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
+header .nav-btn span+span { margin-top: 6px }
 
 .nav-open header .nav-btn span:nth-child(1) { animation: ease .4s span1-x forwards; }
 .nav-open header .nav-btn span:nth-child(2) { animation: ease .4s span2-x forwards; }
 .nav-open header .nav-btn span:nth-child(3) { animation: ease .4s span3-x forwards; }
+
+.nav-close header .nav-btn span:nth-child(1) { animation: ease .4s span1 forwards; }
+.nav-close header .nav-btn span:nth-child(2) { animation: ease .4s span2 forwards; }
+.nav-close header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
 
 @keyframes span1 {
   0% { top: 10px; transform: rotate(45deg) }
@@ -118,7 +117,7 @@ nav {
   height: 100vh;
   width: 250px;
   inset: 0 auto auto -250px;
-  padding: 60px 0 0;
+  padding-top: 60px;
   background: #fff;
   transition: var(--nav-transition-time);
 }
@@ -159,7 +158,7 @@ nav div > ul > li > ul {
   background: #dfdfdf;
   overflow: hidden;
   max-height: 0;
-  transition: all .8s;
+  transition: all .6s;
 }
 nav div > ul > li.open > ul { max-height: 800px }
 
@@ -168,7 +167,7 @@ nav ul li li {
   border: 0;
 }
 
-nav div > ul > li > ul a { transition: all .3s }
+nav div > ul > li > ul a { padding-left: 25px; transition: all .3s }
 nav div > ul > li.open > ul a { padding-left: 40px }
 
 /* arrows */
@@ -184,16 +183,14 @@ nav ul li.open i { transform: rotate(-90deg) }
 
 
 @media (width <= 1024px) {
-  header {
-    height: 45px;
-  }
+  header { height: 45px }
 
-  header .logo img {
-    width: 45px;
-  }
+  header .logo img { width: 45px }
 
   header button.login {
     top: -10px;
     padding: 8px 12px;
   }
+
+  nav { padding-top: 45px }
 }
