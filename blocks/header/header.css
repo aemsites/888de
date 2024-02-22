@@ -5,14 +5,11 @@ body {
   background: rgb(35 35 35);
 }
 
-body.nav-open {
-  overflow: hidden;
-  background: rgb(35 35 35);
-}
+body.no-scroll { overflow: hidden }
 
 body main {
   background: #fff;
-  transition: .4s;  
+  transition: var(--nav-transition-time);
 }
 
 body.nav-open main,
@@ -152,8 +149,143 @@ nav {
   inset: 0 auto auto -250px;
   padding: 60px 0 0;
   background: #fff;
-  transition: 0.4s;
+  transition: var(--nav-transition-time);
 }
 
 .nav-open nav { left: 0 }
+
+
+
+
+
+
+
+
+
+
+nav ul {
+  position: relative;
+  font-size: 16px;
+  line-height: 26px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  position: relative;
+  padding: 0;
+  font-weight: bold;
+  border-bottom: 1px solid #707070;
+}
+
+
+nav ul a,
+nav ul span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+
+
+/* accordion content */
+nav div > ul > li > ul {
+  background: #dfdfdf;
+  overflow: hidden;
+  max-height: 0;
+  transition: all .8s;
+}
+nav div > ul > li.open > ul { max-height: 800px }
+
+
+nav div > ul > li > ul a { transition: all .3s }
+nav div > ul > li.open > ul a { padding-left: 40px }
+
+
+
+
+/* nav div ul li input[type="checkbox"]:checked ~ ul {
+  padding: 0;
+  transition: all 1s ease-in-out;
+} */
+
+/* nav div > ul > li > ul {
+  margin: 0 -10px -10px;
+  padding: 0 0 0 20px;
+  background: #dfdfdf;
+
+}
+
+nav ul > li > ul > li {
+  margin: 0 -10px;
+  padding: 10px 0px 10px 30px;
+  border: 0;
+
+} */
+
+
+
+nav ul li:nth-of-type(5) { border-left: 5px solid #ff6400 }
+nav ul li:nth-of-type(6) { border-left: 5px solid #80ff00 }
+nav ul li:nth-of-type(7) { border-left: 5px solid #0080ff }
+
+/* 
+nav ul li input[type="checkbox"] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: .2;
+  background-color: green !important;
+}
+
+nav ul li input[type="checkbox"]:checked ~ ul {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+nav ul li input[type="checkbox"] ~ ul {
+  transition: padding 1s ease-in-out;
+} */
+
+
+nav ul li i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+}
+
+nav ul li i::before, 
+nav ul li i::after {
+  content: "";
+  position: absolute;
+  background-color: #ff6873;
+  width: 3px;
+  height: 9px;
+  transition: all 0.25s ease-in-out;
+}
+
+nav ul li i::before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+
+nav ul li i::after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+
+/* nav ul li input[type="checkbox"]:checked ~ i::before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+
+nav ul li input[type="checkbox"]:checked ~ i::after {
+  transform: translate(-2px, 0) rotate(-45deg);
+} */
 

@@ -103,6 +103,9 @@
 
   /* nav height */
   --nav-height: 45px;
+
+  /* timing */
+  --nav-transition-time: 400ms;
 }
 
 body {
