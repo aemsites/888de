@@ -61,16 +61,15 @@
   --link-hover-color: #000;
   --background-color: white;
   --light-color: #f7f7f7;
-  --vv-dark-grey-color: #070707;
   --dark-color: #d2d2d2;
   --text-color: black;
-  --blue-color: #0080ff;
+  --blue-color: #0080ff; /* customer brand color */
+  --light-blue-color: #3299ff; /* a11y contrast fix */
   --green-color: #80ff00;
   --yellow-color: #fce403;
   --pumpkin-orange-color: #ff6400;
-  --very-dark-grey-color: #232323;
   --light-black-color: #181818;
-  --med-gray-color: #666;
+  --med-gray-color: #aaa;
   --footer-text-color: #777;
   --dark-gray-color: #2c2c2c;
 
@@ -80,9 +79,9 @@
   --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
   --ultra-font-family: "ultra888", "ultra-Fallback";
-  --fixed-font-family: menlo, consolas, monospace;
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
   --ff-888-bold: "bold888", "bold888-Fallback";
+  --fixed-font-family: menlo, consolas, monospace;
 
   /* body sizes */
   --body-font-size-xl: 30px;
@@ -94,7 +93,7 @@
 
   /* heading sizes */
   --heading-font-size-xxxl: 51px; /* h1 FAQ */
-  --heading-font-size-xxl: 40px; /* h2 home */
+  --heading-font-size-xxl: 40px; /* h2 home, h1 innerpages */
   --heading-font-size-xl: 34px; /* h2 carousel */
   --heading-font-size-l: 1.67rem; /* 27.77px */
   --heading-font-size-m: 1.5rem; /* 24px */
@@ -139,12 +138,23 @@ h4, h5, h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-xxl);
-  font-family: var(--ultra-font-family);
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
   margin-bottom: 1.67rem;
   margin-top: 0;
   word-wrap: break-word;
   scroll-margin: calc(var(--nav-height) + 1em);
+  display: block;
+  text-align: center;
+}
+
+h1 > strong, strong > h1 {
+  display: block;
+  font-size: var(--heading-font-size-xxxl);
+  font-family: var(--ultra-font-family);
+  line-height: 1.5;
+  font-weight: 900;
+  text-align: left;
 }
 
 h2 {
@@ -159,12 +169,12 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  font-size: var(--body-font-size-xs);
+  font-size: var(--body-font-size-s);
 }
 
 li {
-  padding: 0.416rem 0;
-  font-size: var(--body-font-size-xs);
+  padding: 0;
+  font-size: var(--body-font-size-s);
 }
 
 code, pre {
@@ -239,6 +249,22 @@ a.button.secondary, button.secondary {
   color: var(--text-color)
 }
 
+a.button.text, button.text {
+  background-color: unset;
+  border: 0;
+  text-align: unset;
+  color: inherit;
+  font-size: inherit;
+  margin: unset;
+  padding: unset;
+  white-space: normal;
+  font-weight: inherit;
+  font-style: inherit;
+  border-radius: unset;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
 main img {
   max-width: 100%;
   width: auto;
@@ -272,7 +298,7 @@ main .section.highlight {
   0% {
       opacity: 1;
   }
-  
+
   100% {
       opacity: 0;
   }
@@ -282,7 +308,7 @@ main .section.highlight {
   0% {
       opacity: 0;
   }
-  
+
   100% {
       opacity: 1;
   }
@@ -297,7 +323,6 @@ main .section.highlight {
 @media (width >= 600px) {
   h1 {
     font-size: var(--heading-font-size-xxl);
-    text-align: center;
     line-height: 1.2;
   }
 }
@@ -315,6 +340,11 @@ details[open] > *:not(summary) {
 }
 
 @media (width >= 600px) {
+  h1 {
+    font-size: var(--heading-font-size-xxl);
+    line-height: 1.2;
+  }
+
   h2 {
     font-size: var(--heading-font-size-l);
     text-align: center;
@@ -324,7 +354,6 @@ details[open] > *:not(summary) {
 
 @media (width >= 1024px) {
   main {
-    margin-top: 15px;
     transition: .3s all;
     position: relative;
     left: 0;
@@ -334,5 +363,11 @@ details[open] > *:not(summary) {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+  }
+}
+
+@media (width >= 1200px) {
+  h1, h2 {
+    text-align: left;
   }
 }

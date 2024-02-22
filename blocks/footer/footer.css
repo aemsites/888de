@@ -77,6 +77,7 @@ footer .sbt-main .columns > div {
 
 footer .sbt-main .columns > div h2 {
   margin: 0;
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
   text-align: left;
 }
@@ -130,7 +131,6 @@ footer .payment-strip ul {
 }
 
 footer .regulation ul {
-  padding: 20px 0;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0;
@@ -193,6 +193,8 @@ footer .sbt-main .default-content-wrapper li {
   width: 33%;
   font-family: var(--bold-font-family);
   font-size: 15px;
+  padding: 5px;
+  align-self: center;
 }
 
 footer .sbt-main .default-content-wrapper ul li:nth-child(1) {
@@ -250,8 +252,8 @@ footer .site-map details summary::after {
   position: absolute;
   right: 22px;
   transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border: var(--background-color) solid;
   border-width: 2px 2px 0 0; /* needs to be separate */
   transition: all .3s ease-in-out;
@@ -305,7 +307,7 @@ footer .payment-strip .icon {
 
 @media (width >= 1024px) {
   footer .regulation ul {
-    padding: 20px 0 10px;
+    padding: 20px 0 0;
   }
 
   footer .sbt-main .columns > div {
@@ -352,6 +354,10 @@ footer .payment-strip .icon {
   footer .site-map details a:hover {
     color: var(--background-color);
     transition: all .3s ease-in-out;
+  }
+
+  footer .sbt-main .default-content-wrapper ul {
+    display: none;
   }
 
   footer .site-map details ul a:hover {
