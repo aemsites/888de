@@ -1,14 +1,9 @@
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable declaration-block-single-line-max-declarations */
 
-body {
-  background: rgb(35 35 35);
-}
-
 body.no-scroll { overflow: hidden }
 
 body main {
-  background: #fff;
   transition: var(--nav-transition-time);
 }
 
@@ -19,7 +14,7 @@ body.nav-open footer {
   opacity: .3;
 }
 
-/* adjust when EDS toolbar is enabled */
+/* push down when toolbar is enabled */
 helix-sidekick[pushdown] ~ header, 
 helix-sidekick[pushdown] ~ nav { top: 49px; }
 
@@ -28,7 +23,7 @@ header {
   left: 0;
   top: 0;
   background: rgb(35 35 35 / 90%);
-  width: 100%;
+  width: 100vw;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -38,7 +33,7 @@ header {
   z-index: 99;
 }
 
-header .logo {
+header .logo img {
   max-width: 100px;
   align-self: center;
   position: absolute;
@@ -51,25 +46,23 @@ header .logo {
   font-size: 0;
 }
 
-header .login {
+header button.login {
   position: absolute;
-  top: 0;
+  top: -5px;
   right: 10px;
-  font-family: "888medium";
-  font-weight: 500;
-  border-color: #fff;
-  border-radius: 100px;
-  line-height: 1;
-  height: 30px;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  vertical-align: middle;
   padding: 10px 25px;
-  text-decoration: none;
-  transition: all .3s ease-in-out;
   border: 2px solid #fff;
+  background: transparent;
   color: #fff;
+  transition: all .3s ease-in-out;
+}
+
+header button.login:hover {
+  background: #fff;
+  color: #000;
 }
 
 /* nav button - hamburger */
@@ -148,8 +141,7 @@ nav {
   background: #fff;
   transition: var(--nav-transition-time);
 }
-
-.nav-open nav { left: 0 }
+body.nav-open nav { left: 0 }
 
 nav ul {
   list-style: none;
@@ -166,9 +158,7 @@ nav ul li {
 }
 
 /* special links */
-nav ul li:nth-child(n+5):nth-child(-n+7) a {
-  padding-left: 5px;
-}
+nav ul li:nth-child(n+5):nth-child(-n+7) a { padding-left: 5px }
 nav ul li:nth-child(5) { border-left: 5px solid #ff6400 }
 nav ul li:nth-child(6) { border-left: 5px solid #80ff00 }
 nav ul li:nth-child(7) { border-left: 5px solid #0080ff }
@@ -210,3 +200,19 @@ nav ul li i {
   transition: .3s all;
 }
 nav ul li.open i { transform: rotate(-90deg) }
+
+
+@media (width <= 1024px) {
+  header {
+    height: 45px;
+  }
+
+  header .logo img {
+    width: 45px;
+  }
+
+  header button.login {
+    top: -10px;
+    padding: 8px 12px;
+  }
+}

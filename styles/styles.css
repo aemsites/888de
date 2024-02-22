@@ -112,7 +112,7 @@ body {
   margin: 0;
   font-family: var(--body-font-family);
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #232323;
   display: none;
 }
 
