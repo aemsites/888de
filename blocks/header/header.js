@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js';
 
 function closeNav($body, navTransitionTime) {
