@@ -127,7 +127,18 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height);
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgb(35 35 35 / 90%);
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 99;
 }
 
 h2, h3,
