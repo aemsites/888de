@@ -13,7 +13,7 @@ function closeNav($body) {
 }
 
 export default async function decorate(block) {
-  const fetchNav = await fetch('/drafts/dfink/nav.plain.html');
+  const fetchNav = await fetch('/nav.plain.html');
   const navHTML = await fetchNav.text();
   const $nav = nav();
   $nav.innerHTML = navHTML;
