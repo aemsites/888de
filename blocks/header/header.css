@@ -14,10 +14,6 @@ body.nav-open footer {
   opacity: .3;
 }
 
-/* push down when toolbar is enabled */
-helix-sidekick[pushdown] ~ header, 
-helix-sidekick[pushdown] ~ nav { top: 49px; }
-
 header .logo img {
   max-width: 100px;
   align-self: center;
