@@ -141,13 +141,17 @@ h1 {
   margin-top: 0;
   word-wrap: break-word;
   scroll-margin: calc(var(--nav-height) + 1em);
+  display: block;
+  text-align: center;
 }
 
-h1 strong, strong h1 {
+h1 > strong, strong > h1 {
+  display: block;
   font-size: var(--heading-font-size-xxxl);
   font-family: var(--ultra-font-family);
   line-height: 1.5;
   font-weight: 900;
+  text-align: left;
 }
 
 h2 {
