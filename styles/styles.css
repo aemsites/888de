@@ -72,13 +72,18 @@
   --med-gray-color: #aaa;
   --footer-text-color: #777;
   --dark-gray-color: #2c2c2c;
+  --white-color: #fff;
+  --gold-color: #e8a905;
+  --very-dark-gray-color: #1e1e1e;
+  --black-color: #000;
+  --gray-color: #454545;
+  --light-gold-color: #febc12;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
   --heading-font-family: var(--body-font-family);
   --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
-  --ultra-font-family: "ultra888", "ultra-Fallback";
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
   --ff-888-bold: "bold888", "bold888-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
@@ -148,7 +153,7 @@ h1 {
 h1 > strong, strong > h1 {
   display: block;
   font-size: var(--heading-font-size-xxxl);
-  font-family: var(--ultra-font-family);
+  font-family: var(--ff-888-ultra);
   line-height: 1.5;
   font-weight: 900;
   text-align: left;
