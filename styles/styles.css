@@ -96,6 +96,14 @@
   --body-font-size-xs: 14px;
   --body-font-size-xxs: 12px;
 
+  /* Font Weights */
+  --font-weight-heavy: 900;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 100;
+
   /* heading sizes */
   --heading-font-size-xxxl: 51px; /* h1 FAQ */
   --heading-font-size-xxl: 40px; /* h2 home, h1 innerpages */
