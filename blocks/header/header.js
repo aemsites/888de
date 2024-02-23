@@ -23,7 +23,6 @@ export default async function decorate(block) {
   $nav.innerHTML = navHTML;
 
   const $body = document.body;
-  const $main = document.querySelector('main');
   const $header = document.querySelector('header');
 
   // nav burger menu
