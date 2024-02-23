@@ -1,0 +1,9 @@
+body.level-struktur {
+    background-color: black;
+    color: white;
+  }
+
+body.level-struktur h1 > strong{
+ font-size: var(--heading-font-size-xxl);
+ font-weight: var(--font-weight-bold);
+}
