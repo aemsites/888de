@@ -115,6 +115,9 @@
 
   /* nav height */
   --nav-height: 45px;
+
+  /* timing */
+  --nav-transition-time: 400ms;
 }
 
 body {
@@ -122,7 +125,7 @@ body {
   margin: 0;
   font-family: var(--body-font-family);
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #232323;
   display: none;
 }
 
@@ -137,8 +140,23 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height);
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgb(35 35 35 / 90%);
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 99;
 }
+
+/* push down when toolbar is enabled */
+helix-sidekick[pushdown] ~ header, 
+helix-sidekick[pushdown] ~ nav { top: 49px; }
 
 h2, h3,
 h4, h5, h6 {
