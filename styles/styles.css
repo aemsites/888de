@@ -275,11 +275,6 @@ a.button.text, button.text {
   text-decoration: underline;
 }
 
-body.level-struktur {
-  background-color: black;
-}
-
-
 main img {
   max-width: 100%;
   width: auto;
