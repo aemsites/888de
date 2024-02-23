@@ -125,7 +125,7 @@ body {
   margin: 0;
   font-family: var(--body-font-family);
   color: var(--text-color);
-  background-color: #232323;
+  background: var(--background-color);
   display: none;
 }
 
@@ -151,7 +151,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 99;
+  z-index: 999;
 }
 
 /* push down when toolbar is enabled */

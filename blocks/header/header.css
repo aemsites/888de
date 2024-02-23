@@ -13,7 +13,21 @@ body.nav-open main,
 body.nav-open footer {
   width: 100vw;
   left: 250px;
-  opacity: .3;
+}
+
+body .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  background: #232323;
+  opacity: 0;
+  height: 0;
+  transition: opacity .2s;
+}
+
+body.nav-open .overlay {
+  height: 100vh;
+  opacity: .9;
 }
 
 header .logo img {
@@ -113,7 +127,7 @@ header .nav-btn span+span { margin-top: 6px }
 /* sidebar nav */
 nav {
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   height: 100vh;
   width: 250px;
   inset: 0 auto auto -250px;

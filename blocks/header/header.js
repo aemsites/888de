@@ -37,7 +37,9 @@ export default async function decorate(block) {
     }
   });
 
-  $main.addEventListener('click', () => {
+  const $overlay = div({ class: 'overlay' });
+  $body.append($overlay);
+  $overlay.addEventListener('click', () => {
     closeNav($body);
   });
 
