@@ -131,7 +131,7 @@ nav {
   height: 100vh;
   width: 250px;
   inset: 0 auto auto -250px;
-  padding-top: 60px;
+  padding-top: var(--nav-height);
   background: #fff;
   transition: var(--nav-transition-time);
 }
@@ -197,7 +197,7 @@ nav ul li.open i { transform: rotate(-90deg) }
 
 
 @media (width <= 1024px) {
-  header { height: 45px }
+  header { height: var(--nav-height) }
 
   header .logo img { width: 45px }
 
@@ -206,5 +206,5 @@ nav ul li.open i { transform: rotate(-90deg) }
     padding: 8px 12px;
   }
 
-  nav { padding-top: 45px }
+  nav { padding-top: var(--nav-height) }
 }

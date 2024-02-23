@@ -312,7 +312,7 @@ main img {
 
 /* sections */
 main .section {
-  padding: 20px 10px;
+  padding: calc(var(--nav-height) + 20px) 10px 20px;
 }
 
 /* section metadata */
@@ -381,6 +381,10 @@ details[open] > *:not(summary) {
 }
 
 @media (width >= 1024px) {
+  :root {
+    --nav-height: 60px;
+  }
+  
   main {
     transition: .3s all;
     position: relative;
