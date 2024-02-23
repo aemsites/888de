@@ -22,6 +22,10 @@
     background: var(--black-color);
 }
 
+.table.block table tr:hover {
+    background: var(--dark-gray-color);
+}
+
 .table.block table th {
     display: table-cell;
     border: 1px solid var(--gray-color);
@@ -45,6 +49,10 @@
     border-collapse: collapse;
     font-family: var(--body-font-family);
 }
+
+.table.block table tr:hover td {
+    color: var(--white-color);
+  }
 
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 1200px) {
