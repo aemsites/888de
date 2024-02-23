@@ -153,6 +153,7 @@ header {
   padding: 0 10px;
   z-index: 999;
 }
+header.solid { background: rgb(35 35 35 / 100%) }
 
 /* push down when toolbar is enabled */
 helix-sidekick[pushdown] ~ header, 
@@ -310,9 +311,13 @@ main img {
   width: 100%;
 }
 
+main {
+  margin-top: var(--nav-height);
+}
+
 /* sections */
 main .section {
-  padding: calc(var(--nav-height) + 20px) 10px 20px;
+  padding: 20px 10px;
 }
 
 /* section metadata */
@@ -384,7 +389,7 @@ details[open] > *:not(summary) {
   :root {
     --nav-height: 60px;
   }
-  
+
   main {
     transition: .3s all;
     position: relative;

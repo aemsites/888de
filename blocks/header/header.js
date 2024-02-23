@@ -71,4 +71,16 @@ export default async function decorate(block) {
       });
     }
   });
+
+  // header opacity change
+  $header.classList.add('solid');
+  window.addEventListener('scroll', () => {
+    const { scrollY } = window;
+    const windowWidth = window.innerWidth;
+    if (scrollY > (windowWidth < 1024 ? 45 : 60)) {
+      $header.classList.remove('solid');
+    } else {
+      $header.classList.add('solid');
+    }
+  });
 }
