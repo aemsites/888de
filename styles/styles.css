@@ -125,7 +125,7 @@ body {
   margin: 0;
   font-family: var(--body-font-family);
   color: var(--text-color);
-  background-color: #232323;
+  background: var(--background-color);
   display: none;
 }
 
@@ -151,8 +151,9 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 99;
+  z-index: 999;
 }
+header.solid { background: rgb(35 35 35 / 100%) }
 
 /* push down when toolbar is enabled */
 helix-sidekick[pushdown] ~ header, 
@@ -310,6 +311,10 @@ main img {
   width: 100%;
 }
 
+main {
+  margin-top: var(--nav-height);
+}
+
 /* sections */
 main .section {
   padding: 20px 10px;
@@ -381,6 +386,10 @@ details[open] > *:not(summary) {
 }
 
 @media (width >= 1024px) {
+  :root {
+    --nav-height: 60px;
+  }
+
   main {
     transition: .3s all;
     position: relative;
