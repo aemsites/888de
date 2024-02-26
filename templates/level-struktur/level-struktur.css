@@ -3,7 +3,14 @@ body.level-struktur {
     color: white;
   }
 
-body.level-struktur h1 > strong{
+body.level-struktur h1 > strong, body.level-struktur strong > h1{
  font-size: var(--heading-font-size-xxl);
- font-weight: var(--font-weight-bold);
+}
+
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media only screen and (max-width: 1200px){
+    body.level-struktur h1 > strong, body.level-struktur strong > h1{
+        text-align: center;
+    }
 }
