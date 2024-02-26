@@ -9,14 +9,14 @@ body main {
   transition: var(--nav-transition-time);
 }
 
-body.nav-open main,
+body.nav-open > main,
 body.nav-open footer {
   width: 100vw;
   left: 250px;
 }
 
 body .overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 9;
   background: #232323;
@@ -25,7 +25,8 @@ body .overlay {
   transition: opacity .2s;
 }
 
-body.nav-open .overlay {
+body.nav-open .overlay,
+body.modal-open .overlay {
   height: 100vh;
   opacity: .9;
 }
@@ -208,3 +209,51 @@ nav ul li.open i { transform: rotate(-90deg) }
 
   nav { padding-top: var(--nav-height) }
 }
+
+
+
+
+/* login modal */
+.login-modal {
+    position: fixed;
+    z-index: 999;
+    min-width: 300px;
+    min-height: 200px;
+    background-color: #fff;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .6s ease;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+body.modal-open .login-modal { top: 50vh }
+
+/* main 888 icon */
+.login-modal .default-content-wrapper .icon {
+  margin: 0 auto;
+  height: 48px;
+  width: 84px;
+}
+
+.login-modal .default-content-wrapper p { padding: 0 30px}
+
+.login-modal main,
+.login-modal .section.columns-container { 
+  margin: 0;
+  padding: 0; 
+ }
+
+/* other 888 icons */
+ .login-modal .columns .icon {
+  background: #232323;
+  display: block;
+  height: 130px;
+  width: 130px;
+  border-radius: 65px;
+ }
+ .login-modal .columns p:nth-child(2) .icon { margin: 0 10px }
+ .login-modal .columns .icon img { width: 80px }
+
+
+
