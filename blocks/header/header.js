@@ -23,7 +23,6 @@ export default async function decorate(block) {
   $nav.innerHTML = navHTML;
 
   const $body = document.body;
-  const $main = document.querySelector('main');
   const $header = document.querySelector('header');
 
   // nav burger menu
@@ -37,7 +36,9 @@ export default async function decorate(block) {
     }
   });
 
-  $main.addEventListener('click', () => {
+  const $overlay = div({ class: 'overlay' });
+  $body.append($overlay);
+  $overlay.addEventListener('click', () => {
     closeNav($body);
   });
 
@@ -68,6 +69,18 @@ export default async function decorate(block) {
       li.addEventListener('click', () => {
         li.classList.toggle('open');
       });
+    }
+  });
+
+  // header opacity change
+  $header.classList.add('solid');
+  window.addEventListener('scroll', () => {
+    const { scrollY } = window;
+    const windowWidth = window.innerWidth;
+    if (scrollY > (windowWidth < 1024 ? 45 : 60)) {
+      $header.classList.remove('solid');
+    } else {
+      $header.classList.add('solid');
     }
   });
 }
