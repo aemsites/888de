@@ -1,16 +1,16 @@
-body.level-struktur {
+body.level-struktur main{
     background-color: black;
     color: white;
   }
 
-body.level-struktur h1 > strong, body.level-struktur strong > h1{
+body.level-struktur main h1 > strong, body.level-struktur main strong > h1{
  font-size: var(--heading-font-size-xxl);
 }
 
 
 /* stylelint-disable-next-line media-feature-range-notation */
 @media only screen and (max-width: 1200px){
-    body.level-struktur h1 > strong, body.level-struktur strong > h1{
+    body.level-struktur main h1 > strong, body.level-struktur main strong > h1{
         text-align: center;
     }
 }

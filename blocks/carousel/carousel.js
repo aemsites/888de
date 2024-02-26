@@ -100,11 +100,9 @@ export default function decorate(block) {
     [...row.children].forEach((col) => {
       const pic = col.querySelector('picture');
       if (pic) {
-        if (slideIndex === 1) {
-          pic.querySelector('img').setAttribute('loading', 'eager');
-        }
         slideContent.pic = pic;
         const img = pic.querySelector('img');
+        img.setAttribute('loading', 'eager');
         const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
         pic.style.paddingBottom = `${ratio}%`;
         slider.style.maxHeight = `${img.height}px`;
@@ -113,6 +111,7 @@ export default function decorate(block) {
         if (mobilePic) {
           slideContent.mobilePic = mobilePic;
           const mobileImg = mobilePic.querySelector('img');
+          mobileImg.setAttribute('loading', 'eager');
           slideContent.mobileImg = mobileImg.getAttribute('src');
         }
         const dtVideoLink = col.querySelector('a');
