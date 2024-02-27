@@ -1,5 +1,4 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { wrapSpanLink } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // convert the sitemap links to an accordion
@@ -35,7 +34,6 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  wrapSpanLink(footer);
   createMobileMenu(footer);
   block.append(footer);
 
