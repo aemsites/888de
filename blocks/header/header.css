@@ -3,7 +3,7 @@
 
 body.no-scroll { overflow: hidden }
 
-body main {
+body > main {
   position: relative;
   left: 0;
   transition: var(--nav-transition-time);
@@ -19,7 +19,7 @@ body .overlay {
   position: fixed;
   inset: 0;
   z-index: 9;
-  background: #232323;
+  background: #000;
   opacity: 0;
   height: 0;
   transition: opacity .2s;
@@ -28,7 +28,7 @@ body .overlay {
 body.nav-open .overlay,
 body.modal-open .overlay {
   height: 100vh;
-  opacity: .9;
+  opacity: .8;
 }
 
 header .logo img {
@@ -197,7 +197,112 @@ nav ul li i {
 nav ul li.open i { transform: rotate(-90deg) }
 
 
-@media (width <= 1024px) {
+/* login modal */
+.login-modal {
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: clamp(500px, 50%, 620px);
+    min-height: 200px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 5px 0 0;
+    transition: .6s ease;
+}
+
+@media (width <= 1000px) {
+  .login-modal {
+    width: min(90%, 500px);
+  }
+}
+
+
+
+.login-modal .section-outer {  
+  border-radius: 10px; 
+  padding-bottom: 20px; 
+}
+
+body.modal-open .login-modal { top: 50vh }
+
+.login-modal .close {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  color: var(--gray-color);
+  cursor: pointer;
+}
+
+.login-modal .columns > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-modal .columns.icons > div > div {
+  flex-direction: row;
+  gap: 20px;
+  width: unset;
+  justify-content: space-between;
+}
+
+.login-modal .default-content-wrapper .icon {
+  margin: 0 auto;
+  height: 48px;
+  width: 84px;
+}
+
+.login-modal .default-content-wrapper p { padding: 0 30px }
+
+.login-modal .section.columns-container { 
+  margin: 0;
+  padding: 0; 
+}
+
+/* other 888 icons */
+.icons p { margin: 0 }
+
+.login-modal .columns .icon {
+  background: #232323;
+  display: block;
+  height: 130px;
+  width: 130px;
+  border-radius: 65px;
+}
+.login-modal .columns .icon img { width: 80px }
+
+@media (width <= 540px) {
+  .login-modal .columns.icons > div > div { gap: 10px }
+  .login-modal .columns .icon { transform: scale(.9) }
+}
+
+@media (width <= 480px) {
+  .login-modal .columns.icons {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .login-modal .columns .icon { position: absolute }
+
+  .login-modal .columns p:nth-child(1) .icon { left: 0 }
+
+  .login-modal .columns p:nth-child(2) .icon { 
+    top: 160px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-modal .columns p:nth-child(3) .icon { right: 0 }
+}
+
+
+
+ @media (width <= 1024px) {
   header { height: var(--nav-height) }
 
   header .logo img { width: 45px }
@@ -211,49 +316,10 @@ nav ul li.open i { transform: rotate(-90deg) }
 }
 
 
-
-
-/* login modal */
-.login-modal {
-    position: fixed;
-    z-index: 999;
-    min-width: 300px;
-    min-height: 200px;
-    background-color: #fff;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: .6s ease;
-    border-radius: 10px;
-    padding: 10px 0;
+@media (width <= 768px) {
+  /* .login-modal .columns .icon {
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+  } */
 }
-body.modal-open .login-modal { top: 50vh }
-
-/* main 888 icon */
-.login-modal .default-content-wrapper .icon {
-  margin: 0 auto;
-  height: 48px;
-  width: 84px;
-}
-
-.login-modal .default-content-wrapper p { padding: 0 30px}
-
-.login-modal main,
-.login-modal .section.columns-container { 
-  margin: 0;
-  padding: 0; 
- }
-
-/* other 888 icons */
- .login-modal .columns .icon {
-  background: #232323;
-  display: block;
-  height: 130px;
-  width: 130px;
-  border-radius: 65px;
- }
- .login-modal .columns p:nth-child(2) .icon { margin: 0 10px }
- .login-modal .columns .icon img { width: 80px }
-
-
-

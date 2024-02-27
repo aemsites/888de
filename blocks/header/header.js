@@ -6,8 +6,7 @@ const $body = document.body;
 const navTransitionTime = 400; // match --nav-transition-time var in styles.css
 
 function open(item) {
-  $body.classList.add(`${item}-open`);
-  $body.classList.add('no-scroll');
+  $body.classList.add(`${item}-open`, 'no-scroll');
 }
 
 function close(item) {
@@ -18,8 +17,7 @@ function close(item) {
   if (item === 'nav') $body.classList.add('nav-close');
 
   setTimeout(() => {
-    $body.classList.remove('no-scroll');
-    $body.classList.remove(`${item}-open`);
+    $body.classList.remove(`${item}-open`, 'no-scroll');
     if (item === 'nav') $body.classList.remove('nav-close');
   }, navTransitionTime);
 }
@@ -32,12 +30,11 @@ export default async function decorate(block) {
 
   const $header = document.querySelector('header');
 
-  const loginHtml = await loadFragment('/login');
-
-  const $loginModal = div(
-    { class: 'login-modal' },
-    div(loginHtml),
-  );
+  const $overlay = div({ class: 'overlay' });
+  $overlay.addEventListener('click', () => {
+    close('nav');
+    close('modal');
+  });
 
   // nav burger menu
   const $navBtn = div({ class: 'nav-btn' }, span(), span(), span());
@@ -48,12 +45,6 @@ export default async function decorate(block) {
     } else {
       close('nav');
     }
-  });
-
-  const $overlay = div({ class: 'overlay' });
-  $overlay.addEventListener('click', () => {
-    close('nav');
-    close('modal');
   });
 
   const $logo = a({ class: 'logo', href: '/' }, '888.de', img({
@@ -68,6 +59,16 @@ export default async function decorate(block) {
     open('modal');
     close('nav');
   });
+  // login modal
+  const loginHtml = await loadFragment('/login');
+  // wrapSpanLink(loginHtml);
+  const $closeBtn = div({ class: 'close' }, 'X');
+  const $loginModal = div(
+    { class: 'login-modal' },
+    $closeBtn,
+    div(loginHtml.firstElementChild),
+  );
+  $closeBtn.addEventListener('click', () => close('modal'));
 
   block.replaceWith($navBtn, $logo, $loginBtn);
   $header.after($nav);
