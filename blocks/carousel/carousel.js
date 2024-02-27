@@ -15,9 +15,9 @@ function createMobileSlide(slide, slideContent) {
  </div>`;
 }
 
-function populateDtSlidesWrapper(dtSlidesWrapper, slideContent) {
+function populateDtSlidesWrapper(dtSlidesWrapper, pic) {
   dtSlidesWrapper.innerHTML = `
-    ${slideContent.pic ? slideContent.pic.outerHTML : ''}
+    ${pic ? pic.outerHTML : ''}
     <div id="left">
     <span class="icon icon-carousel-chevron"></span>
     </div>
@@ -38,12 +38,16 @@ function createDesktopSlide(slide, slideContent) {
          <div class="banner-cta-terms">
             ${slideContent.button.outerHTML}
             <div class="banner-terms">${slideContent.termsLink.outerHTML}</div>
-         </div>
+         </div>`;
+  setTimeout(() => {
+    slide.innerHTML += `
          ${(slideContent.dtVideoLink) ? `
          <video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.img ? slideContent.img : ''}">
             <source src="${slideContent.dtVideoLink ? slideContent.dtVideoLink : ''}" type="video/mp4">
         </video>` : (slideContent.pic ? slideContent.pic.outerHTML : '')}
     `;
+    slide.parentElement.querySelector('img').style.visibility = 'hidden';
+  }, 3500);
 }
 
 function createBoxOffer(boxOffer, slideContent) {
@@ -87,7 +91,9 @@ export default function decorate(block) {
   const slider = document.createElement('div');
   slider.className = 'slider';
 
-  // add index to each slide
+  const firstPic = block.querySelector('picture').cloneNode(true);
+  firstPic.querySelector('img').setAttribute('loading', 'eager');
+  populateDtSlidesWrapper(slider, firstPic);
   let slideIndex = 1;
   [...block.children].forEach((row) => {
     const slideContent = {};
@@ -148,11 +154,6 @@ export default function decorate(block) {
     // create mobile view
     createMobileSlide(mobSlide, slideContent);
     mobileSlidesWrapper.append(mobSlide);
-
-    // create desktop view
-    if (slideIndex === 1) {
-      populateDtSlidesWrapper(slider, slideContent);
-    }
 
     const dtSlide = document.createElement('div');
     dtSlide.className = `slide slide-${slideIndex}`;
