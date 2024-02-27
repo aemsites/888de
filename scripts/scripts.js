@@ -215,7 +215,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   buildLinks(main);
-  wrapSpanLink(document);
+  wrapSpanLink(main);
   decorateStyledSections(main);
 }
 
