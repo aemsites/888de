@@ -48,7 +48,7 @@ export default async function decorate(block) {
   });
 
   const $logo = a({ class: 'logo', href: '/' }, '888.de', img({
-    src: '/icons/888de-logo.svg?test1',
+    src: '/icons/888de-logo.svg',
     width: '60',
     height: '60',
     alt: '888.de',

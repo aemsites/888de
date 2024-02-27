@@ -199,17 +199,17 @@ nav ul li.open i { transform: rotate(-90deg) }
 
 /* login modal */
 .login-modal {
-    position: fixed;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    width: clamp(500px, 50%, 620px);
-    min-height: 200px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 5px 0 0;
-    transition: .6s ease;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: clamp(500px, 50%, 620px);
+  min-height: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px 0 0;
+  transition: .6s ease;
 }
 
 @media (width <= 1000px) {
@@ -299,9 +299,7 @@ body.modal-open .login-modal { top: 50vh }
   .login-modal .columns p:nth-child(3) .icon { right: 0 }
 }
 
-
-
- @media (width <= 1024px) {
+@media (width <= 1024px) {
   header { height: var(--nav-height) }
 
   header .logo img { width: 45px }
@@ -313,4 +311,3 @@ body.modal-open .login-modal { top: 50vh }
 
   nav { padding-top: var(--nav-height) }
 }
-
