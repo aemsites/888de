@@ -219,7 +219,6 @@ nav ul li.open i { transform: rotate(-90deg) }
 }
 
 
-
 .login-modal .section-outer {  
   border-radius: 10px; 
   padding-bottom: 20px; 
@@ -315,11 +314,3 @@ body.modal-open .login-modal { top: 50vh }
   nav { padding-top: var(--nav-height) }
 }
 
-
-@media (width <= 768px) {
-  /* .login-modal .columns .icon {
-    height: 120px;
-    width: 120px;
-    border-radius: 60px;
-  } */
-}
