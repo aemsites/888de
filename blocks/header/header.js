@@ -60,8 +60,7 @@ export default async function decorate(block) {
     close('nav');
   });
   // login modal
-  const loginHtml = await loadFragment('/login');
-  // wrapSpanLink(loginHtml);
+  const loginHtml = await loadFragment('/fragments/login');
   const $closeBtn = div({ class: 'close' }, 'X');
   const $loginModal = div(
     { class: 'login-modal' },
