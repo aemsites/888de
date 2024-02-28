@@ -4,6 +4,8 @@
  * https://www.aem.live/developer/block-collection/fragment
  */
 
+// test
+
 import {
   decorateMain,
 } from '../../scripts/scripts.js';
