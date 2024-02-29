@@ -21,7 +21,7 @@ export async function loadFragment(path) {
   console.log(path)
   if (path && path.startsWith('/')) {
     const resp = await fetch(`${path}.plain.html`);
-    console.log('resp.text() = ', resp.text());
+    console.log('resp.text() = ', await resp.text());
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
