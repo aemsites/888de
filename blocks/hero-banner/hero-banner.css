@@ -14,7 +14,6 @@ main .section.hero-banner-container>div {
 
 .hero-banner.block {
     position: relative;
-    min-height: 600px;
 }
 
 
@@ -74,6 +73,7 @@ main .section.hero-banner-container>div {
 }
 
 .hero-banner.block .hero-icon-mob img {
+    width: 60%;
     float: none;
     margin: 0 auto;
 }
@@ -125,6 +125,10 @@ main .section.hero-banner-container>div {
 }
 
 @media screen and (min-width: 1024px) {
+    .hero-banner.block {
+        min-height: 600px;
+    }
+    
     .hero-banner.block .mobile-background {
         display: none;
     }
