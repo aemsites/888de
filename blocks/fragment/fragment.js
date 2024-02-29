@@ -4,8 +4,6 @@
  * https://www.aem.live/developer/block-collection/fragment
  */
 
-// test
-
 import {
   decorateMain,
 } from '../../scripts/scripts.js';
@@ -20,8 +18,10 @@ import {
  * @returns {HTMLElement} The root element of the fragment
  */
 export async function loadFragment(path) {
+  console.log(path)
   if (path && path.startsWith('/')) {
     const resp = await fetch(`${path}.plain.html`);
+    console.log('resp.text() = ', resp.text());
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
