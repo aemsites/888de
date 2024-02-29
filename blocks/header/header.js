@@ -61,11 +61,13 @@ export default async function decorate(block) {
   });
   // login modal
   const loginHtml = await loadFragment('/fragments/login');
+  const $loginModaDiv = div();
+  while (loginHtml.firstElementChild) $loginModaDiv.append(loginHtml.firstElementChild);
   const $closeBtn = div({ class: 'close' }, 'X');
   const $loginModal = div(
     { class: 'login-modal' },
     $closeBtn,
-    div(loginHtml.firstElementChild),
+    $loginModaDiv,
   );
   $closeBtn.addEventListener('click', () => close('modal'));
 
