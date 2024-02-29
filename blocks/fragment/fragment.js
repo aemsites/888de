@@ -18,7 +18,6 @@ import {
  * @returns {HTMLElement} The root element of the fragment
  */
 export async function loadFragment(path) {
-  console.log(path)
   if (path && path.startsWith('/')) {
     const resp = await fetch(`${path}.plain.html`);
 
@@ -27,13 +26,13 @@ export async function loadFragment(path) {
       main.innerHTML = await resp.text();
 
       // reset base path for media to fragment base
-      // const resetAttributeBase = (tag, attr) => {
-      //   main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
-      //     elem[attr] = new URL(elem.getAttribute(attr), new URL(path, window.location)).href;
-      //   });
-      // };
-      // resetAttributeBase('img', 'src');
-      // resetAttributeBase('source', 'srcset');
+      const resetAttributeBase = (tag, attr) => {
+        main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
+          elem[attr] = new URL(elem.getAttribute(attr), new URL(path, window.location)).href;
+        });
+      };
+      resetAttributeBase('img', 'src');
+      resetAttributeBase('source', 'srcset');
 
       decorateMain(main);
       await loadBlocks(main);
