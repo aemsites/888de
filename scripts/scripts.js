@@ -200,6 +200,11 @@ function decorateStyledSections(main) {
         createOptimizedBackgroundImage(section, bgImage);
       }
     });
+  Array.from(main.querySelectorAll('.section-outer[data-nav-id]'))
+    .forEach((section) => {
+      const id = section.dataset.navId;
+      section.id = id;
+    });
 }
 
 /**
