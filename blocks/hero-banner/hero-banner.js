@@ -1,33 +1,47 @@
 export default function decorate(block) {
+  const contentWrapper = document.createElement('div');
+  contentWrapper.classList.add('hero-content-wrapper');
+  const mobileSectionDownArrow = document.createElement('img');
+  mobileSectionDownArrow.src = '../icons/herobanner-mob-arrow.png';
+  mobileSectionDownArrow.classList.add('hero-mobile-section-down-arrow');
+  mobileSectionDownArrow.alt = 'arrow-down';
+  const stepsWrapper = document.createElement('div');
+  stepsWrapper.classList.add('hero-steps-wrapper');
   [...block.children].forEach((row) => {
     const cols = [...row.children];
     if (cols[0].innerText === 'background') {
+      const image = document.createElement('div');
+      image.classList.add('hero-banner-image');
       const background = cols[1].querySelector('picture');
       background.classList.add('hero-background');
-      block.append(background);
+      image.append(background);
+      block.append(image);
       block.removeChild(row);
     } else if (cols[0].innerText === 'icon') {
-      const dtIcon = cols[1].querySelector('.icon');
+      const dtIcon = cols[1].querySelector('picture');
       dtIcon.classList.add('hero-icon-dt');
-      block.append(dtIcon);
-      const mobIcon = cols[1].querySelector('.icon');
+      contentWrapper.append(dtIcon);
+      const mobIcon = cols[1].querySelector('picture');
       mobIcon.classList.add('hero-icon-mob');
-      block.append(mobIcon);
+      contentWrapper.append(mobIcon);
       block.removeChild(row);
     } else {
       const anchor = document.createElement('a');
-      anchor.className = 'hero-image-anchor';
+      anchor.className = 'hero-banner-section';
       anchor.href = `#${cols[0].innerText}`;
       const dtImage = cols[1].querySelector('picture');
       anchor.append(dtImage);
-      block.append(anchor);
+      stepsWrapper.append(anchor);
       const mobImage = cols[1].querySelector('picture');
       const anchorMob = document.createElement('a');
-      anchorMob.className = 'hero-image-anchor-mob';
+      anchorMob.className = 'hero-banner-section-mobile';
       anchorMob.href = `#${cols[0].innerText}`;
       anchorMob.append(mobImage);
-      block.append(anchorMob);
+      anchorMob.append(mobileSectionDownArrow.cloneNode(true));
+      stepsWrapper.append(anchorMob);
       block.removeChild(row);
     }
   });
+  contentWrapper.append(stepsWrapper);
+  block.append(contentWrapper);
 }
