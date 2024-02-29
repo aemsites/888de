@@ -1,3 +1,4 @@
+/* stylelint-disable media-feature-range-notation */
 main .section.hero-banner-container {
     max-width: 100%;
     padding: 0;
@@ -28,8 +29,15 @@ main .section.hero-banner-container>div {
     overflow: clip;
 }
 
-.hero-banner.block .hero-banner-image picture {
+.hero-banner.block .mobile-background {
     display: block;
+}
+
+.hero-banner.block .hero-background {
+    display: none;
+}
+
+.hero-banner.block .hero-banner-image picture {
     height: 100%;
     width: 100%;
     position: relative;
@@ -58,10 +66,16 @@ main .section.hero-banner-container>div {
     flex-direction: column;
 }
 
+/* center align above image */
+.hero-banner.block .hero-content-wrapper .hero-icon-mob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hero-banner.block .hero-icon-mob img {
-    width: 80%;
     float: none;
-    margin-bottom: 10px;
+    margin: 0 auto;
 }
 
 .hero-banner.block .hero-icon-dt {
@@ -110,8 +124,15 @@ main .section.hero-banner-container>div {
     display: none;
 }
 
-/* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (min-width: 1024px) {
+    .hero-banner.block .mobile-background {
+        display: none;
+    }
+
+    .hero-banner.block .hero-background {
+        display: block;
+    }
+    
     .hero-banner.block .hero-content-wrapper {
         position: absolute;
         top: 50%;
@@ -122,12 +143,6 @@ main .section.hero-banner-container>div {
         padding: 28px 0 126px;
         display: flex;
         flex-direction: column;
-    }
-
-    .hero-banner.block .hero-icon-mob img {
-        width: 100%;
-        float: left;
-        margin-bottom: 0;
     }
 
     .hero-banner.block .hero-steps-wrapper .hero-banner-section-mobile {
@@ -145,7 +160,23 @@ main .section.hero-banner-container>div {
     }
 }
 
-/* stylelint-disable-next-line media-feature-range-notation */
+@media screen and (min-width: 600px) {
+    .hero-banner.block .hero-content-wrapper .hero-icon-dt {
+        display: block;
+    }
+
+    .hero-banner.block .hero-content-wrapper .hero-icon-mob {
+        display: none;
+    }
+
+    .hero-banner.block .hero-icon-dt img {
+        width: 100%;
+        float: left;
+        margin-bottom: 0;
+    }
+
+}
+
 @media screen and (min-width: 440px) {
     .hero-banner.block .hero-steps-wrapper a img.hero-mobile-section-down-arrow {
         bottom: -24%;

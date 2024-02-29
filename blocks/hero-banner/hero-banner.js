@@ -16,6 +16,10 @@ export default function decorate(block) {
       background.classList.add('hero-background');
       background.querySelector('img').setAttribute('loading', 'eager');
       image.append(background);
+      const mobBackground = cols[1].querySelector('picture');
+      mobBackground.classList.add('mobile-background');
+      mobBackground.querySelector('img').setAttribute('loading', 'eager');
+      image.append(mobBackground);
       block.append(image);
       block.removeChild(row);
     } else if (cols[0].innerText === 'icon') {
