@@ -43,6 +43,25 @@ export default function decorate(block) {
       block.removeChild(row);
     }
   });
+
   contentWrapper.append(stepsWrapper);
   block.append(contentWrapper);
+
+  const heroBannerSections = document.querySelectorAll('.hero-banner-section');
+  heroBannerSections.forEach((section) => {
+    section.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.target.closest('a').getAttribute('href');
+      document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const heroBannerSectionsMobile = document.querySelectorAll('.hero-banner-section-mobile');
+  heroBannerSectionsMobile.forEach((section) => {
+    section.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.target.closest('a').getAttribute('href');
+      document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 }
