@@ -14,6 +14,7 @@ export default function decorate(block) {
       image.classList.add('hero-banner-image');
       const background = cols[1].querySelector('picture');
       background.classList.add('hero-background');
+      background.querySelector('img').setAttribute('loading', 'eager');
       image.append(background);
       block.append(image);
       block.removeChild(row);
