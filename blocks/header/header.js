@@ -60,7 +60,7 @@ export default async function decorate(block) {
     close('nav');
   });
   // login modal
-  const loginHtml = await loadFragment('/fragments/login');
+  const loginHtml = await loadFragment('/login');
   const $modalContent = div();
   while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
   const $closeBtn = div({ class: 'close' }, 'X');
