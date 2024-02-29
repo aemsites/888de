@@ -63,7 +63,7 @@ export const removeEmptyTags = (block) => {
     // checking that the tag is not autoclosed to make sure we don't remove <meta />
     // checking the innerHTML and trim it to make sure the content inside the tag is 0
     if (
-        x.outerHTML.slice(tagName.length * -1).toUpperCase() === tagName
+      x.outerHTML.slice(tagName.length * -1).toUpperCase() === tagName
         // && x.childElementCount === 0
         && x.innerHTML.trim().length === 0) {
       x.remove();
