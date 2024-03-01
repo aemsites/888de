@@ -85,7 +85,6 @@
   --bold-font-family: "bold888", "bold888-Fallback";
   --black-font-family: "black888", "black888-Fallback";
   --ff-888-ultra: "ultra888", "ultra888-Fallback";
-  --ff-888-bold: "bold888", "bold888-Fallback";
   --fixed-font-family: menlo, consolas, monospace;
 
   /* body sizes */
@@ -156,7 +155,7 @@ header {
 header.solid { background: rgb(35 35 35 / 100%) }
 
 /* push down when toolbar is enabled */
-helix-sidekick[pushdown] ~ header, 
+helix-sidekick[pushdown] ~ header,
 helix-sidekick[pushdown] ~ nav { top: 49px; }
 
 h2, h3,
@@ -358,7 +357,6 @@ main .section.highlight {
     font-size: var(--heading-font-size-xxl);
     line-height: 1.2;
   }
-}
 
 details > *:not(summary) {
   animation: accordion-details-show 500ms ease-in-out;
@@ -371,12 +369,6 @@ details > *:not(summary) {
 details[open] > *:not(summary) {
   color: inherit;
 }
-
-@media (width >= 600px) {
-  h1 {
-    font-size: var(--heading-font-size-xxl);
-    line-height: 1.2;
-  }
 
   h2 {
     font-size: var(--heading-font-size-l);

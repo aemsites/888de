@@ -108,7 +108,7 @@ main .section.carousel-container {
 .carousel.block .dt-slides-wrapper .button-container a {
     border-color: var(--green-color);
     background-color: var(--green-color);
-    font-family: var(--ff-888-bold);
+    font-family: var(--bold-font-family);
     border-radius: 100px;
     font-size: 24px;
     border-style: solid;

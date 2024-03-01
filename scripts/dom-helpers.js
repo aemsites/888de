@@ -56,6 +56,20 @@ export function domEl(tag, ...items) {
   return element;
 }
 
+export const removeEmptyTags = (block) => {
+  block.querySelectorAll('*').forEach((x) => {
+    const tagName = `</${x.tagName}>`;
+
+    // checking that the tag is not autoclosed to make sure we don't remove <meta />
+    // checking the innerHTML and trim it to make sure the content inside the tag is 0
+    if (
+      x.outerHTML.slice(tagName.length * -1).toUpperCase() === tagName
+        // && x.childElementCount === 0
+        && x.innerHTML.trim().length === 0) {
+      x.remove();
+    }
+  });
+};
 /*
     More short hand functions can be added for very common DOM elements below.
     domEl function from above can be used for one off DOM element occurrences.
