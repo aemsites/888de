@@ -325,6 +325,37 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
+main .button-container.button-icon a{
+  background-color: #0080ff;
+  transition: .3s all;
+  color: #000;
+  text-decoration: none;
+  font-family: var(--bold-font-family);
+  font-size: 16px;
+  max-width: 350px;
+  margin: 0 12px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+main .button-container.button-icon a>.icon{
+  background-color: #03498f;
+  width: 25%;
+  height: auto;
+}
+
+main .button-container.button-icon a>.icon img{
+  margin-top: 5px;
+  width: 62px;
+  height: 62px;
+}
+
+main .button-container.button-icon a>.link-button-text{
+  text-align: center;
+  width: 90%;
+  line-height: 72px;
+}
 
 @keyframes fadeout {
   0% {

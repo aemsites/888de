@@ -33,7 +33,7 @@ export function wrapSpanLink(element = document) {
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
-function decorateButtons(element) {
+export function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
@@ -51,6 +51,14 @@ function decorateButtons(element) {
           a.textContent = '';
           a.className = 'button text'; // default
           up.classList.add('button-container');
+          a.append(linkTextEl);
+        }
+        if (up.childNodes.length === 2 && (up.tagName === 'P' || up.tagName === 'DIV') && up.querySelector('.icon')) {
+          const icon = up.querySelector('.icon');
+          a.textContent = '';
+          a.className = 'button text'; // default
+          up.classList.add('button-container', 'button-icon');
+          a.append(icon);
           a.append(linkTextEl);
         }
         if (up.childNodes.length === 1
