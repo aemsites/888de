@@ -430,13 +430,6 @@ details[open] > *:not(summary) {
 }
 
 @media (width >= 1024px) {
-  main .button-container.button-icon a{
-    min-width: 350px;
-    margin: 0 12px;
-  }
-}
-
-@media (width >= 1024px) {
   :root {
     --nav-height: 60px;
   }
