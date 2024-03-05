@@ -78,6 +78,7 @@
   --black-color: #000;
   --gray-color: #454545;
   --light-gold-color: #febc12;
+  --dark-blue-color: #03498f;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
@@ -325,13 +326,14 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
+/* button with icon */
 main .button-container.button-icon a{
-  background-color: #0080ff;
+  background-color: var(--blue-color);
   transition: .3s all;
-  color: #000;
+  color: var(--black-color);
   text-decoration: none;
   font-family: var(--bold-font-family);
-  font-size: 16px;
+  font-size: var(--body-font-size-s);
   max-width: 350px;
   margin: 0 12px;
   text-align: center;
@@ -339,8 +341,12 @@ main .button-container.button-icon a{
   justify-content: space-between;
 }
 
+main .button-container.button-icon a:hover{
+ background-color: var(--dark-blue-color);
+}
+
 main .button-container.button-icon a>.icon{
-  background-color: #03498f;
+  background-color: var(--dark-blue-color);
   width: 25%;
   height: auto;
 }
