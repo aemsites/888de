@@ -420,7 +420,9 @@ details[open] > *:not(summary) {
     text-align: center;
     font-weight: 500;
   }
+}
 
+@media (width >= 900px) {
   main .button-container.button-icon a{
     min-width: 350px;
     margin: 0 12px;

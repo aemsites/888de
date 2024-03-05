@@ -114,8 +114,4 @@
       padding: 48px;
       flex-direction: row;
     }
-
-    .columns.ctas > div > div {
-      flex: 0;
-    }
 }
