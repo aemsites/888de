@@ -2,7 +2,7 @@
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 20px;
+  padding: 0;
 }
 
 .columns > div {
@@ -22,7 +22,7 @@
 }
 
 .section.columns-container > div {
-  padding: 0 10px;
+  padding: 0;
 }
 
 .columns.icons > div {
@@ -60,7 +60,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 0;
+  padding: 10px 0;
+  margin: 0 12px;
 }
 
 .columns.ctas > div > div {
@@ -81,8 +82,17 @@
 }
 
 @media (width >= 600px) {
+  .section.columns-container {
+    padding: 20px;
+  }
+
+  .section.columns-container > div {
+    padding: 0 10px;
+  }
+
   .columns.ctas > div  {
       flex-direction: row;
+      padding: 30px 0;
     }
 
     .columns.ctas > div > div {
