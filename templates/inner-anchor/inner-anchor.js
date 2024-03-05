@@ -2,12 +2,27 @@
 /* eslint-disable function-paren-newline */
 import { div, ul, li, a } from '../../scripts/dom-helpers.js';
 
-// Smooth scrolling function
 function scrollToTarget(target) {
   const { offsetTop } = target;
   window.scrollTo({
     top: offsetTop,
     behavior: 'smooth',
+  });
+}
+
+function highlightNav(doc) {
+  const $anchors = doc.querySelectorAll('.anchor');
+  window.addEventListener('scroll', () => {
+    const scrollAmount = window.scrollY;
+    $anchors.forEach(($anchor) => {
+      if (scrollAmount >= (($anchor.offsetTop) - 80)) {
+        const id = $anchor.getAttribute('id');
+        const $navLI = doc.querySelector(`a[href="#${id}"]`).parentElement;
+        const $activeLI = doc.querySelector('.anchor-nav .active');
+        if ($activeLI) $activeLI.classList.remove('active');
+        $navLI.classList.add('active');
+      }
+    });
   });
 }
 
@@ -38,10 +53,6 @@ export default async function decorate(doc) {
         e.preventDefault();
         window.history.pushState(null, null, `#${anchorID}`);
         scrollToTarget($anchor);
-
-        const $activeAnchor = doc.querySelector('.anchor-nav .active');
-        if ($activeAnchor) $activeAnchor.classList.remove('active');
-        $anchorLink.classList.add('active');
       });
     } // matches
   }); // each
@@ -49,4 +60,6 @@ export default async function decorate(doc) {
   const $page = doc.querySelector('main > .section-outer > .section');
 
   $page.prepend($anchorNav);
+
+  highlightNav(doc);
 }

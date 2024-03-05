@@ -1,4 +1,3 @@
-
 .anchor-nav {
   position: fixed;
   top: calc(var(--nav-height) + 24px);
@@ -19,7 +18,6 @@
   transition: .5s;
 }
 
-.anchor-nav li:hover,
 .anchor-nav li.active {
   background: #4f4f4f;
   color: #fff;
@@ -27,6 +25,10 @@
 
 .anchor {
   scroll-margin-top: calc(var(--nav-height) + 20px);
+}
+
+.anchor:not(:first-child) {
+  margin-top: 100px;
 }
 
 .inner-anchor main .section .default-content-wrapper {
