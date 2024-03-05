@@ -66,6 +66,7 @@
   --blue-color: #0080ff; /* customer brand color */
   --light-blue-color: #3299ff; /* a11y contrast fix */
   --green-color: #80ff00;
+  --dark-green-color: #26ba29;
   --yellow-color: #fce403;
   --pumpkin-orange-color: #ff6400;
   --light-black-color: #181818;
@@ -332,10 +333,10 @@ main .button-container.button-icon a{
   transition: .3s all;
   color: var(--black-color);
   text-decoration: none;
-  font-family: var(--bold-font-family);
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  max-width: 350px;
-  margin: 0 12px;
+  max-width: 90%;
+  margin-left: 5%;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -389,6 +390,13 @@ main .button-container.button-icon a>.link-button-text{
   }
 }
 
+@media (width >= 440px) {
+  main .button-container.button-icon a{
+    min-width: 90%;
+    margin-bottom: 10px;
+  }
+}
+
 @media (width >= 600px) {
   h1 {
     font-size: var(--heading-font-size-xxl);
@@ -411,6 +419,18 @@ details[open] > *:not(summary) {
     font-size: var(--heading-font-size-l);
     text-align: center;
     font-weight: 500;
+  }
+
+  main .button-container.button-icon a{
+    min-width: 350px;
+    margin: 0 12px;
+  }
+}
+
+@media (width >= 1024px) {
+  main .button-container.button-icon a{
+    min-width: 350px;
+    margin: 0 12px;
   }
 }
 
