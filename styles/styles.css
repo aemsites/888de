@@ -328,21 +328,20 @@ main .section.highlight {
 }
 
 /* button with icon */
-main .button-container.button-icon a{
+main .button-container.button-icon a, main .columns.ctas a {
   background-color: var(--blue-color);
   transition: .3s all;
   color: var(--black-color);
   text-decoration: none;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  max-width: 90%;
-  margin-left: 5%;
+  min-width: 45%;
   text-align: center;
   display: flex;
   justify-content: space-between;
 }
 
-main .button-container.button-icon a:hover{
+main .button-container.button-icon a:hover, main .columns.ctas a:hover{
  background-color: var(--dark-blue-color);
 }
 
@@ -358,9 +357,9 @@ main .button-container.button-icon a>.icon img{
   height: 62px;
 }
 
-main .button-container.button-icon a>.link-button-text{
+main .button-container.button-icon a>.link-button-text, main .columns.ctas a>.link-button-text{
   text-align: center;
-  width: 90%;
+  width: 100%;
   line-height: 72px;
 }
 
@@ -390,13 +389,6 @@ main .button-container.button-icon a>.link-button-text{
   }
 }
 
-@media (width >= 440px) {
-  main .button-container.button-icon a{
-    min-width: 90%;
-    margin-bottom: 10px;
-  }
-}
-
 @media (width >= 600px) {
   h1 {
     font-size: var(--heading-font-size-xxl);
@@ -422,10 +414,9 @@ details[open] > *:not(summary) {
   }
 }
 
-@media (width >= 900px) {
-  main .button-container.button-icon a{
+@media (width >= 840px) {
+  main .button-container.button-icon a, main .columns.ctas a {
     min-width: 350px;
-    margin: 0 12px;
   }
 }
 

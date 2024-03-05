@@ -64,8 +64,6 @@
 
 .columns.ctas > div > div {
   width: 100%;
-  padding: 10px 0;
-  flex-direction: column;
 }
 
 .columns.ctas > div > div:nth-child(2) > a {
@@ -80,12 +78,22 @@
   background-color: var(--dark-green-color);
 }
 
+@media (width >= 600px) {
+  .columns.ctas > div  {
+      flex-direction: row;
+    }
+
+    .columns.ctas > div > div {
+      flex: 1;
+      margin: 0 12px;
+    }
+}
+
 
 @media (width >= 768px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
   }
 
   .columns > div > div {
@@ -98,7 +106,7 @@
   }
 
   .columns.icons > div > div {
-    flex-direction: row;
+    flex-direction: row;  
     width: unset;
   }
 
@@ -109,9 +117,9 @@
   }
 }
 
-@media (width >= 600px) {
-  .columns.ctas > div  {
-      padding: 48px;
-      flex-direction: row;
-    }
+@media (width >= 840px) {
+  .columns.ctas > div > div {
+    flex: 0;
+    margin: 0 12px;
+  }
 }
