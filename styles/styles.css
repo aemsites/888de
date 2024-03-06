@@ -66,6 +66,7 @@
   --blue-color: #0080ff; /* customer brand color */
   --light-blue-color: #3299ff; /* a11y contrast fix */
   --green-color: #80ff00;
+  --dark-green-color: #26ba29;
   --yellow-color: #fce403;
   --pumpkin-orange-color: #ff6400;
   --light-black-color: #181818;
@@ -78,6 +79,7 @@
   --black-color: #000;
   --gray-color: #454545;
   --light-gold-color: #febc12;
+  --dark-blue-color: #03498f;
 
   /* fonts */
   --body-font-family: "medium888", "medium888-Fallback";
@@ -325,6 +327,41 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
+/* button with icon */
+main .button-columns a, main .button-container.button-icon a {
+  background-color: var(--blue-color);
+  transition: .3s all;
+  color: var(--black-color);
+  text-decoration: none;
+  font-family: var(--ff-888-ultra);
+  font-size: var(--body-font-size-l);
+  min-width: 45%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+main .button-columns a:hover, main .button-container.button-icon a:hover{
+ background-color: var(--dark-blue-color);
+}
+
+main .button-container.button-icon a>.icon{
+  background-color: var(--dark-blue-color);
+  width: 25%;
+  height: auto;
+}
+
+main .button-container.button-icon a>.icon img{
+  margin-top: 5px;
+  width: 62px;
+  height: 62px;
+}
+
+main .button-columns a>.link-button-text, main .button-container.button-icon a>.link-button-text{
+  text-align: center;
+  width: 100%;
+  line-height: 72px;
+}
 
 @keyframes fadeout {
   0% {
@@ -374,6 +411,17 @@ details[open] > *:not(summary) {
     font-size: var(--heading-font-size-l);
     text-align: center;
     font-weight: 500;
+  }
+
+  main .button-columns a, main .button-container.button-icon a {
+    font-family: var(--body-font-family);
+    font-size: inherit;
+  }
+}
+
+@media (width >= 840px) {
+  main .button-columns a, main .button-container.button-icon a {
+    width: 350px;
   }
 }
 

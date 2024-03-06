@@ -3,6 +3,8 @@ main .section.hero-banner-container {
     max-width: 100%;
     padding: 0;
     margin-bottom: 0;
+    z-index: 1;
+    position: relative;
 }
 
 main .section.hero-banner-container>div {
@@ -128,7 +130,7 @@ main .section.hero-banner-container>div {
     .hero-banner.block {
         min-height: 600px;
     }
-    
+
     .hero-banner.block .mobile-background {
         display: none;
     }
