@@ -53,6 +53,30 @@
   display: block;
 }
 
+/* align items inside .columns.col-10-90 > div > div:first-of-type centered */
+.columns.col-10-90 > div > div:first-of-type picture{
+  display: flex;
+  justify-content: center;
+}
+
+.columns.col-10-90 > div > div:last-of-type {
+  text-align: left;
+}
+
+@media (width >= 600px) {
+  .columns.col-10-90 > div{
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .columns.col-10-90 > div > div:last-of-type {
+    flex: 0 1 calc(90% - 45px);
+  }
+
+}
+
 @media (width >= 768px) {
   .columns > div {
     align-items: center;
