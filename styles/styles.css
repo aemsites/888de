@@ -328,7 +328,7 @@ main .section.highlight {
 }
 
 /* button with icon */
-main .button-container.button-icon a, main .columns.ctas a {
+main .button-columns a, main .button-container.button-icon a {
   background-color: var(--blue-color);
   transition: .3s all;
   color: var(--black-color);
@@ -341,7 +341,7 @@ main .button-container.button-icon a, main .columns.ctas a {
   justify-content: space-between;
 }
 
-main .button-container.button-icon a:hover, main .columns.ctas a:hover{
+main .button-columns a:hover, main .button-container.button-icon a:hover{
  background-color: var(--dark-blue-color);
 }
 
@@ -357,7 +357,7 @@ main .button-container.button-icon a>.icon img{
   height: 62px;
 }
 
-main .button-container.button-icon a>.link-button-text, main .columns.ctas a>.link-button-text{
+main .button-columns a>.link-button-text, main .button-container.button-icon a>.link-button-text{
   text-align: center;
   width: 100%;
   line-height: 72px;
@@ -413,10 +413,15 @@ details[open] > *:not(summary) {
     font-weight: 500;
   }
 
-  main .button-container.button-icon a, main .columns.ctas a {
+  main .button-columns a, main .button-container.button-icon a {
     font-family: var(--body-font-family);
-    width: 350px;
     font-size: inherit;
+  }
+}
+
+@media (width >= 840px) {
+  main .button-columns a, main .button-container.button-icon a {
+    width: 350px;
   }
 }
 
