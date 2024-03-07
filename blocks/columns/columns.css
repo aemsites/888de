@@ -20,8 +20,8 @@
   order: 1;
 }
 
-.section.columns-container > div {
-  padding: 0 10px;
+.section.columns-container > div.columns-wrapper {
+  padding: 10px;
 }
 
 .columns.icons > div {
@@ -52,7 +52,12 @@
   display: block;
 }
 
-/* align items inside .columns.club-sections > div > div:first-of-type centered */
+/* clubs sections */
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.club-sections > div {
+  border-bottom: 1px solid var(--very-dark-gray-color);
+}
+
 .columns.club-sections > div > div:first-of-type picture{
   display: flex;
   justify-content: center;
