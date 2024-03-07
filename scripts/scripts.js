@@ -347,7 +347,6 @@ function loadDelayed() {
 }
 
 function matchUrl(currentPagePath, urlPattern) {
-  // replace the asterisks with a regex wildcard (.*)
   const regexPattern = urlPattern.replace(/\*/g, '.*');
   const regex = new RegExp(`^${regexPattern}$`);
   return regex.test(currentPagePath);
@@ -382,7 +381,7 @@ function writeDataLayerScript(jsonData) {
 }
 
 function fetchDataLayer() {
-  fetch('/drafts/dfink/datalayer.json')
+  fetch('/datalayer.json')
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
