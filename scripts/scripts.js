@@ -41,29 +41,6 @@ export function addLdJsonScript(parent, json) {
 }
 
 /**
- * Get datalayer elements from metadata 'dl-' objects and create a script element on the page
- */
-function injectDataLayer() {
-  const metaElements = document.querySelectorAll('meta[name^="dl-"]');
-  const metadata = {};
-
-  metaElements.forEach((metaElement) => {
-    const name = metaElement.getAttribute('name').replace('dl-', '');
-    const content = metaElement.getAttribute('content');
-    metadata[name] = content;
-  });
-
-  const dataLayer = window.dataLayer || [];
-  dataLayer.push(metadata);
-
-  const script = document.createElement('script');
-  script.innerHTML = `dataLayer = window.dataLayer || [];
-                      dataLayer.push(${JSON.stringify(metadata)});`;
-
-  document.head.appendChild(script);
-}
-
-/**
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
@@ -369,10 +346,61 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+function matchUrl(currentPagePath, urlPattern) {
+  // replace the asterisks with a regex wildcard (.*)
+  const regexPattern = urlPattern.replace(/\*/g, '.*');
+  const regex = new RegExp(`^${regexPattern}$`);
+  return regex.test(currentPagePath);
+}
+
+function writeDataLayerScript(jsonData) {
+  const urlPath = window.location.pathname;
+  const defaultValues = {};
+
+  jsonData.data.reverse().forEach((json) => {
+    // check if the current url path matches the "url" in the json object
+    if (matchUrl(urlPath, json.url)) {
+      Object.entries(json).forEach(([key, value]) => {
+        // if the value is not blank and the key does not exist in defaultValues
+        // or if the current URL pattern is less specific than the previous one
+        if (value && (!defaultValues[key] || json.url.length < defaultValues.url.length)) {
+          defaultValues[key] = value;
+        }
+      });
+    }
+  });
+
+  // remove the "url" from output
+  delete defaultValues.url;
+
+  const scriptBlock = document.createElement('script');
+  scriptBlock.innerHTML = `
+    dataLayer = window.dataLayer || [];
+    dataLayer.push(${JSON.stringify(defaultValues)});
+  `;
+  document.head.appendChild(scriptBlock);
+}
+
+function fetchDataLayer() {
+  fetch('/drafts/dfink/datalayer.json')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((json) => {
+      writeDataLayerScript(json);
+    })
+    .catch((error) => {
+      console.error('There was a problem with your fetch operation:', error);
+    });
+}
+
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  injectDataLayer();
+  fetchDataLayer();
   loadDelayed();
 }
 
