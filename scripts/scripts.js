@@ -41,6 +41,29 @@ export function addLdJsonScript(parent, json) {
 }
 
 /**
+ * Get datalayer elements from metadata 'dl-' objects and create a script element on the page
+ */
+function injectDataLayer() {
+  const metaElements = document.querySelectorAll('meta[name^="dl-"]');
+  const metadata = {};
+
+  metaElements.forEach((metaElement) => {
+    const name = metaElement.getAttribute('name').replace('dl-', '');
+    const content = metaElement.getAttribute('content');
+    metadata[name] = content;
+  });
+
+  const dataLayer = window.dataLayer || [];
+  dataLayer.push(metadata);
+
+  const script = document.createElement('script');
+  script.innerHTML = `dataLayer = window.dataLayer || [];
+                      dataLayer.push(${JSON.stringify(metadata)});`;
+
+  document.head.appendChild(script);
+}
+
+/**
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
@@ -349,6 +372,7 @@ function loadDelayed() {
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
+  injectDataLayer();
   loadDelayed();
 }
 
