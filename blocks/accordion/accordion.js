@@ -3,6 +3,26 @@
  * Recreate an accordion
  * https://www.hlx.live/developer/block-collection/accordion
  */
+import { addLdJsonScript } from '../../scripts/scripts.js';
+
+function addFaqJson(block) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [...block.querySelectorAll('details')].map((qaItem) => {
+      const info = {
+        '@type': 'Question',
+        name: qaItem.querySelector('summary').textContent.trim(),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: qaItem.querySelector('.accordion-item-body').textContent.trim(),
+        },
+      };
+      return info;
+    }),
+  };
+  addLdJsonScript(document.querySelector('head'), data);
+}
 
 function hasWrapper(el) {
   return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
@@ -30,4 +50,8 @@ export default function decorate(block) {
     details.append(summary, body);
     row.replaceWith(details);
   });
+
+  if (block.classList.contains('qa')) {
+    addFaqJson(block);
+  }
 }

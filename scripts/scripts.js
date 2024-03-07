@@ -29,6 +29,18 @@ export function wrapSpanLink(element = document) {
 }
 
 /**
+ * Writes a script element with the LD JSON struct to the page
+ * @param {HTMLElement} parent
+ * @param {Object} json
+ */
+export function addLdJsonScript(parent, json) {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.innerHTML = JSON.stringify(json);
+  parent.append(script);
+}
+
+/**
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
