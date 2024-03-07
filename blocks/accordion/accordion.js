@@ -15,7 +15,7 @@ function addFaqJson(block) {
         name: qaItem.querySelector('summary').textContent.trim(),
         acceptedAnswer: {
           '@type': 'Answer',
-          text: qaItem.querySelector('.accordion-item-body').innerHTML,
+          text: qaItem.querySelector('.accordion-item-body').textContent.trim(),
         },
       };
       return info;
