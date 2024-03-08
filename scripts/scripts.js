@@ -270,8 +270,6 @@ async function loadTemplate(doc, templateName) {
       })();
     });
 
-    document.body.classList.add(`${templateName}-template`);
-
     await Promise.all([cssLoaded, decorationComplete]);
   } catch (error) {
     // eslint-disable-next-line no-console

@@ -1,0 +1,16 @@
+.page-not-found .mobile-content-image {
+  display: none;
+}
+
+.page-not-found .main-content-image {
+    position: relative;
+    z-index: -9999;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: clip;
+    object-position: center center;
+    object-fit: cover;
+  }
