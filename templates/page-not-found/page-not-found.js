@@ -4,16 +4,25 @@ import {
 
 export default async function decorate(doc) {
   const mainEl = doc.querySelector('main');
+  const heroSection = div({ class: 'hero-section' });
   const imageWrapper = div({ class: 'main-content-image' });
   const dtBackground = mainEl.querySelector('picture');
   imageWrapper.append(dtBackground);
   const mobileBackground = mainEl.querySelector('picture');
   const mobileImageWrapper = div({ class: 'mobile-content-image' });
-  const imageParent = mobileBackground.parentElement.parentElement;
   mobileImageWrapper.append(mobileBackground);
-  mainEl.prepend(imageWrapper);
-  mainEl.prepend(mobileImageWrapper);
-  removeEmptyTags(imageParent);
-  const imageContent = mainEl.querySelector('.default-content-wrapper');
-  imageContent.classList.add('image-content-wrapper');
+  heroSection.append(imageWrapper);
+  heroSection.append(mobileImageWrapper);
+  const imageContent = mainEl.querySelectorAll('.default-content-wrapper p');
+  const imageContentWrapper = div({ class: 'image-content-wrapper section' });
+  imageContent.forEach((content) => {
+    imageContentWrapper.append(content);
+  });
+  heroSection.append(imageContentWrapper);
+  const brandBox = mainEl.querySelector('.columns-container');
+  brandBox.classList.remove('section');
+  imageContentWrapper.append(brandBox);
+  heroSection.append(imageContentWrapper);
+  mainEl.replaceChildren(heroSection);
+  removeEmptyTags(heroSection);
 }
