@@ -6,7 +6,7 @@ sampleRUM('cwv');
 
 // google tag manager
 function loadGTM() {
-  // ignore if non-prod host
+  // ignore if non-prod
   const host = window.location.hostname;
   if (host.includes('localhost') || host.includes('.page') || host.includes('.live')) return;
 
@@ -17,7 +17,7 @@ function loadGTM() {
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.setAttribute('class','optanon-category-C0001');j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NSNT2WJ');`;
-  document.head.prepend(scriptTag);
+  document.head.append(scriptTag);
 }
 
 loadGTM();
