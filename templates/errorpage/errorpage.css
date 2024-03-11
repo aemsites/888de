@@ -220,7 +220,7 @@
 
   .image-content-wrapper p strong,
   .image-content-wrapper strong p {
-    max-width: 50%;
+    width: auto;
     font-size: var(--body-font-size-xs);
     margin-top: 12px;
     padding: 12px 24px;

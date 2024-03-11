@@ -8,25 +8,21 @@
     window.errorCode = '404';
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Page not found">
+  <meta property="og:title" content="404 | 888™">
+  <meta property="og:description" content="404 | 888™">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
-    import { sampleRUM } from '/scripts/aem.js';
-
-    window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
+    import { decorateMain, loadTemplate } from '/scripts/scripts.js';
+    window.addEventListener('load', async() => {
+      const response = await fetch('/fragments/404.plain.html');
+      if (response.ok) {
+        const main = document.querySelector('main');
+        main.classList.add('errorpage');
+        const text = await response.text();
+        main.innerHTML = text;
+        await decorateMain(main);
+        loadTemplate(document,'errorpage');
       }
-      sampleRUM('404', { source: document.referrer, target: window.location.href });
     });
   </script>
   <link rel="stylesheet" href="/styles/styles.css">
@@ -50,16 +46,7 @@
 
 <body>
   <header></header>
-  <main class="error">
-    <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
-      </p>
-    </div>
+  <main>
   </main>
   <footer></footer>
 </body>
