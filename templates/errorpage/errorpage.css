@@ -3,16 +3,17 @@
   width: 100%;
 }
 
-.errorpage .main-content-image{
+.errorpage .main-content-image {
   display: none;
 }
 
-.errorpage .mobile-content-image{
+.errorpage .mobile-content-image {
   height: 500px;
   display: block;
 }
 
-.errorpage .main-content-image, .errorpage .mobile-content-image {
+.errorpage .main-content-image,
+.errorpage .mobile-content-image {
   position: relative;
   z-index: -9999;
   top: 0;
@@ -24,12 +25,13 @@
   object-fit: cover;
 }
 
-.errorpage .mobile-content-image picture{
+.errorpage .mobile-content-image picture {
   display: block;
   width: 100%;
 }
 
-.errorpage .main-content-image img, .errorpage .mobile-content-image img{
+.errorpage .main-content-image img,
+.errorpage .mobile-content-image img {
   width: 100%;
 }
 
@@ -37,23 +39,23 @@
   text-align: center;
   width: 100%;
   position: absolute;
-  color: white;
+  color: var(--white-color);
   max-width: 1200px;
   margin: 0 auto;
   top: unset;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(16, 16, 16, 0), #101010, #101010);
+  background: linear-gradient(to bottom, #10101000, #101010, #101010);
 }
 
 
 .image-content-wrapper h2 {
   max-width: 100%;
   display: block;
-  color: #fff;
+  color: var(--white-color);
   line-height: 1.2;
-  font-size: 40px;
+  font-size: var(--heading-font-size-xxl);
   font-family: var(--bold-font-family);
   margin: 0;
 }
@@ -61,9 +63,9 @@
 .image-content-wrapper p {
   max-width: 100%;
   display: block;
-  color: #fff;
+  color: var(--white-color);
   line-height: 1.2;
-  font-size: 22px;
+  font-size: var(--body-font-size-m);
   margin: 0;
 }
 
@@ -72,16 +74,16 @@
   width: 100%;
   position: relative;
   left: 0;
-    right: 0;
-  font-weight: 300;
-  color: #fff;
+  right: 0;
+  font-weight: var(--font-weight-light);
+  color: var(--white-color);
   line-height: normal;
   display: inline-block;
   background: #23446d;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .15);
+  box-shadow: 0 4px 20px 0 #00000026;
   font-size: 20px;
-    margin-top: 10px;
-    padding: 10px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .brand-box {
@@ -91,9 +93,9 @@
   padding: 25px 0;
   text-align: center;
   position: relative;
-    float: left;
-    background-color: #101010;
-    padding-top: 40px;
+  float: left;
+  background-color: #101010;
+  padding-top: 40px;
 }
 
 .brand-box .columns>div {
@@ -140,14 +142,14 @@
   height: 64px;
 }
 
-.brand-box .columns>div>div>p.button-container{
+.brand-box .columns>div>div>p.button-container {
   display: none;
 }
 
 .brand-box .columns>div>div>p.button-container a {
   background-color: #000;
-  border-color: #7cf700;
-  color: #7cf700;
+  border-color: var(--green-color);
+  color: var(--green-color);
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -158,43 +160,53 @@
   text-align: center;
   text-decoration: none;
   transition: all .3s ease-in-out;
-  font-size: 16px;
+  font-size: var(--body-font-size-s);
   width: auto;
   line-height: 1.2;
   padding: 10px 22px;
   margin: 0 3px;
 }
 
+.brand-box .columns>div>div:nth-child(2)>p.button-container a {
+  border-color: var(--blue-color);
+  color: var(--blue-color);
+}
+
+.brand-box .columns>div>div:nth-child(3)>p.button-container a {
+  border-color: var(--pumpkin-orange-color);
+  color: var(--pumpkin-orange-color);
+}
+
 @media (width >=767px) {
-  .brand-box .columns>div>div>p.button-container{
+  .brand-box .columns>div>div>p.button-container {
     display: block;
   }
 }
 
 @media (width >=1024px) {
-  .errorpage .mobile-content-image{
+  .errorpage .mobile-content-image {
     display: none;
   }
 
-  .errorpage .main-content-image{
+  .errorpage .main-content-image {
     display: block;
     height: 72vh;
   }
 
-  .errorpage .main-content-image picture{
+  .errorpage .main-content-image picture {
     display: block;
     width: 100%;
   }
-  
+
   .image-content-wrapper {
-    top:0;
+    top: 0;
     bottom: unset;
     background: none;
     padding-top: 20px;
     padding-left: 12px;
   }
 
-  .image-content-wrapper > * {
+  .image-content-wrapper>* {
     text-align: left;
   }
 
@@ -209,7 +221,7 @@
   .image-content-wrapper p strong,
   .image-content-wrapper strong p {
     max-width: 50%;
-    font-size: 14px;
+    font-size: var(--body-font-size-xs);
     margin-top: 12px;
     padding: 12px 24px;
   }

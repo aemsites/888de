@@ -297,7 +297,7 @@ footer .payment-strip .icon {
   }
 
   footer .sbt-main .columns > div h2 {
-    font-size: var(--body-font-size-xl);
+    font-size: var(--body-font-size-xxl);
   }
 
   footer .sbt-main .columns > div > div:nth-child(1) {
