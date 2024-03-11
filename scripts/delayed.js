@@ -6,9 +6,9 @@ sampleRUM('cwv');
 
 // google tag manager
 function loadGTM() {
-  // ignore if non-prod
+  // ignore if non-prod host
   const host = window.location.hostname;
-  if (!host.includes('localhost') || !host.includes('.page') || !host.includes('.live')) return;
+  if (host.includes('localhost') || host.includes('.page') || host.includes('.live')) return;
 
   const scriptTag = document.createElement('script');
   scriptTag.innerHTML = `
