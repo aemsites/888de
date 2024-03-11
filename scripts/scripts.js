@@ -335,60 +335,9 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-function matchUrl(currentPagePath, urlPattern) {
-  const regexPattern = urlPattern.replace(/\*/g, '.*');
-  const regex = new RegExp(`^${regexPattern}$`);
-  return regex.test(currentPagePath);
-}
-
-function writeDataLayerScript(jsonData) {
-  const urlPath = window.location.pathname;
-  const defaultValues = {};
-
-  jsonData.data.reverse().forEach((json) => {
-    // check if the current url path matches the "url" in the json object
-    if (matchUrl(urlPath, json.url)) {
-      Object.entries(json).forEach(([key, value]) => {
-        // if the value is not blank and the key does not exist in defaultValues
-        // or if the current URL pattern is less specific than the previous one
-        if (value && (!defaultValues[key] || json.url.length < defaultValues.url.length)) {
-          defaultValues[key] = value;
-        }
-      });
-    }
-  });
-
-  // remove the "url" from output
-  delete defaultValues.url;
-
-  const scriptBlock = document.createElement('script');
-  scriptBlock.innerHTML = `
-    dataLayer = window.dataLayer || [];
-    dataLayer.push(${JSON.stringify(defaultValues)});
-  `;
-  document.head.appendChild(scriptBlock);
-}
-
-function fetchDataLayer() {
-  fetch('/datalayer.json')
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((json) => {
-      writeDataLayerScript(json);
-    })
-    .catch((error) => {
-      console.error('There was a problem with your fetch operation:', error);
-    });
-}
-
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  fetchDataLayer();
   loadDelayed();
 }
 
