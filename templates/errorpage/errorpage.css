@@ -1,5 +1,4 @@
 .errorpage .hero-section {
-  height: 500px;
   position: relative;
   width: 100%;
 }
@@ -9,6 +8,7 @@
 }
 
 .errorpage .mobile-content-image{
+  height: 500px;
   display: block;
 }
 
@@ -24,6 +24,15 @@
   object-fit: cover;
 }
 
+.errorpage .mobile-content-image picture{
+  display: block;
+  width: 100%;
+}
+
+.errorpage .main-content-image img, .errorpage .mobile-content-image img{
+  width: 100%;
+}
+
 .image-content-wrapper {
   text-align: center;
   width: 100%;
@@ -31,9 +40,11 @@
   color: white;
   max-width: 1200px;
   margin: 0 auto;
-  top: 50%;
+  top: unset;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(16, 16, 16, 0), #101010, #101010);
 }
 
 
@@ -77,8 +88,6 @@
   width: 100%;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0);
-  background: linear-gradient(to bottom, transparent, black, black);
   padding: 25px 0;
   text-align: center;
   position: relative;
@@ -88,6 +97,7 @@
 }
 
 .brand-box .columns>div {
+  flex-direction: row;
   text-align: center;
   justify-content: space-around;
   max-width: 1200px;
@@ -116,7 +126,7 @@
   cursor: pointer;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 35%;
   transform: translate(-50%, -50%);
   width: 100%;
 }
@@ -128,6 +138,10 @@
 .brand-box .columns>div>div>p:not(.button-container) a>span>img {
   width: 82px;
   height: 64px;
+}
+
+.brand-box .columns>div>div>p.button-container{
+  display: none;
 }
 
 .brand-box .columns>div>div>p.button-container a {
@@ -151,24 +165,37 @@
   margin: 0 3px;
 }
 
+@media (width >=767px) {
+  .brand-box .columns>div>div>p.button-container{
+    display: block;
+  }
+}
 
 @media (width >=1024px) {
-  .errorpage .hero-section {
-    height: 72vh;
-  }
-
   .errorpage .mobile-content-image{
     display: none;
   }
 
   .errorpage .main-content-image{
     display: block;
+    height: 72vh;
+  }
+
+  .errorpage .main-content-image picture{
+    display: block;
+    width: 100%;
   }
   
-
   .image-content-wrapper {
-    text-align: inherit;
     top:0;
+    bottom: unset;
+    background: none;
+    padding-top: 20px;
+    padding-left: 12px;
+  }
+
+  .image-content-wrapper > * {
+    text-align: left;
   }
 
   .image-content-wrapper h2 {
@@ -188,6 +215,7 @@
   }
 
   .brand-box {
+    background: linear-gradient(to bottom, transparent, black, black);
     position: absolute;
   }
 }
