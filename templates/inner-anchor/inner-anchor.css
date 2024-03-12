@@ -36,6 +36,11 @@
 }
 
 
+.breadcrumbs {
+  margin-left: 290px;
+}
+
+
 @media (width < 1024px) {
   .anchor-nav { display: none }
 

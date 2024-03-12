@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable function-paren-newline */
 import { div, ul, li, a } from '../../scripts/dom-helpers.js';
+import { breadcrumbs } from '../../scripts/scripts.js';
 
 function scrollToTarget(target) {
   const { offsetTop } = target;
@@ -61,4 +62,10 @@ export default async function decorate(doc) {
   $page.prepend($anchorNav);
 
   highlightNav(doc);
+
+  breadcrumbs(doc).then(($breadcrumbs) => {
+    $page.prepend($breadcrumbs);
+  }).catch((error) => {
+    console.error('Error generating breadcrumbs:', error);
+  });
 }
