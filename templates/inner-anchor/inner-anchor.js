@@ -32,11 +32,11 @@ export default async function decorate(doc) {
 
   paragraphs.forEach((p) => {
     const pTxt = p.textContent;
-    const isAnchor = pTxt.match(/\[anchor:\s*([^\]]+)\]/g);
+    const isAnchor = pTxt.match(/\{anchor:\s*([^\]]+)\}/g);
 
     if (isAnchor) {
       // get anchor text
-      const anchorTxt = pTxt.replace(/\[anchor:\s*|\]/g, '');
+      const anchorTxt = pTxt.replace(/\{anchor:\s*|\}/g, '');
       const anchorID = anchorTxt
         .replace(/ /g, '_')
         .replace(/\./g, '')
