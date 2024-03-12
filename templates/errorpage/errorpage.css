@@ -1,0 +1,233 @@
+.errorpage .hero-section {
+  position: relative;
+  width: 100%;
+}
+
+.errorpage .main-content-image {
+  display: none;
+}
+
+.errorpage .mobile-content-image {
+  height: 500px;
+  display: block;
+}
+
+.errorpage .main-content-image,
+.errorpage .mobile-content-image {
+  position: relative;
+  z-index: -9999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: clip;
+  object-position: center;
+  object-fit: cover;
+}
+
+.errorpage .mobile-content-image picture {
+  display: block;
+  width: 100%;
+}
+
+.errorpage .main-content-image img,
+.errorpage .mobile-content-image img {
+  width: 100%;
+}
+
+.errorpage .image-content-wrapper {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  color: var(--white-color);
+  max-width: 1200px;
+  margin: 0 auto;
+  top: unset;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background: linear-gradient(to bottom, #10101000, #101010, #101010);
+}
+
+
+.errorpage .image-content-wrapper h2 {
+  max-width: 100%;
+  display: block;
+  color: var(--white-color);
+  line-height: 1.2;
+  font-size: var(--heading-font-size-xxl);
+  font-family: var(--bold-font-family);
+  margin: 0;
+}
+
+.errorpage .image-content-wrapper p {
+  max-width: 100%;
+  display: block;
+  color: var(--white-color);
+  line-height: 1.2;
+  font-size: var(--body-font-size-m);
+  margin: 0;
+}
+
+.errorpage .image-content-wrapper p strong,
+.errorpage .image-content-wrapper strong p {
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+  font-weight: var(--font-weight-light);
+  color: var(--white-color);
+  line-height: normal;
+  display: inline-block;
+  background: #23446d;
+  box-shadow: 0 4px 20px 0 #00000026;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.brand-box {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 25px 0;
+  text-align: center;
+  position: relative;
+  float: left;
+  background-color: #101010;
+  padding-top: 40px;
+}
+
+.errorpage .brand-box .columns>div {
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.errorpage .brand-box .columns>div>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorpage .brand-box .columns>div>div>p:not(.button-container) a {
+  background-color: #232323;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 120px;
+  align-self: center;
+  position: relative;
+  border-radius: 120px;
+  display: block;
+}
+
+.errorpage .brand-box .columns>div>div>p:not(.button-container) a>span {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.errorpage .brand-box .columns>div>div>p {
+  margin: 0;
+}
+
+.errorpage .brand-box .columns>div>div>p:not(.button-container) a>span>img {
+  width: 82px;
+  height: 64px;
+}
+
+.errorpage .brand-box .columns>div>div>p.button-container {
+  display: none;
+}
+
+.errorpage .brand-box .columns>div>div>p.button-container a {
+  background-color: #000;
+  border-color: var(--green-color);
+  color: var(--green-color);
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  font-size: var(--body-font-size-s);
+  width: auto;
+  line-height: 1.2;
+  padding: 10px 22px;
+  margin: 0 3px;
+}
+
+.errorpage .brand-box .columns>div>div:nth-child(2)>p.button-container a {
+  border-color: var(--blue-color);
+  color: var(--blue-color);
+}
+
+.errorpage .brand-box .columns>div>div:nth-child(3)>p.button-container a {
+  border-color: var(--pumpkin-orange-color);
+  color: var(--pumpkin-orange-color);
+}
+
+@media (width >=767px) {
+  .errorpage .brand-box .columns>div>div>p.button-container {
+    display: block;
+  }
+}
+
+@media (width >=1024px) {
+  .errorpage .mobile-content-image {
+    display: none;
+  }
+
+  .errorpage .main-content-image {
+    display: block;
+    height: 72vh;
+  }
+
+  .errorpage .main-content-image picture {
+    display: block;
+    width: 100%;
+  }
+
+  .errorpage .image-content-wrapper {
+    top: 0;
+    bottom: unset;
+    background: none;
+    padding-top: 20px;
+    padding-left: 12px;
+  }
+
+  .errorpage .image-content-wrapper>* {
+    text-align: left;
+  }
+
+  .errorpage .image-content-wrapper h2 {
+    max-width: 50%;
+  }
+
+  .errorpage .image-content-wrapper p {
+    max-width: 50%;
+  }
+
+  .errorpage .image-content-wrapper p strong,
+  .errorpage .image-content-wrapper strong p {
+    width: auto;
+    font-size: var(--body-font-size-xs);
+    margin-top: 12px;
+    padding: 12px 24px;
+  }
+
+  .errorpage .brand-box {
+    background: linear-gradient(to bottom, transparent, black, black);
+    position: absolute;
+  }
+}

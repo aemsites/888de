@@ -246,7 +246,7 @@ export function decorateMain(main) {
 /**
  * Decorates per the template.
  */
-async function loadTemplate(doc, templateName) {
+export async function loadTemplate(doc, templateName) {
   try {
     const cssLoaded = new Promise((resolve) => {
       loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`).then((resolve)).catch((err) => {
