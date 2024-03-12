@@ -35,7 +35,6 @@ export default async function decorate(doc) {
     const isAnchor = pTxt.match(/\{anchor:\s*([^\]]+)\}/g);
 
     if (isAnchor) {
-      // get anchor text
       const anchorTxt = pTxt.replace(/\{anchor:\s*|\}/g, '');
       const anchorID = anchorTxt
         .replace(/ /g, '_')
