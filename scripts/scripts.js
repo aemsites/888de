@@ -308,12 +308,12 @@ export async function breadcrumbs(doc) {
 
   // get all page segments asynchronously
   const crumbSegments = segments.map(async (segment, index) => {
-    const href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}`;
+    const href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}/`;
     let h1;
     if (index === segments.length - 1) {
       h1 = doc.querySelector('h1').textContent;
     } else {
-      const response = await fetch(`${href}/index.plain.html`);
+      const response = await fetch(`${href}index.plain.html`);
       if (response.ok) {
         const html = await response.text();
         const parser = new DOMParser();
