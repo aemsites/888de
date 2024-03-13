@@ -266,6 +266,7 @@ async function decorateClubsPages(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  decorateClubsPages(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -274,7 +275,6 @@ export function decorateMain(main) {
   buildLinks(main);
   wrapSpanLink(main);
   decorateStyledSections(main);
-  decorateClubsPages(main);
 }
 
 /**
