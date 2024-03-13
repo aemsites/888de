@@ -327,7 +327,43 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
+/* Clubs Navigation */
+main .club-nav{
+  padding: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--very-dark-gray-color);
+}
+
+main .club-nav a {
+  list-style-type: none;
+  width: 25%;
+  background: var(--black-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 20px 10px;
+  text-decoration: none;
+  transition: 0.25s all;
+  border-left: 2px solid var(--very-dark-gray-color);
+  border-right: 0 solid var(--very-dark-gray-color);
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+}
+
+main .club-nav a:hover {
+  background-color: var(--very-dark-gray-color);
+}
+
+main .club-nav a.active {
+  background-color: var(--very-dark-gray-color);
+  color: var(--light-gold-color);
+}
+
 /* button with icon */
+/* stylelint-disable-next-line no-descending-specificity */
 main .button-columns a, main .button-container.button-icon a {
   background-color: var(--blue-color);
   transition: .3s all;
@@ -362,6 +398,7 @@ main .button-columns a>.link-button-text, main .button-container.button-icon a>.
   width: 100%;
   line-height: 72px;
 }
+
 
 @keyframes fadeout {
   0% {
