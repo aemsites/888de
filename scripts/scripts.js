@@ -1,3 +1,4 @@
+/* eslint-disable function-paren-newline */
 import {
   sampleRUM,
   buildBlock,
@@ -12,6 +13,10 @@ import {
   loadCSS,
   getMetadata,
 } from './aem.js';
+
+import {
+  ol, li, a as anchor, span, meta,
+} from './dom-helpers.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -306,6 +311,52 @@ export async function loadTemplate(doc, templateName) {
     // eslint-disable-next-line no-console
     console.log(`failed to load block ${templateName}`, error);
   }
+}
+
+/**
+ * Builds breadcrumbs and return object.
+ * @param {Element} main The container element
+ */
+export async function breadcrumbs(doc) {
+  const { location } = window;
+  const pathname = location.pathname.split('/');
+  const segments = pathname.filter((segment) => segment.trim() !== '');
+
+  function crumb(name, href, index) {
+    return li({ itemprop: 'itemListElement', itemscope: '', itemtype: 'https://schema.org/ListItem' },
+      anchor({ itemprop: 'item', href },
+        span({ itemprop: 'name' }, name),
+      ),
+      meta({ itemprop: 'position', content: index }),
+    );
+  }
+
+  const $breadcrumbs = ol({ class: 'breadcrumbs', itemscope: '', itemtype: 'https://schema.org/BreadcrumbList' },
+    crumb('888.de', '/', '0'),
+  );
+
+  // get all page segments asynchronously
+  const crumbSegments = segments.map(async (segment, index) => {
+    const href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}/`;
+    let h1;
+    if (index === segments.length - 1) {
+      h1 = doc.querySelector('h1').textContent;
+    } else {
+      const response = await fetch(`${href}index.plain.html`);
+      if (response.ok) {
+        const html = await response.text();
+        const parser = new DOMParser();
+        const page = parser.parseFromString(html, 'text/html');
+        h1 = page.querySelector('h1').textContent;
+      }
+    }
+    return crumb(h1, href, index + 1);
+  });
+
+  // wait for promises to resolve
+  const crumbs = await Promise.all(crumbSegments);
+  crumbs.forEach(($crumb) => { $breadcrumbs.append($crumb); });
+  return $breadcrumbs;
 }
 
 /**
