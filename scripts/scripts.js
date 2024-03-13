@@ -15,7 +15,7 @@ import {
 } from './aem.js';
 
 import {
-  ol, li, a, span, meta,
+  ol, li, a as anchor, span, meta,
 } from './dom-helpers.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -295,7 +295,7 @@ export async function breadcrumbs(doc) {
 
   function crumb(name, href, index) {
     return li({ itemprop: 'itemListElement', itemscope: '', itemtype: 'https://schema.org/ListItem' },
-      a({ itemprop: 'item', href },
+      anchor({ itemprop: 'item', href },
         span({ itemprop: 'name' }, name),
       ),
       meta({ itemprop: 'position', content: index }),
