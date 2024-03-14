@@ -328,7 +328,6 @@ main .section.highlight {
 }
 
 /* button with icon */
-/* stylelint-disable-next-line no-descending-specificity */
 main .button-columns a, main .button-container.button-icon a {
   background-color: var(--blue-color);
   transition: .3s all;
@@ -363,7 +362,6 @@ main .button-columns a>.link-button-text, main .button-container.button-icon a>.
   width: 100%;
   line-height: 72px;
 }
-
 
 @keyframes fadeout {
   0% {
