@@ -62,7 +62,6 @@ export function decorateButtons(element) {
         linkTextEl.classList.add('link-button-text');
         linkTextEl.append(linkText);
         a.textContent = `${linkText}`;
-        a.setAttribute('aria-label', `${linkText}`);
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
           a.textContent = '';
           a.className = 'button text'; // default
@@ -92,6 +91,20 @@ export function decorateButtons(element) {
         ) {
           a.className = 'button secondary';
           twoup.classList.add('button-container');
+        }
+      }
+    }
+  });
+}
+
+export function decorateExternalLinks(main) {
+  main.querySelectorAll('a').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (href) {
+      if (!href.startsWith('/') // in case of local paths
+          && !href.startsWith('#')) { // in case of anchors
+        if (!href.includes('888.de')) {
+          a.setAttribute('target', '_blank');
         }
       }
     }
@@ -239,6 +252,7 @@ function decorateStyledSections(main) {
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
+  decorateExternalLinks(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
