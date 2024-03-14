@@ -10,7 +10,7 @@ function createMobileMenu(block) {
     details.className = 'accordion-item';
     const summary = document.createElement('summary');
     summary.className = 'accordion-header';
-    summary.innerHTML = accordionItem.querySelector('strong') ? accordionItem.querySelector('strong').outerHTML : '';
+    summary.innerHTML = accordionItem.querySelector('strong').outerHTML;
     details.append(accordionItem.querySelector('li > ul'));
     details.prepend(summary);
     accordionItem.replaceWith(details);
