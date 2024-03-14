@@ -68,3 +68,8 @@
   transition: all .3s ease-in-out;
   color: inherit;
 }
+
+.accordion details .accordion-item-body table {
+  width: 100%;
+  margin: 0 0 30px;
+}
