@@ -232,41 +232,12 @@ function decorateStyledSections(main) {
 }
 
 /**
- * Decorates the clubs pages by adding a club navigation bar to the main content.
- * This function is intended to be used on pages with '/888club/' in the URL.
- *
- * @param {HTMLElement} main
- * @returns {Promise<void>} - A promise that resolves once the club navigation bar is added.
- */
-async function decorateClubsPages(main) {
-  if (window.location.href.includes('/888club/')) {
-    const fetchClubNav = await fetch('/888club/clubs-nav.plain.html');
-    if (fetchClubNav.ok) {
-      const navHTML = await fetchClubNav.text();
-      const clubNav = document.createElement('div');
-      clubNav.classList.add('club-nav');
-      clubNav.innerHTML = navHTML;
-      main.prepend(clubNav);
-      const clubLinks = clubNav.querySelectorAll('a');
-      clubNav.innerHTML = '';
-      clubLinks.forEach((link) => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
-        }
-        clubNav.append(link);
-      });
-    }
-  }
-}
-
-/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
-  decorateClubsPages(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
