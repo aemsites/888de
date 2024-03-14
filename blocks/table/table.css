@@ -2,6 +2,13 @@
     width: 100%;
 }
 
+.table.block.yellow {
+    margin: 5px auto;
+    height: 315px;
+    overflow: auto;
+    scrollbar-color: var(--white-color) var(--light-gold-color);
+}
+
 .table.block table {
     border: 1px solid #232323;
     text-align: left;
@@ -13,7 +20,27 @@
     border-spacing: 0;
 }
 
-.table.block table tbody {
+.table.block.yellow table {
+    color: var(--white-color);
+    width: 100%;
+    height: auto;
+    background-color: var(--very-dark-gray-color);
+    table-layout: auto;
+    display: table;
+    text-align: center;
+    border: 1px solid var(--gold-color);
+}
+
+.table.block:not(.yellow) table tbody {
+    border: 1px solid #232323;
+    text-align: left;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.table.block:not(.yellow) table tr {
     border: 1px solid #232323;
     text-align: left !important;
     padding: 10px;
@@ -22,16 +49,7 @@
     font-size: 14px;
 }
 
-.table.block table tr {
-    border: 1px solid #232323;
-    text-align: left !important;
-    padding: 10px;
-    vertical-align: middle;
-    background-color: #fff;
-    font-size: 14px;
-}
-
-.table.block table th {
+.table.block:not(.yellow) table th {
     width: 20%;
     border: 1px solid #232323;
     text-align: left !important;
@@ -42,36 +60,17 @@
     color: #fff;
 }
 
-.table.block table th:last-child {
+.table.block:not(.yellow) table th:last-child {
     width: 60%;
 }
 
-.table.block table td {
+.table.block:not(.yellow) table td {
     border: 1px solid #232323;
     text-align: left !important;
     padding: 10px;
     vertical-align: middle;
     background-color: #fff;
     font-size: 14px;
-}
-
-
-
-.table.block.yellow {
-    margin: 5px auto;
-    height: 315px;
-    overflow: auto;
-    scrollbar-color: var(--white-color) var(--light-gold-color);
-}
-
-.table.block.yellow table {
-    color: var(--white-color);
-    width: 100%;
-    height: auto;
-    background: var(--very-dark-gray-color);
-    table-layout: auto;
-    display: table;
-    border: 1px solid var(--gold-color);
 }
 
 .table.block.yellow table tr {
