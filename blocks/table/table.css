@@ -1,4 +1,4 @@
-.table.block {
+.table.block.yellow {
     width: 100%;
     margin: 5px auto;
     height: 315px;
@@ -6,7 +6,7 @@
     scrollbar-color: var(--white-color) var(--light-gold-color);
 }
 
-.table.block table {
+.table.block.yellow table {
     color: var(--white-color);
     width: 100%;
     height: auto;
@@ -18,15 +18,15 @@
     border: 1px solid var(--gold-color);
 }
 
-.table.block table tr {
+.table.block.yellow table tr {
     background: var(--black-color);
 }
 
-.table.block table tr:hover {
+.table.block.yellow table tr:hover {
     background: var(--dark-gray-color);
 }
 
-.table.block table th {
+.table.block.yellow table th {
     display: table-cell;
     border: 1px solid var(--gray-color);
     text-align: center;
@@ -40,7 +40,7 @@
     font-family: var(--ff-888-ultra)
 }
 
-.table.block table td {
+.table.block.yellow table td {
     color: var(--med-gray-color);
     padding: 6px 8px;
     text-align: center;
@@ -50,13 +50,13 @@
     font-family: var(--body-font-family);
 }
 
-.table.block table tr:hover td {
+.table.block.yellow table tr:hover td {
     color: var(--white-color);
   }
 
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 1200px) {
-    .table.block {
+    .table.block.yellow {
         max-width: 90%;
     }
 }
