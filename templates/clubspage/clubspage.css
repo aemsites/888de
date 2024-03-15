@@ -1,0 +1,70 @@
+body.clubspage.black-background main{
+    background-color: black;
+    color: white;
+  }
+
+body.clubspage.black-background main h1 > strong, body.clubspage.black-background main strong > h1{
+ font-size: var(--heading-font-size-xxl);
+ text-align: center;
+}
+
+body.clubspage.black-background main .section.columns-container h2{
+    color: var(--light-gold-color);
+    font-size: var(--heading-font-size-s);
+    font-family: var(--body-font-family);
+}
+
+body.clubspage.black-background main h3{
+    font-size: var(--heading-font-size-m);
+    font-family: var(--bold-font-family);
+}
+
+body.clubspage.black-background main p{
+    font-size: var(--body-font-size-xs);
+}
+
+/* Clubs Navigation */
+main .club-nav{
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--very-dark-gray-color);
+  }
+  
+  main .club-nav a {
+    list-style-type: none;
+    width: 25%;
+    background: var(--black-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 20px 10px;
+    text-decoration: none;
+    transition: 0.25s all;
+    border-left: 2px solid var(--very-dark-gray-color);
+    border-right: 0 solid var(--very-dark-gray-color);
+    font-size: var(--body-font-size-s);
+    font-family: var(--body-font-family);
+  }
+  
+  main .club-nav a:hover {
+    background-color: var(--very-dark-gray-color);
+  }
+  
+  main .club-nav a.active {
+    background-color: var(--very-dark-gray-color);
+    color: var(--light-gold-color);
+  }
+  
+
+@media only screen and (width >= 1200px){
+    body.clubspage.black-background main h1 > strong, body.clubspage.black-background main strong > h1{
+        text-align: inherit;
+    }
+
+    body.clubspage.black-background main .section.columns-container h2{
+        text-align: left;
+    }
+}

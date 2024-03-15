@@ -1,5 +1,8 @@
 .table.block {
     width: 100%;
+}
+
+.table.block.yellow {
     margin: 5px auto;
     height: 315px;
     overflow: auto;
@@ -7,26 +10,46 @@
 }
 
 .table.block table {
+    border: 1px solid var(--darker-gray-color);
+    text-align: left;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: var(--white-color);
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table.block table th, .table.block table td    {
+    padding: 10px;
+}
+
+.table.block.yellow table {
     color: var(--white-color);
     width: 100%;
     height: auto;
-    border-collapse: collapse;
-    background: var(--very-dark-gray-color);
+    background-color: var(--very-dark-gray-color);
     table-layout: auto;
-    border-spacing: 0;
     display: table;
+    text-align: center;
     border: 1px solid var(--gold-color);
 }
 
-.table.block table tr {
+.table.block.yellow table tr {
     background: var(--black-color);
 }
 
-.table.block table tr:hover {
+.table.block.yellow table tr:hover {
     background: var(--dark-gray-color);
 }
 
-.table.block table th {
+
+.table.block:not(.yellow) table th {
+    width: 20%;
+    background-color: var(--darker-gray-color);
+    color: var(--white-color);
+}
+
+.table.block.yellow table th {
     display: table-cell;
     border: 1px solid var(--gray-color);
     text-align: center;
@@ -34,13 +57,23 @@
     background: var(--light-gold-color);
     color: var(--black-color);
     text-transform: uppercase;
-    font-size: var(--body-font-size-xs);
     padding: 20px 35px;
     font-weight: 900;
     font-family: var(--ff-888-ultra)
 }
 
-.table.block table td {
+.table.block:not(.yellow) table th:last-child {
+    width: 60%;
+}
+
+.table.block:not(.yellow) table td {
+    border: 1px solid var(--darker-gray-color);
+    padding: 10px;
+    vertical-align: middle;
+    background-color: var(--white-color);
+}
+
+.table.block.yellow table td {
     color: var(--med-gray-color);
     padding: 6px 8px;
     text-align: center;
@@ -50,13 +83,17 @@
     font-family: var(--body-font-family);
 }
 
-.table.block table tr:hover td {
+.table.block.yellow table tr:hover td {
     color: var(--white-color);
-  }
+}
+
+.table.block table a{
+    text-decoration: none;
+}
 
 /* stylelint-disable-next-line media-feature-range-notation */
 @media screen and (max-width: 1200px) {
-    .table.block {
+    .table.block.yellow {
         max-width: 90%;
     }
 }
