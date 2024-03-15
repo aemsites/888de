@@ -2,18 +2,23 @@
 
 .breadcrumbs { margin: -12px 0 12px }
 
-.inner p,
+/* .inner p,
 .inner dl,
 .inner ol,
 .inner ul,
 .inner pre,
 .inner blockquote {
   font-size: var(--body-font-size-xs);
-}
+} */
 
 .inner li {
   padding: 0.416rem 0;
-  font-size: var(--body-font-size-xs);
+  
+  /* font-size: var(--body-font-size-xs); */
+}
+
+.inner .section-outer .section > *{
+  padding: 10px;
 }
 
 .inner code,
