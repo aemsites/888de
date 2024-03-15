@@ -316,6 +316,13 @@ export async function breadcrumbs(doc) {
     );
   }
 
+  async function title(response) {
+    const html = await response.text();
+    const parser = new DOMParser();
+    const page = parser.parseFromString(html, 'text/html');
+    return page.querySelector('h1').textContent;
+  }
+
   const $breadcrumbs = ol({ class: 'breadcrumbs', itemscope: '', itemtype: 'https://schema.org/BreadcrumbList' },
     crumb('888.de', '/', '0'),
   );
@@ -324,15 +331,16 @@ export async function breadcrumbs(doc) {
   const crumbSegments = segments.map(async (segment, index) => {
     const href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}/`;
     let h1;
+
     if (index === segments.length - 1) {
       h1 = doc.querySelector('h1').textContent;
     } else {
-      const response = await fetch(`${href}index.plain.html`);
-      if (response.ok) {
-        const html = await response.text();
-        const parser = new DOMParser();
-        const page = parser.parseFromString(html, 'text/html');
-        h1 = page.querySelector('h1').textContent;
+      const getIndexHTML = await fetch(`${href}index.plain.html`);
+      if (getIndexHTML.redirected) {
+        const getBreadcrumbHTML = await fetch(`${href}index-breadcrumb.plain.html`);
+        h1 = await title(getBreadcrumbHTML);
+      } else if (getIndexHTML.ok) {
+        h1 = title(getIndexHTML);
       }
     }
     return crumb(h1, href, index + 1);
