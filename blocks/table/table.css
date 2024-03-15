@@ -15,12 +15,11 @@
     padding: 10px;
     vertical-align: middle;
     background-color: var(--white-color);
-    font-size: 14px;
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-.table.block table th, .table.block table td{
+.table.block table th, .table.block table td    {
     padding: 10px;
 }
 
@@ -58,7 +57,6 @@
     background: var(--light-gold-color);
     color: var(--black-color);
     text-transform: uppercase;
-    font-size: var(--body-font-size-xs);
     padding: 20px 35px;
     font-weight: 900;
     font-family: var(--ff-888-ultra)
