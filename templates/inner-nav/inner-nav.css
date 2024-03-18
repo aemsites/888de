@@ -5,11 +5,17 @@
 ul.inner-nav {
   position: fixed;
   top: calc(var(--nav-height) + 24px);
-  margin-left: -10px;
-  min-width: 270px;
+  margin-left: 0;
+  width: clamp(260px, 25%, 270px);
   list-style: none;
   color: #666;
   padding: 0;
+}
+
+@media (width > 1250px) {
+  ul.inner-nav {
+    margin-left: -10px;
+  }
 }
 
 ul.inner-nav li {
@@ -18,9 +24,9 @@ ul.inner-nav li {
 
 ul.inner-nav li a {
   display: block;
-  width: 270px;
+  width: inherit;
   padding: 12px 12px 12px 10px;
-  margin: 0 0 0 20px;
+  margin: 0;
   font-weight: 500;
   font-size: .8rem;
   text-decoration: underline;
@@ -56,7 +62,7 @@ ul.inner-nav li.active a {
 .inner-nav main .section .default-content-wrapper,
 .inner-nav main .section .table-wrapper {
   margin-left: 290px;
-  min-height: 380px;
+  min-height: 440px;
 }
 
 
