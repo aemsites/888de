@@ -330,11 +330,12 @@ export async function breadcrumbs(doc) {
 
   // get all page segments asynchronously
   const crumbSegments = segments.map(async (segment, index) => {
-    const href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}/`;
+    let href = `${window.location.origin}/${segments.slice(0, index + 1).join('/')}/`;
     let h1;
 
     if (index === segments.length - 1) {
       // current page
+      href = href.replace(/\/$/, '');
       h1 = doc.querySelector('h1').textContent;
     } else {
       const getIndexHTML = await fetch(`${href}index.plain.html`);
