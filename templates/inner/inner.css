@@ -1,6 +1,6 @@
 @import url('../../styles/breadcrumbs.css');
 
-.breadcrumbs { margin: -12px 0 12px }
+.breadcrumbs-container { margin: -12px 0 12px }
 
 .inner p,
 .inner dl,

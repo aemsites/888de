@@ -1,6 +1,6 @@
 @import url('../../styles/breadcrumbs.css');
 
-.breadcrumbs { margin-left: 290px }
+.breadcrumbs-container { margin-left: 290px }
 
 .anchor-nav {
   position: fixed;
