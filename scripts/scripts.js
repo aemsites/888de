@@ -335,7 +335,7 @@ export async function breadcrumbs(doc) {
 
     if (index === segments.length - 1) {
       // current page
-      href = href.replace(/\/$/, '');
+      href = window.location.href;
       h1 = doc.querySelector('h1').textContent;
     } else {
       const getIndexHTML = await fetch(`${href}index.plain.html`);
