@@ -370,7 +370,7 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     if (templateName) {
-      await loadTemplate(doc, templateName);
+      await loadTemplate(doc, templateName.toLowerCase());
     }
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
