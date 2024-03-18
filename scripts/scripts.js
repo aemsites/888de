@@ -345,7 +345,7 @@ export async function breadcrumbs(doc) {
         h1 = await title(getBreadcrumbHTML);
       } else if (getIndexHTML.ok) {
         // get h1 from page
-        h1 = title(getIndexHTML);
+        h1 = await title(getIndexHTML);
       }
     }
     return crumb(h1, href, index + 1);
