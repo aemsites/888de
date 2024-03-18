@@ -1,6 +1,6 @@
 @import url('../../styles/breadcrumbs.css');
 
-.breadcrumbs { margin-left: 290px }
+.breadcrumbs-container { margin-left: 290px }
 
 ul.inner-nav {
   position: fixed;
@@ -24,7 +24,6 @@ ul.inner-nav li a {
   font-weight: 500;
   font-size: .8rem;
   text-decoration: underline;
-  transition: .5s;
 }
 
 ul.inner-nav li a::after {

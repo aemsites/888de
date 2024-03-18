@@ -1,8 +1,13 @@
 
+.breadcrumbs-container { 
+  min-height: 20px; 
+  margin: 10px 0 20px; 
+}
+
 .breadcrumbs {
   list-style-type: none; /* Remove default list style */
   padding: 0;
-  margin: 10px 0 20px;
+  margin: 0;
 }
 
 .breadcrumbs li { display: inline }

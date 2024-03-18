@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable function-paren-newline */
-import { ul, li, a } from '../../scripts/dom-helpers.js';
+import { div, ul, li, a } from '../../scripts/dom-helpers.js';
 import { breadcrumbs } from '../../scripts/scripts.js';
 
 export default async function decorate(doc) {
@@ -30,8 +30,11 @@ export default async function decorate(doc) {
   $page.prepend($anchorNav);
 
   // insert breadcrumbs
-  breadcrumbs(doc).then(($breadcrumbs) => {
-    $page.prepend($breadcrumbs);
+  const $breadcrumbsContainer = div({ class: 'breadcrumbs-container' });
+  $page.prepend($breadcrumbsContainer);
+
+  breadcrumbs(doc, $page).then(($breadcrumbs) => {
+    $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
     console.error('Error generating breadcrumbs:', error);
   });
