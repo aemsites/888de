@@ -53,8 +53,8 @@ function createDesktopSlide(slide, slideContent) {
 function createBoxOffer(boxOffer, slideContent) {
   boxOffer.innerHTML = `
     ${slideContent.offer.outerHTML}
-    ${slideContent.button.outerHTML}
-    <div class="pc">${slideContent.termsLink.outerHTML}</div>
+    ${slideContent.button.outerHTML.replaceAll('main-banner', 'carousel')}
+    <div class="pc">${slideContent.termsLink.outerHTML.replaceAll('main-banner', 'carousel')}</div>
     `;
 }
 
