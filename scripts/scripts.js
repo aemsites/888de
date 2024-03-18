@@ -140,7 +140,8 @@ export function buildLinks(main) {
       a.title = linkText;
       // match all attributes between curly braces
       attrs.split('|').forEach((attr) => {
-        const [key, value] = attr.split('=');
+        const [key, ...values] = attr.split('=');
+        const value = values.join('=');
         //  a.setAttribute(key.trim(), value.trim());
         a.setAttribute(key, value);
       });
