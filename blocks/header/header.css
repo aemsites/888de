@@ -31,7 +31,7 @@ body.modal-open .overlay {
   opacity: .8;
 }
 
-header .logo img {
+header .logo  {
   max-width: 100px;
   align-self: center;
   position: absolute;
