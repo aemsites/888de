@@ -63,8 +63,12 @@ export default async function decorate(doc) {
 
   highlightNav(doc);
 
-  breadcrumbs(doc).then(($breadcrumbs) => {
-    $page.prepend($breadcrumbs);
+  // insert breadcrumbs
+  const $breadcrumbsContainer = div({ class: 'breadcrumbs-container' });
+  $page.prepend($breadcrumbsContainer);
+
+  breadcrumbs(doc, $page).then(($breadcrumbs) => {
+    $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
     console.error('Error generating breadcrumbs:', error);
   });
