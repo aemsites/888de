@@ -1,10 +1,11 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable function-paren-newline */
-import { div, ul, li, a } from '../../scripts/dom-helpers.js';
+import { aside, div, ul, li, a } from '../../scripts/dom-helpers.js';
 import { breadcrumbs } from '../../scripts/scripts.js';
 
 export default async function decorate(doc) {
-  const $anchorNav = ul({ class: 'inner-nav' });
+  const $aside = aside({ class: 'left-nav' });
+  const $nav = ul();
   const parentFolder = window.location.pathname.split('/').filter(Boolean)[0];
 
   fetch('/query-index.json')
@@ -21,19 +22,19 @@ export default async function decorate(doc) {
         return li({ class: isActive }, a({ href: item.path }, item.title.replace(/\s*\|\s*888\.de$/, '')));
       });
 
-      listItems.forEach((listItem) => $anchorNav.appendChild(listItem));
+      listItems.forEach((listItem) => $nav.appendChild(listItem));
     })
     .catch((error) => console.error('Error fetching JSON:', error));
 
-  const $page = doc.querySelector('main > .section-outer > .section');
-
-  $page.prepend($anchorNav);
-
-  // insert breadcrumbs
+  const $sectionOuter = doc.querySelector('main > .section-outer');
+  const $sectionContent = $sectionOuter.querySelector('.section');
   const $breadcrumbsContainer = div({ class: 'breadcrumbs-container' });
-  $page.prepend($breadcrumbsContainer);
 
-  breadcrumbs(doc, $page).then(($breadcrumbs) => {
+  $aside.append($nav);
+  $sectionOuter.prepend($aside);
+  $sectionContent.prepend($breadcrumbsContainer);
+
+  breadcrumbs(doc).then(($breadcrumbs) => {
     $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
     console.error('Error generating breadcrumbs:', error);

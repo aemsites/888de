@@ -210,6 +210,10 @@ li {
   font-size: var(--body-font-size-s);
 }
 
+.default-content-wrapper li {
+  padding: 0.416rem 0;
+}
+
 code, pre {
   font-family: var(--fixed-font-family);
   font-size: var(--body-font-size-s);

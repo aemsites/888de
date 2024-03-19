@@ -1,12 +1,13 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable function-paren-newline */
-import { div, ul, li, a } from '../../scripts/dom-helpers.js';
+import { aside, div, ul, li, a } from '../../scripts/dom-helpers.js';
 import { breadcrumbs } from '../../scripts/scripts.js';
 
 function scrollToTarget(target) {
   const { offsetTop } = target;
+  const scrollMarginTop = parseInt(window.getComputedStyle(target).scrollMarginTop, 10) || 0;
   window.scrollTo({
-    top: offsetTop,
+    top: offsetTop - scrollMarginTop,
     behavior: 'smooth',
   });
 }
@@ -16,10 +17,10 @@ function highlightNav(doc) {
   window.addEventListener('scroll', () => {
     const scrollAmount = window.scrollY;
     $anchors.forEach(($anchor) => {
-      if (scrollAmount >= (($anchor.offsetTop) - 80)) {
+      if (scrollAmount >= (($anchor.offsetTop))) {
         const id = $anchor.getAttribute('id');
         const $navLI = doc.querySelector(`a[href="#${id}"]`).parentElement;
-        const $activeLI = doc.querySelector('.anchor-nav .active');
+        const $activeLI = doc.querySelector('.left-nav .active');
         if ($activeLI) $activeLI.classList.remove('active');
         $navLI.classList.add('active');
       }
@@ -29,9 +30,10 @@ function highlightNav(doc) {
 
 export default async function decorate(doc) {
   const paragraphs = doc.querySelectorAll('main .default-content-wrapper p');
-  const $anchorNav = ul({ class: 'anchor-nav' });
+  const $aside = aside({ class: 'left-nav' });
+  const $nav = ul();
 
-  paragraphs.forEach((p) => {
+  paragraphs.forEach((p, i) => {
     const pTxt = p.textContent;
     const isAnchor = pTxt.match(/\{anchor:\s*([^\]]+)\}/g);
 
@@ -44,11 +46,13 @@ export default async function decorate(doc) {
         .toLowerCase();
       const $anchor = div({ class: 'anchor', id: anchorID });
 
+      if (i === 0) $anchor.classList.add('first');
+
       p.replaceWith($anchor);
 
       // build nav
       const $anchorLink = li(a({ href: `#${anchorID}` }, anchorTxt));
-      $anchorNav.appendChild($anchorLink);
+      $nav.appendChild($anchorLink);
       $anchorLink.addEventListener('click', (e) => {
         e.preventDefault();
         window.history.pushState(null, null, `#${anchorID}`);
@@ -57,19 +61,19 @@ export default async function decorate(doc) {
     } // matches
   }); // each
 
-  const $page = doc.querySelector('main > .section-outer > .section');
-
-  $page.prepend($anchorNav);
-
-  highlightNav(doc);
-
-  // insert breadcrumbs
+  const $sectionOuter = doc.querySelector('main > .section-outer');
+  const $sectionContent = $sectionOuter.querySelector('.section');
   const $breadcrumbsContainer = div({ class: 'breadcrumbs-container' });
-  $page.prepend($breadcrumbsContainer);
 
-  breadcrumbs(doc, $page).then(($breadcrumbs) => {
+  $aside.append($nav);
+  $sectionOuter.prepend($aside);
+  $sectionContent.prepend($breadcrumbsContainer);
+
+  breadcrumbs(doc).then(($breadcrumbs) => {
     $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
     console.error('Error generating breadcrumbs:', error);
   });
+
+  highlightNav(doc);
 }
