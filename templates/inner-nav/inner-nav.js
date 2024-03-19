@@ -18,7 +18,7 @@ export default async function decorate(doc) {
       filteredPaths.sort((A, B) => parseInt(A['nav-order'], 10) - parseInt(B['nav-order'], 10));
 
       const listItems = filteredPaths.map((item) => {
-        const isActive = item.path === window.location.pathname ? 'active' : '';
+        const isActive = item.path.replace(/\/$/, '') === window.location.pathname.replace(/\/$/, '') ? 'active' : '';
         return li({ class: isActive }, a({ href: item.path }, item.title.replace(/\s*\|\s*888\.de$/, '')));
       });
 
