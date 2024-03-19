@@ -25,12 +25,8 @@
 /* fallback font for 888-medium */
 @font-face {
   font-family: "medium888-Fallback";
-  src: local('Arial');
-  font-weight: 400;
-  ascent-override: 83.10%;
-  descent-override: 21.87%;
-  line-gap-override: 0.00%;
-  size-adjust: 109%;
+  size-adjust: 112.311%;
+  src: local("Georgia");
 }
 
 /* fallback font for 888-bold */
@@ -206,7 +202,7 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
 }
 
 li {
@@ -403,6 +399,10 @@ main .button-columns a>.link-button-text, main .button-container.button-icon a>.
 }
 
 @media (width >= 600px) {
+  p, dl, ol, ul, pre, blockquote {
+    font-size: var(--body-font-size-s);
+  }
+
   h1 {
     font-size: var(--heading-font-size-xxl);
     line-height: 1.2;
