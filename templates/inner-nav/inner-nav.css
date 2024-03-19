@@ -8,6 +8,8 @@ main .section-outer {
   margin: 0 auto;
 }
 
+main .section-outer .section { flex-grow: 1 }
+
 aside.left-nav {
   min-width: max(24%, 250px);
   margin: 0 20px 0 10px;
