@@ -31,18 +31,19 @@ body.modal-open .overlay {
   opacity: .8;
 }
 
-header .logo  {
-  max-width: 100px;
-  align-self: center;
+header .logo,
+header .logo img {
   position: absolute;
-  width: 60px;
-  height: 100%;
+  align-self: center;
+  width: var(--nav-height);
+  height: var(--nav-height);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   color: transparent;
   font-size: 0;
 }
+
 
 header button.login {
   position: absolute;
