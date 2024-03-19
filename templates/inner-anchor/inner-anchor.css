@@ -1,46 +1,14 @@
 @import url('../../styles/breadcrumbs.css');
+@import url('../inner-nav/inner-nav.css');
 
-.breadcrumbs-container { margin-left: 290px }
-
-.anchor-nav {
-  position: fixed;
-  top: calc(var(--nav-height) + 24px);
-  margin-left: -10px;
-  min-width: 270px;
-  list-style: none;
-  color: #666;
-  padding: 0;
-}
-
-.anchor-nav li a {
-  display: block;
-  width: 270px;
+aside.left-nav ul li a {
   padding: 5px 20px;
-  font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
-  transition: .5s;
 }
 
-.anchor-nav li.active a {
-  background: #4f4f4f;
-  color: #fff;
-}
+aside.left-nav ul li a::after { display: none }
 
-.anchor {
-  scroll-margin-top: calc(var(--nav-height) + 20px);
-}
-
-.anchor:not(:first-child) {
-  margin-top: 100px;
-}
-
-.inner-anchor main .section .default-content-wrapper {
-  margin-left: 290px;
-}
-
-@media (width < 1024px) {
-  .anchor-nav { display: none }
-
-  .inner-anchor main .section .default-content-wrapper { margin-left: 0 }
-}
+.anchor.first { scroll-margin-top: 20px }
+.anchor { scroll-margin-top: -40px }
+.anchor + h2 { margin-top: 80px }
