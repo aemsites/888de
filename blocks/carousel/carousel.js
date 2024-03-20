@@ -90,6 +90,8 @@ export default function decorate(block) {
   const transitionDuration = configs['transition-duration'];
   const slider = document.createElement('div');
   slider.className = 'slider';
+  let mobRatio;
+  let mobHeight;
 
   const firstPic = block.querySelector('picture').cloneNode(true);
   firstPic.querySelector('img').setAttribute('loading', 'eager');
@@ -115,10 +117,12 @@ export default function decorate(block) {
         slideContent.img = img.getAttribute('src');
         const mobilePic = col.querySelectorAll('picture')[1];
         if (mobilePic) {
-          slideContent.mobilePic = mobilePic;
           const mobileImg = mobilePic.querySelector('img');
           mobileImg.setAttribute('loading', 'eager');
           slideContent.mobileImg = mobileImg.getAttribute('src');
+          mobRatio = (parseInt(mobileImg.height, 10) / parseInt(mobileImg.width, 10)) * 100;
+          mobHeight = mobileImg.height;
+          slideContent.mobilePic = mobilePic;
         }
         const dtVideoLink = col.querySelector('a');
         if (dtVideoLink) {
@@ -153,6 +157,9 @@ export default function decorate(block) {
 
     // create mobile view
     createMobileSlide(mobSlide, slideContent);
+    mobSlide.querySelector('.mobile-slider').style.paddingBottom = `${mobRatio}%`;
+    const width = window.innerWidth;
+    mobSlide.querySelector('.mobile-slider').style.maxHeight = `${width * (mobRatio / 100)}px`;
     mobileSlidesWrapper.append(mobSlide);
 
     const dtSlide = document.createElement('div');

@@ -89,6 +89,11 @@ main .section.carousel-container {
     text-align: center;
 }
 
+.carousel.block .mobile-slides-wrapper .slide{
+    display: flex;
+    flex-direction: column;
+}
+
 .carousel.block .mobile-slides-wrapper .slide-2 .mobile-v2 h2,
 .carousel.block .mobile-slides-wrapper .slide-5 .mobile-v2 h2 {
     color: var(--blue-color);
