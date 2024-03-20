@@ -5,14 +5,21 @@ function createMobileSlide(slide, slideContent) {
   slide.innerHTML = `<div class="brand-logo">
     ${slideContent.icon.outerHTML || ''}
  </div>
- ${(slideContent.mobVideolink || slideContent.dtVideoLink) ? `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
-    <source src="${slideContent.mobVideolink ? slideContent.mobVideolink : slideContent.dtVideoLink}" type="video/mp4">
- </video>` : (slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML)}
+ <div class="slide-banner">${slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML}</div>
  <div class="mobile-v2">
     ${slideContent.offer.outerHTML}
     <div class="mobile">${slideContent.termsLink.outerHTML}</div>
     ${slideContent.button.outerHTML}
  </div>`;
+
+  setTimeout(() => {
+    const slideBanner = slide.querySelector('.slide-banner');
+    if (slideContent.mobVideolink || slideContent.dtVideoLink) {
+      slideBanner.innerHTML = `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
+     <source src="${slideContent.mobVideolink ? slideContent.mobVideolink : slideContent.dtVideoLink}" type="video/mp4">
+  </video>`;
+    }
+  }, 3500);
 }
 
 function populateDtSlidesWrapper(dtSlidesWrapper, pic) {
@@ -90,6 +97,7 @@ export default function decorate(block) {
   const transitionDuration = configs['transition-duration'];
   const slider = document.createElement('div');
   slider.className = 'slider';
+  let mobRatio;
 
   const firstPic = block.querySelector('picture').cloneNode(true);
   firstPic.querySelector('img').setAttribute('loading', 'eager');
@@ -115,10 +123,11 @@ export default function decorate(block) {
         slideContent.img = img.getAttribute('src');
         const mobilePic = col.querySelectorAll('picture')[1];
         if (mobilePic) {
-          slideContent.mobilePic = mobilePic;
           const mobileImg = mobilePic.querySelector('img');
           mobileImg.setAttribute('loading', 'eager');
           slideContent.mobileImg = mobileImg.getAttribute('src');
+          mobRatio = (parseInt(mobileImg.height, 10) / parseInt(mobileImg.width, 10)) * 100;
+          slideContent.mobilePic = mobilePic;
         }
         const dtVideoLink = col.querySelector('a');
         if (dtVideoLink) {
@@ -154,6 +163,10 @@ export default function decorate(block) {
     // create mobile view
     createMobileSlide(mobSlide, slideContent);
     mobileSlidesWrapper.append(mobSlide);
+    const mobileBanner = mobSlide.querySelector('.slide-banner');
+    mobileBanner.style.paddingBottom = `${mobRatio}%`;
+    const vpWidth = window.innerWidth;
+    mobileBanner.style.maxHeight = `${vpWidth * (mobRatio / 100)}px`;
 
     const dtSlide = document.createElement('div');
     dtSlide.className = `slide slide-${slideIndex}`;
