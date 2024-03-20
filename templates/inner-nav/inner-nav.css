@@ -19,10 +19,11 @@ aside.left-nav {
   aside.left-nav { display: none }
 }
 
-aside.left-nav ul {
+aside.left-nav ul,
+aside.left-nav div {
   position: sticky;
   top: 100px;
-  padding: 0;
+  padding: 0 0 20px;
   list-style: none;
   color: #666;
 }
