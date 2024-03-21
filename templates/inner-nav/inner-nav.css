@@ -8,6 +8,8 @@ main .section-outer {
   margin: 0 auto;
 }
 
+main .section-outer .section { flex-grow: 1 }
+
 aside.left-nav {
   min-width: max(24%, 250px);
   margin: 0 20px 0 10px;
@@ -17,10 +19,11 @@ aside.left-nav {
   aside.left-nav { display: none }
 }
 
-aside.left-nav ul {
+aside.left-nav ul,
+aside.left-nav div {
   position: sticky;
   top: 100px;
-  padding: 0;
+  padding: 0 0 20px;
   list-style: none;
   color: #666;
 }

@@ -57,10 +57,6 @@ main .section.carousel-container {
     height: 100%;
 }
 
-.carousel.block .mobile-slides-wrapper video {
-    min-height: 170px;
-}
-
 .carousel.block .mobile-slides-wrapper .mobile-v2 {
     display: block;
     width: 100%;
@@ -87,6 +83,11 @@ main .section.carousel-container {
     font-family: var(--ff-888-ultra);
     color: var(--green-color);
     text-align: center;
+}
+
+.carousel.block .mobile-slides-wrapper .slide{
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel.block .mobile-slides-wrapper .slide-2 .mobile-v2 h2,
