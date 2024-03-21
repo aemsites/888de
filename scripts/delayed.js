@@ -1,5 +1,10 @@
+/* eslint-disable function-paren-newline */
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM } from './aem.js';
+import { div } from './dom-helpers.js';
+// eslint-disable-next-line import/no-cycle
+import { loadFragment } from '../blocks/fragment/fragment.js';
+import { close } from '../blocks/header/header.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -21,3 +26,21 @@ function loadGTM() {
 }
 
 loadGTM();
+
+async function loginModal() {
+  const loginHtml = await loadFragment('/login');
+  const $modalContent = div();
+  while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
+  const $closeBtn = div({ class: 'close' }, 'X');
+  const $loginModal = div({ class: 'login-modal' },
+    $closeBtn,
+    $modalContent,
+  );
+  $closeBtn.addEventListener('click', () => close('modal'));
+
+  const $body = document.body;
+  $body.append($loginModal);
+  $body.classList.add('login-ready');
+}
+
+loginModal();

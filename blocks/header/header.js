@@ -9,7 +9,7 @@ function open(item) {
   $body.classList.add(`${item}-open`, 'no-scroll');
 }
 
-function close(item) {
+export function close(item) {
   // ignore if item is already closed
   if (!$body.classList.contains(`${item}-open`)) return;
 
@@ -56,24 +56,15 @@ export default async function decorate(block) {
 
   const $loginBtn = button({ class: 'login' }, 'Einloggen');
   $loginBtn.addEventListener('click', () => {
-    open('modal');
-    close('nav');
+    if ($body.classList.contains('login-ready')) {
+      open('modal');
+      close('nav');
+    }
   });
-  // login modal
-  const loginHtml = await loadFragment('/login');
-  const $modalContent = div();
-  while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
-  const $closeBtn = div({ class: 'close' }, 'X');
-  const $loginModal = div(
-    { class: 'login-modal' },
-    $closeBtn,
-    $modalContent,
-  );
-  $closeBtn.addEventListener('click', () => close('modal'));
 
   block.replaceWith($navBtn, $logo, $loginBtn);
   $header.after($nav);
-  $body.append($overlay, $loginModal);
+  $body.append($overlay);
 
   // accordion functionality
   const $navUL = $nav.querySelector('ul');
