@@ -25,9 +25,13 @@
 /* fallback font for 888-medium */
 @font-face {
   font-family: "medium888-Fallback";
-  size-adjust: 112.311%;
-  src: local("Georgia");
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 100;
+  src: local('Verdana');
 }
+
+
 
 /* fallback font for 888-bold */
 @font-face {
@@ -142,7 +146,7 @@ header {
   left: 0;
   top: 0;
   background: rgb(35 35 35 / 90%);
-  width: 100vw;
+  width: 100%;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -188,6 +192,10 @@ h2 {
   font-size: var(--heading-font-size-l);
   text-align: center;
   font-weight: 500;
+}
+
+.default-content-wrapper {
+  padding: 0 5px;
 }
 
 .default-content-wrapper > h2 {
