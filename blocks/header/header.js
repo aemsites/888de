@@ -25,29 +25,6 @@ function close(item) {
   }, navTransitionTime);
 }
 
-async function getModal() {
-  const loginHtml = await loadFragment('/login');
-  if (loginHtml) {
-    // Create modal elements
-    const $modalContent = div();
-    while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
-    const $closeBtn = div({ class: 'close' }, 'X');
-    $loginModal = div({ class: 'login-modal' },
-      $closeBtn,
-      $modalContent,
-    );
-    $closeBtn.addEventListener('click', () => close('modal'));
-
-    $body.append($loginModal);
-
-    // delay to ensure modal is loaded before animating
-    setTimeout(() => { open('modal'); }, 20);
-  } else {
-    // eslint-disable-next-line no-console
-    console.error('Failed to load login fragment.');
-  }
-}
-
 async function getNav() {
   const fetchNav = await fetch('/nav.plain.html');
   const navHTML = await fetchNav.text();
@@ -75,19 +52,34 @@ async function getNav() {
       }
     });
 
-    // delay to ensure nav is loaded before animating
     setTimeout(() => { open('nav'); }, 20);
   }
 }
 
-export default async function decorate(block) {
-  const $overlay = div({ class: 'overlay' });
-  $overlay.addEventListener('click', () => {
-    close('nav');
-    close('modal');
-  });
-  $body.append($overlay);
+async function getModal() {
+  const loginHtml = await loadFragment('/login');
+  if (loginHtml) {
+    // Create modal elements
+    const $modalContent = div();
+    while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
+    const $closeBtn = div({ class: 'close' }, 'X');
+    $loginModal = div({ class: 'login-modal' },
+      $closeBtn,
+      $modalContent,
+    );
+    $closeBtn.addEventListener('click', () => close('modal'));
 
+    $body.append($loginModal);
+
+    // delay to ensure modal is loaded before animating
+    setTimeout(() => { open('modal'); }, 20);
+  } else {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load login fragment.');
+  }
+}
+
+export default async function decorate(block) {
   // nav burger menu
   const $navBtn = div({ class: 'nav-btn' }, span(), span(), span());
   $navBtn.addEventListener('click', () => {
@@ -115,4 +107,11 @@ export default async function decorate(block) {
   });
 
   block.replaceWith($navBtn, $logo, $loginBtn);
+
+  const $overlay = div({ class: 'overlay' });
+  $overlay.addEventListener('click', () => {
+    close('nav');
+    close('modal');
+  });
+  $body.append($overlay);
 }
