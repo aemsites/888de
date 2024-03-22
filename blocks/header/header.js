@@ -1,4 +1,4 @@
-/* eslint-disable object-curly-newline */
+/* eslint-disable function-paren-newline, object-curly-newline */
 import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js';
 import { loadFragment } from '../fragment/fragment.js';
 
@@ -20,6 +20,30 @@ function close(item) {
     $body.classList.remove(`${item}-open`, 'no-scroll');
     if (item === 'nav') $body.classList.remove('nav-close');
   }, navTransitionTime);
+}
+
+let $loginModal;
+async function loginModal() {
+  const loginHtml = await loadFragment('/login');
+  if (loginHtml) {
+    // Create modal elements
+    const $modalContent = div();
+    while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
+    const $closeBtn = div({ class: 'close' }, 'X');
+    $loginModal = div({ class: 'login-modal' },
+      $closeBtn,
+      $modalContent,
+    );
+    $closeBtn.addEventListener('click', () => close('modal'));
+
+    $body.append($loginModal);
+
+    // delay to ensure modal is loaded before animating
+    setTimeout(() => { open('modal'); }, 100);
+  } else {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load login fragment.');
+  }
 }
 
 export default async function decorate(block) {
@@ -55,25 +79,21 @@ export default async function decorate(block) {
   }));
 
   const $loginBtn = button({ class: 'login' }, 'Einloggen');
+  // let $loginModal;
   $loginBtn.addEventListener('click', () => {
-    open('modal');
     close('nav');
+
+    if (!$loginModal) {
+      // create login modal
+      loginModal();
+    } else {
+      open('modal');
+    }
   });
-  // login modal
-  const loginHtml = await loadFragment('/login');
-  const $modalContent = div();
-  while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
-  const $closeBtn = div({ class: 'close' }, 'X');
-  const $loginModal = div(
-    { class: 'login-modal' },
-    $closeBtn,
-    $modalContent,
-  );
-  $closeBtn.addEventListener('click', () => close('modal'));
 
   block.replaceWith($navBtn, $logo, $loginBtn);
   $header.after($nav);
-  $body.append($overlay, $loginModal);
+  $body.append($overlay);
 
   // accordion functionality
   const $navUL = $nav.querySelector('ul');
