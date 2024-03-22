@@ -25,13 +25,13 @@
 /* fallback font for 888-medium */
 @font-face {
   font-family: "medium888-Fallback";
-  src: local('Arial');
-  font-weight: 400;
-  ascent-override: 83.10%;
-  descent-override: 21.87%;
-  line-gap-override: 0.00%;
-  size-adjust: 109%;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 100;
+  src: local('Verdana');
 }
+
+
 
 /* fallback font for 888-bold */
 @font-face {
@@ -146,7 +146,7 @@ header {
   left: 0;
   top: 0;
   background: rgb(35 35 35 / 90%);
-  width: 100vw;
+  width: 100%;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -194,6 +194,10 @@ h2 {
   font-weight: 500;
 }
 
+.default-content-wrapper {
+  padding: 0 5px;
+}
+
 .default-content-wrapper > h2 {
   display: flex;
   align-items: center;
@@ -206,7 +210,8 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
+  word-spacing: 0.5px;
 }
 
 li {
@@ -407,6 +412,10 @@ main .button-columns a>.link-button-text, main .button-container.button-icon a>.
 }
 
 @media (width >= 600px) {
+  p, dl, ol, ul, pre, blockquote {
+    font-size: var(--body-font-size-s);
+  }
+
   h1 {
     font-size: var(--heading-font-size-xxl);
     line-height: 1.2;
