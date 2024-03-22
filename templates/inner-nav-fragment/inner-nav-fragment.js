@@ -23,6 +23,7 @@ export default async function decorate(doc) {
         if (hrefPath === currentPath) $link.parentElement.classList.add('active');
       });
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error fetching HTML:', error);
     }
   })();
@@ -37,6 +38,7 @@ export default async function decorate(doc) {
   breadcrumbs(doc).then(($breadcrumbs) => {
     $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
+    // eslint-disable-next-line no-console
     console.error('Error generating breadcrumbs:', error);
   });
 }
