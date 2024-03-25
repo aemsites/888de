@@ -1,15 +1,18 @@
-/* eslint-disable object-curly-newline */
+/* eslint-disable function-paren-newline, object-curly-newline */
 import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 const $body = document.body;
-const navTransitionTime = 400; // match --nav-transition-time var in styles.css
+let $loginModal;
+let $nav;
 
 function open(item) {
   $body.classList.add(`${item}-open`, 'no-scroll');
 }
 
 function close(item) {
+  const navTransitionTime = 400; // match --nav-transition-time var in styles.css
+
   // ignore if item is already closed
   if (!$body.classList.contains(`${item}-open`)) return;
 
@@ -22,25 +25,67 @@ function close(item) {
   }, navTransitionTime);
 }
 
-export default async function decorate(block) {
+async function getNav() {
   const fetchNav = await fetch('/nav.plain.html');
   const navHTML = await fetchNav.text();
-  const $nav = nav();
+  $nav = nav();
   $nav.innerHTML = navHTML;
 
-  const $header = document.querySelector('header');
+  if (navHTML) {
+    const $header = document.querySelector('header');
+    $header.after($nav);
 
-  const $overlay = div({ class: 'overlay' });
-  $overlay.addEventListener('click', () => {
-    close('nav');
-    close('modal');
-  });
+    // accordion functionality
+    const $navUL = $nav.querySelector('ul');
+    const $accordionLIs = Array.from($navUL.children);
+    $accordionLIs.forEach((li) => {
+      const nestedUl = li.querySelector('ul');
+      if (nestedUl) {
+        const liText = li.firstChild.textContent.trim();
+        const $spanLI = span(liText);
+        const $arrow = i('>');
+        li.firstChild.replaceWith($spanLI, $arrow);
 
+        li.addEventListener('click', () => {
+          li.classList.toggle('open');
+        });
+      }
+    });
+
+    setTimeout(() => { open('nav'); }, 20);
+  }
+}
+
+async function getModal() {
+  const loginHtml = await loadFragment('/login');
+  if (loginHtml) {
+    // Create modal elements
+    const $modalContent = div();
+    while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
+    const $closeBtn = div({ class: 'close' }, 'X');
+    $loginModal = div({ class: 'login-modal' },
+      $closeBtn,
+      $modalContent,
+    );
+    $closeBtn.addEventListener('click', () => close('modal'));
+
+    $body.append($loginModal);
+
+    // delay to ensure modal is loaded before animating
+    setTimeout(() => { open('modal'); }, 20);
+  } else {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load login fragment.');
+  }
+}
+
+export default async function decorate(block) {
   // nav burger menu
   const $navBtn = div({ class: 'nav-btn' }, span(), span(), span());
   $navBtn.addEventListener('click', () => {
     if (!$body.classList.contains('nav-open')) {
-      open('nav');
+      if (!$nav) getNav();
+      else open('nav');
       close('modal');
     } else {
       close('nav');
@@ -56,51 +101,17 @@ export default async function decorate(block) {
 
   const $loginBtn = button({ class: 'login' }, 'Einloggen');
   $loginBtn.addEventListener('click', () => {
-    open('modal');
+    if (!$loginModal) getModal();
+    else open('modal');
     close('nav');
   });
-  // login modal
-  const loginHtml = await loadFragment('/login');
-  const $modalContent = div();
-  while (loginHtml.firstElementChild) $modalContent.append(loginHtml.firstElementChild);
-  const $closeBtn = div({ class: 'close' }, 'X');
-  const $loginModal = div(
-    { class: 'login-modal' },
-    $closeBtn,
-    $modalContent,
-  );
-  $closeBtn.addEventListener('click', () => close('modal'));
 
   block.replaceWith($navBtn, $logo, $loginBtn);
-  $header.after($nav);
-  $body.append($overlay, $loginModal);
 
-  // accordion functionality
-  const $navUL = $nav.querySelector('ul');
-  const $accordionLIs = Array.from($navUL.children);
-  $accordionLIs.forEach((li) => {
-    const nestedUl = li.querySelector('ul');
-    if (nestedUl) {
-      const liText = li.firstChild.textContent.trim();
-      const $spanLI = span(liText);
-      const $arrow = i('>');
-      li.firstChild.replaceWith($spanLI, $arrow);
-
-      li.addEventListener('click', () => {
-        li.classList.toggle('open');
-      });
-    }
+  const $overlay = div({ class: 'overlay' });
+  $overlay.addEventListener('click', () => {
+    close('nav');
+    close('modal');
   });
-
-  // header opacity change
-  $header.classList.add('solid');
-  window.addEventListener('scroll', () => {
-    const { scrollY } = window;
-    const windowWidth = window.innerWidth;
-    if (scrollY > (windowWidth < 1024 ? 45 : 60)) {
-      $header.classList.remove('solid');
-    } else {
-      $header.classList.add('solid');
-    }
-  });
+  $body.append($overlay);
 }
