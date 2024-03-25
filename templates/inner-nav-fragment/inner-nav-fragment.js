@@ -6,13 +6,14 @@ import { breadcrumbs } from '../../scripts/scripts.js';
 export default async function decorate(doc) {
   const $aside = aside({ class: 'left-nav' });
   const currentURL = window.location.href;
-  const { pathname } = new URL(currentURL);
-  const pathParts = pathname.split('/').filter((part) => part !== ''); // Remove empty parts
-  const parentFullPath = `/${pathParts.slice(0, -1).join('/')}`;
+  const { protocol, host, pathname } = window.location;
+  let parentPath = `${protocol}//${host}${pathname}`;
+  // if path does not end with / get parent directory
+  if (!pathname.endsWith('/')) parentPath = `${parentPath.substring(0, parentPath.lastIndexOf('/'))}/`;
 
   (async () => {
     try {
-      const response = await fetch(`${parentFullPath}/left-nav.plain.html`);
+      const response = await fetch(`${parentPath}left-nav.plain.html`);
       const html = await response.text();
       $aside.innerHTML = html;
 
