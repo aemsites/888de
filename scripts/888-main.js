@@ -130,6 +130,7 @@ function generateDLPParameter() {
     dlpParameter = dlpParameter.replace(/\.|\#/gi, '%2E');
     return dlpParameter;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error('DLP Not Sent');
   }
 }

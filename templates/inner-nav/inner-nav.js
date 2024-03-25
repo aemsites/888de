@@ -24,7 +24,10 @@ export default async function decorate(doc) {
 
       listItems.forEach((listItem) => $nav.appendChild(listItem));
     })
-    .catch((error) => console.error('Error fetching JSON:', error));
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error('Error fetching JSON:', error);
+    });
 
   const $sectionOuter = doc.querySelector('main > .section-outer');
   const $sectionContent = $sectionOuter.querySelector('.section');
@@ -37,6 +40,7 @@ export default async function decorate(doc) {
   breadcrumbs(doc).then(($breadcrumbs) => {
     $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
+    // eslint-disable-next-line no-console
     console.error('Error generating breadcrumbs:', error);
   });
 }

@@ -10,6 +10,7 @@ export default async function decorate(doc) {
   breadcrumbs(doc).then(($breadcrumbs) => {
     $breadcrumbsContainer.append($breadcrumbs);
   }).catch((error) => {
+    // eslint-disable-next-line no-console
     console.error('Error generating breadcrumbs:', error);
   });
 }
