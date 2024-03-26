@@ -7,24 +7,16 @@ export default async function decorate(doc) {
   const $aside = aside({ class: 'left-nav' });
 
   const { pathname, origin } = window.location;
-
-  // const parentDirectory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-  // const parentPath = `${origin}${parentDirectory.replace(/\/$/, '')}`;
   const normalizedPathname = pathname.replace(/\/$/, '');
 
-  // Get the parent directory
+  // parent directory
   const lastSlashIndex = normalizedPathname.lastIndexOf('/');
   const parentDirectory = lastSlashIndex !== -1 ? normalizedPathname.substring(0, lastSlashIndex) : '';
-  
+
   const currentPath = `${origin + pathname.replace(/\/$/, '')}`;
   const parentPath = `${origin + parentDirectory}`;
 
-  console.log('currentPath = ' + currentPath);
-  console.log('parentDirectory = ' + parentDirectory);
-  console.log('parentPath = ' + parentPath);
-
   const getLeftNav = async (url) => {
-    console.log('getLeftnav url = ' + url);
     try {
       const response = await fetch(`${url}/left-nav.plain.html`);
       if (!response.ok) {
@@ -32,7 +24,6 @@ export default async function decorate(doc) {
       }
       const html = await response.text();
       $aside.innerHTML = html;
-      console.log(`getLeftNav success  = ${url}/left-nav.plain.html`)
       return true;
     } catch (error) {
       // eslint-disable-next-line no-console
