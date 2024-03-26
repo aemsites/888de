@@ -11,7 +11,12 @@ export default async function decorate(doc) {
   const parentDirectory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
   const parentPath = `${origin}${parentDirectory.replace(/\/$/, '')}`;
 
+  console.log('currentPath = ' + currentPath);
+  console.log('parentDirectory = ' + parentDirectory);
+  console.log('parentPath = ' + parentPath);
+
   const getLeftNav = async (url) => {
+    console.log('getLeftnav url = ' + url);
     try {
       const response = await fetch(`${url}/left-nav.plain.html`);
       if (!response.ok) {
@@ -19,10 +24,11 @@ export default async function decorate(doc) {
       }
       const html = await response.text();
       $aside.innerHTML = html;
+      console.log(`getLeftNav success  = ${url}/left-nav.plain.html`)
       return true;
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error(`Error fetching left-nav from ${url}:`, error);
+      console.error(`Error fetching left-nav from ${url}/left-nav.plain.html:`, error);
       return false;
     }
   };
