@@ -7,9 +7,17 @@ export default async function decorate(doc) {
   const $aside = aside({ class: 'left-nav' });
 
   const { pathname, origin } = window.location;
-  const currentPath = `${origin}${pathname.replace(/\/$/, '')}`;
-  const parentDirectory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-  const parentPath = `${origin}${parentDirectory.replace(/\/$/, '')}`;
+
+  // const parentDirectory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+  // const parentPath = `${origin}${parentDirectory.replace(/\/$/, '')}`;
+  const normalizedPathname = pathname.replace(/\/$/, '');
+
+  // Get the parent directory
+  const lastSlashIndex = normalizedPathname.lastIndexOf('/');
+  const parentDirectory = lastSlashIndex !== -1 ? normalizedPathname.substring(0, lastSlashIndex) : '';
+  
+  const currentPath = `${origin + pathname.replace(/\/$/, '')}`;
+  const parentPath = `${origin + parentDirectory}`;
 
   console.log('currentPath = ' + currentPath);
   console.log('parentDirectory = ' + parentDirectory);
