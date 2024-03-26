@@ -37,8 +37,12 @@ export default async function decorate(doc) {
     const success = await getLeftNav(currentPath) || await getLeftNav(parentPath);
 
     if (success) {
+      let matchFirst = true;
       $aside.querySelectorAll('a').forEach(($link) => {
-        if ($link.href.replace(/\/$/, '') === currentPath) $link.parentElement.classList.add('active');
+        if (matchFirst && $link.href.replace(/\/$/, '') === currentPath) {
+          $link.parentElement.classList.add('active');
+          matchFirst = false;
+        }
       });
     }
   })();
