@@ -5,27 +5,36 @@ import { breadcrumbs } from '../../scripts/scripts.js';
 
 export default async function decorate(doc) {
   const $aside = aside({ class: 'left-nav' });
-  const currentURL = window.location.href;
-  const { protocol, host, pathname } = window.location;
-  let parentPath = `${protocol}//${host}${pathname}`;
-  // if path does not end with / get parent directory
-  if (!pathname.endsWith('/')) parentPath = `${parentPath.substring(0, parentPath.lastIndexOf('/'))}/`;
 
-  (async () => {
+  const { pathname, origin } = window.location;
+  const currentPath = `${origin}${pathname.replace(/\/$/, '')}`;
+  const parentDirectory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+  const parentPath = `${origin}${parentDirectory.replace(/\/$/, '')}`;
+
+  const getLeftNav = async (url) => {
     try {
-      const response = await fetch(`${parentPath}left-nav.plain.html`);
+      const response = await fetch(`${url}/left-nav.plain.html`);
+      if (!response.ok) {
+        throw new Error(`Fetch failed with status ${response.status}`);
+      }
       const html = await response.text();
       $aside.innerHTML = html;
-
-      // add active class
-      $aside.querySelectorAll('a').forEach(($link) => {
-        const hrefPath = new URL($link.href).pathname.replace(/\/$/, '');
-        const currentPath = new URL(currentURL).pathname.replace(/\/$/, '');
-        if (hrefPath === currentPath) $link.parentElement.classList.add('active');
-      });
+      return true;
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error('Error fetching HTML:', error);
+      console.error(`Error fetching left-nav from ${url}:`, error);
+      return false;
+    }
+  };
+
+  (async () => {
+    // if lef-nav isn't in curernt path (index page) - get from parent folder
+    const success = await getLeftNav(currentPath) || await getLeftNav(parentPath);
+
+    if (success) {
+      $aside.querySelectorAll('a').forEach(($link) => {
+        if ($link.href.replace(/\/$/, '') === currentPath) $link.parentElement.classList.add('active');
+      });
     }
   })();
 
