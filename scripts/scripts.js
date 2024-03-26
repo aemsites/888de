@@ -68,7 +68,7 @@ export function decorateButtons(element) {
           up.classList.add('button-container');
           a.append(linkTextEl);
         }
-        if (up.childNodes.length === 2 && (up.tagName === 'P' || up.tagName === 'DIV') && up.querySelector('.icon')) {
+        if (up.childNodes.length === 2 && up.tagName === 'DIV' && up.querySelector('.icon')) {
           const icon = up.querySelector('.icon');
           a.textContent = '';
           a.className = 'button text'; // default
