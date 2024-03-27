@@ -7,6 +7,7 @@ export default async function decorate(doc) {
   const $aside = aside({ class: 'left-nav' });
 
   const { pathname, origin } = window.location;
+  const parts = pathname.split('/');
   const normalizedPathname = pathname.replace(/\/$/, '');
 
   // parent directory
@@ -19,6 +20,11 @@ export default async function decorate(doc) {
   const getLeftNav = async (url) => {
     try {
       const response = await fetch(`${url}/left-nav.plain.html`);
+      if (response.status === 404) {
+        // eslint-disable-next-line no-console
+        console.log('(above 404 can be ignored) left-nav doesn\'t exist at that location - so we check the parent folder');
+        return false;
+      }
       if (!response.ok) {
         throw new Error(`Fetch failed with status ${response.status}`);
       }
@@ -37,8 +43,18 @@ export default async function decorate(doc) {
     const success = await getLeftNav(currentPath) || await getLeftNav(parentPath);
 
     if (success) {
+      const keywords = ['abhebung', 'einzahlung'];
+      const keyword = parts[2];
       $aside.querySelectorAll('a').forEach(($link) => {
-        if ($link.href.replace(/\/$/, '') === currentPath) $link.parentElement.classList.add('active');
+        const href = $link.href.replace(/\/$/, '');
+        const linkText = $link.textContent.trim().toLowerCase();
+        if (keywords.includes(keyword) && keyword === linkText) {
+          $link.parentElement.classList.add('active');
+          return;
+        }
+        if (!keywords.includes(keyword) && href === currentPath) {
+          $link.parentElement.classList.add('active');
+        }
       });
     }
   })();
