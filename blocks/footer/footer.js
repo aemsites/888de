@@ -4,6 +4,7 @@ import { loadFragment } from '../fragment/fragment.js';
 // convert the sitemap links to an accordion
 function createMobileMenu(block) {
   const accordionItems = block.querySelectorAll('.section-outer:nth-child(2) .default-content-wrapper > ul');
+  console.log(accordionItems);
   for (let i = 0; i < accordionItems.length; i += 1) {
     const accordionItem = accordionItems[i];
     const details = document.createElement('details');

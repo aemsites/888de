@@ -366,6 +366,10 @@ async function loadEager(doc) {
   const templateName = getMetadata('template');
   decorateTemplateAndTheme(templateName);
 
+  const $body = doc.querySelector('body');
+  $body.setAttribute('itemscope', '');
+  $body.setAttribute('itemtype', 'https://schema.org/WebPage');
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
