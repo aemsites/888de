@@ -15,7 +15,5 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
-      nav-order:
-        select: head > meta[name="nav-order"]
-        value: attribute(el, "content")
+
         
