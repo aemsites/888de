@@ -198,11 +198,6 @@ h2 {
   padding: 0 5px;
 }
 
-.default-content-wrapper > h2 {
-  display: flex;
-  align-items: center;
-}
-
 h4 { font-size: var(--heading-font-size-m) }
 h5 { font-size: var(--heading-font-size-s) }
 h6 { font-size: var(--heading-font-size-xs) }
