@@ -1,3 +1,7 @@
 body.home {
   background-color: black;
 }
+
+body.home .default-content-wrapper > h2 {
+  justify-content: center;
+}
