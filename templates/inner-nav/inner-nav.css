@@ -13,7 +13,7 @@ main .section-outer .section { flex-grow: 1 }
 aside.left-nav {
   min-width: max(24%, 250px);
   margin: 0 20px 0 10px;
-  min-height: 600px;
+  min-height: 400px;
 }
 
 @media (width < 1024px) {
