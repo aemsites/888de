@@ -4,6 +4,17 @@ indices:
   default:
     include:
       - /**
+    exclude:
+      - '**/drafts/**'
+      - '**/images/**'
+      - '**/icons/**'
+      - '**/fragments/**'
+      - '**/tools/**'
+      - '**/seo/**'
+      - /footer
+      - /nav
+      - /404
+      - /login
     target: /query-index.json
     properties:
       lastModified:
