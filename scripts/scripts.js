@@ -26,10 +26,8 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
  */
 export function wrapSpanLink(element = document) {
   element.querySelectorAll('span.icon + a, picture + a').forEach((a) => {
-    if (a.href === a.innerHTML) {
-      a.innerHTML = '';
-      a.append(a.previousElementSibling);
-    }
+    a.innerHTML = '';
+    a.append(a.previousElementSibling);
   });
 }
 
