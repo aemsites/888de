@@ -26,6 +26,7 @@ const userAgent = window.sUserAgent || window.rlUserAgent || navigator.userAgent
 const isMobile = iosRegex.test(userAgent) || mobileRegex.test(userAgent) || androidRegex.test(userAgent);
 // eslint-disable-next-line no-unused-vars
 const dlp = '';
+const rlWtc = '';
 let casinoURL;
 let pokerURL;
 let sportURL;
