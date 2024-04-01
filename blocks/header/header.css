@@ -1,7 +1,10 @@
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable declaration-block-single-line-max-declarations */
 
-body.no-scroll { overflow: hidden }
+body.no-scroll { 
+  position: fixed; 
+  overflow-y: scroll;
+}
 
 body > main {
   position: relative;
