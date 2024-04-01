@@ -7,9 +7,9 @@ function createMobileSlide(slide, slideContent) {
  </div>
  <div class="slide-banner">${slideContent.mobilePic ? slideContent.mobilePic.outerHTML : slideContent.pic.outerHTML}</div>
  <div class="mobile-v2">
-    ${slideContent.offer.outerHTML}
-    <div class="mobile">${slideContent.termsLink.outerHTML}</div>
-    ${slideContent.button.outerHTML}
+    ${slideContent.offer ? slideContent.offer.outerHTML : ''}
+    <div class="mobile">${slideContent.termsLink ? slideContent.termsLink.outerHTML : ''}</div>
+    ${slideContent.button ? slideContent.button.outerHTML : ''}
  </div>`;
 
   setTimeout(() => {
@@ -36,15 +36,15 @@ function populateDtSlidesWrapper(dtSlidesWrapper, pic) {
 function createDesktopSlide(slide, slideContent) {
   slide.innerHTML = `
          <div class="brand-logo">
-            ${slideContent.icon.outerHTML || ''}
+            ${slideContent.icon ? slideContent.icon.outerHTML : ''}
             <div class="brand-logo-line">&nbsp;</div>
          </div>
          <div class="banner-offer">
-         ${slideContent.offer.outerHTML}
+         ${slideContent.offer ? slideContent.offer.outerHTML : ''}
          </div>
          <div class="banner-cta-terms">
-            ${slideContent.button.outerHTML}
-            <div class="banner-terms">${slideContent.termsLink.outerHTML}</div>
+            ${slideContent.button ? slideContent.button.outerHTML : ''}
+            <div class="banner-terms">${slideContent.termsLink ? slideContent.termsLink.outerHTML : ''}</div>
          </div>`;
   setTimeout(() => {
     slide.innerHTML += `
@@ -59,9 +59,9 @@ function createDesktopSlide(slide, slideContent) {
 
 function createBoxOffer(boxOffer, slideContent) {
   boxOffer.innerHTML = `
-    ${slideContent.offer.outerHTML}
-    ${slideContent.button.outerHTML.replaceAll('main-banner', 'carousel')}
-    <div class="pc">${slideContent.termsLink.outerHTML.replaceAll('main-banner', 'carousel')}</div>
+    ${slideContent.offer ? slideContent.offer.outerHTML : ''}
+    ${slideContent.button ? slideContent.button.outerHTML.replaceAll('main-banner', 'carousel') : ''}
+    <div class="pc">${slideContent.termsLink ? slideContent.termsLink.outerHTML.replaceAll('main-banner', 'carousel') : ''}</div>
     `;
 }
 
