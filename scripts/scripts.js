@@ -135,7 +135,6 @@ export function buildLinks(main) {
       // eslint-disable-next-line no-unused-vars
       const [_, linkText, attrs] = match;
       a.textContent = linkText;
-      a.title = linkText;
       // match all attributes between curly braces
       attrs.split('|').forEach((attr) => {
         const [key, ...values] = attr.split('=');
