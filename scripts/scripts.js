@@ -337,13 +337,12 @@ export async function breadcrumbs(doc) {
       h1 = doc.querySelector('h1').textContent;
     } else {
       const getIndexHTML = await fetch(`${href}index.plain.html`);
-      if (getIndexHTML.redirected) {
-        // index page is redirected - get h1 from index-breadcrumb
+      if (getIndexHTML.ok) {
+        h1 = await title(getIndexHTML);
+      } else {
+        // get h1 from page index-breadcrumb doc
         const getBreadcrumbHTML = await fetch(`${href}index-breadcrumb.plain.html`);
         h1 = await title(getBreadcrumbHTML);
-      } else if (getIndexHTML.ok) {
-        // get h1 from page
-        h1 = await title(getIndexHTML);
       }
     }
     return crumb(h1, href, index + 1);
