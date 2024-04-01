@@ -250,13 +250,13 @@ function decorateStyledSections(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  buildLinks(main);
   decorateButtons(main);
   decorateExternalLinks(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  buildLinks(main);
   wrapSpanLink(main);
   decorateStyledSections(main);
 }
