@@ -145,6 +145,7 @@ export default function decorate(block) {
         }
         const button = col.querySelector('p.button-container');
         if (button) {
+          button.querySelector('a').removeAttribute('href');
           slideContent.button = button;
           col.removeChild(button);
         }
