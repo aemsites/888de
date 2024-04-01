@@ -284,7 +284,6 @@ main .section.carousel-container {
     font-size: .95vw;
     position: relative;
     text-align: center;
-    z-index: 998;
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
@@ -294,6 +293,7 @@ main .section.carousel-container {
     max-width: 35%;
     left: 5%;
     top: 55%;
+    z-index: 998;
 }
 
 .carousel.block .dt-slides-wrapper .dt-dots-wrapper {
