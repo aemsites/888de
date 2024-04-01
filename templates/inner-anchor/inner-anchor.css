@@ -1,5 +1,5 @@
 @import url('../../styles/breadcrumbs.css');
-@import url('../inner-nav/inner-nav.css');
+@import url('../inner-nav-fragment/inner-nav-fragment.css');
 
 aside.left-nav ul li a {
   padding: 5px 20px;
