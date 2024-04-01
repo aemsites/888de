@@ -43,13 +43,35 @@ export function addLdJsonScript(parent, json) {
   parent.append(script);
 }
 
+/** allow for link attributes to be added into link text
+ * ex: Link Text{target=blank|rel=noopener}
+ * @param main
+ */
+export function buildLinks(main) {
+  main.querySelectorAll('a').forEach((a) => {
+    const match = a.textContent.match(/(.*){([^}]*)}/);
+    if (match) {
+      // eslint-disable-next-line no-unused-vars
+      const [_, linkText, attrs] = match;
+      a.textContent = linkText;
+      // match all attributes between curly braces
+      attrs.split('|').forEach((attr) => {
+        const [key, ...values] = attr.split('=');
+        const value = values.join('=');
+        //  a.setAttribute(key.trim(), value.trim());
+        a.setAttribute(key, value);
+      });
+    }
+  });
+}
+
 /**
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
 export function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
-    a.title = a.title || a.textContent;
+    if (a.title) a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
@@ -122,29 +144,6 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
-}
-
-/** allow for link attributes to be added into link text
- * ex: Link Text{target=blank|rel=noopener}
- * @param main
- */
-export function buildLinks(main) {
-  main.querySelectorAll('a').forEach((a) => {
-    const match = a.textContent.match(/(.*){([^}]*)}/);
-    if (match) {
-      // eslint-disable-next-line no-unused-vars
-      const [_, linkText, attrs] = match;
-      a.textContent = linkText;
-      a.title = linkText;
-      // match all attributes between curly braces
-      attrs.split('|').forEach((attr) => {
-        const [key, ...values] = attr.split('=');
-        const value = values.join('=');
-        //  a.setAttribute(key.trim(), value.trim());
-        a.setAttribute(key, value);
-      });
-    }
-  });
 }
 
 /**
@@ -250,13 +249,13 @@ function decorateStyledSections(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  buildLinks(main);
   decorateButtons(main);
   decorateExternalLinks(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  buildLinks(main);
   wrapSpanLink(main);
   decorateStyledSections(main);
 }
