@@ -71,7 +71,6 @@ export function buildLinks(main) {
  */
 export function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
-    if (a.title) a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
