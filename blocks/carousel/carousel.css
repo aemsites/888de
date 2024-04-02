@@ -141,7 +141,7 @@ main .section.carousel-container {
     display: block;
     position: fixed;
     bottom: 30px;
-    left: 50%;
+    left: calc(50% - 12px);
     transform: translateX(-50%);
     z-index: 9;
 }

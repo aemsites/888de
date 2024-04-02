@@ -199,7 +199,7 @@ export default function decorate(block) {
     slideIndex += 1;
   });
   // create bouncing arrow
-  const bouncingArrow = document.createElement('div');
+  const bouncingArrow = document.createElement('a');
   bouncingArrow.className = 'bouncing-arrow';
   bouncingArrow.innerHTML = '<span class="icon icon-carousel-chevron"></span>';
   const carousel = document.querySelector('.carousel');
@@ -211,6 +211,20 @@ export default function decorate(block) {
       } else {
         bouncingArrow.classList.remove('inactive');
       }
+    }
+  });
+
+  bouncingArrow.addEventListener('click', () => {
+    const carouselTop = carousel.offsetTop;
+    const carouselHeight = carousel.offsetHeight;
+    const carouselBottom = carouselTop + carouselHeight;
+    const { scrollY } = window;
+    const scrollBy = (carouselHeight / 3) + 10;
+    if (scrollY < carouselBottom) {
+      window.scrollTo({
+        top: scrollY + scrollBy,
+        behavior: 'smooth',
+      });
     }
   });
 
