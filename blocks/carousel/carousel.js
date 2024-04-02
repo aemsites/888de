@@ -215,11 +215,12 @@ export default function decorate(block) {
   });
 
   bouncingArrow.addEventListener('click', () => {
+    const slideCount = mobileSlidesWrapper.querySelectorAll('.slide').length;
     const carouselTop = carousel.offsetTop;
     const carouselHeight = carousel.offsetHeight;
     const carouselBottom = carouselTop + carouselHeight;
     const { scrollY } = window;
-    const scrollBy = (carouselHeight / 3) + 10;
+    const scrollBy = (carouselHeight / slideCount) + 10;
     if (scrollY < carouselBottom) {
       window.scrollTo({
         top: scrollY + scrollBy,
