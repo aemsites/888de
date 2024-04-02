@@ -198,6 +198,38 @@ export default function decorate(block) {
 
     slideIndex += 1;
   });
+  // create bouncing arrow
+  const bouncingArrow = document.createElement('a');
+  bouncingArrow.className = 'bouncing-arrow';
+  bouncingArrow.innerHTML = '<span class="icon icon-carousel-chevron"></span>';
+  const carousel = document.querySelector('.carousel');
+  window.addEventListener('scroll', () => {
+    if (carousel) {
+      const carouselBottom = carousel.offsetTop + carousel.offsetHeight;
+      if (window.scrollY > carouselBottom) {
+        bouncingArrow.classList.add('inactive');
+      } else {
+        bouncingArrow.classList.remove('inactive');
+      }
+    }
+  });
+
+  bouncingArrow.addEventListener('click', () => {
+    const slideCount = mobileSlidesWrapper.querySelectorAll('.slide').length;
+    const carouselTop = carousel.offsetTop;
+    const carouselHeight = carousel.offsetHeight;
+    const carouselBottom = carouselTop + carouselHeight;
+    const { scrollY } = window;
+    const scrollBy = (carouselHeight / slideCount) + 10;
+    if (scrollY < carouselBottom) {
+      window.scrollTo({
+        top: scrollY + scrollBy,
+        behavior: 'smooth',
+      });
+    }
+  });
+
+  mobileSlidesWrapper.append(bouncingArrow);
   dtSlidesWrapper.append(dtDotsWrapper);
   dtSlidesWrapper.append(dtBannerBoxWrapper);
   block.replaceChildren(dtSlidesWrapper, mobileSlidesWrapper);
