@@ -258,11 +258,22 @@ export default function decorate(block) {
   // auto rotate slides
   const dtSlides = dtSlidesWrapper.querySelectorAll('.slide');
   slideIndex = 1;
-  setInterval(() => {
-    if (slideIndex > dtSlides.length) {
-      slideIndex = 1;
-    }
-    changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
-    slideIndex += 1;
-  }, transitionDuration * 1000);
+  let intervalId;
+  const startAutoScroll = () => {
+    intervalId = setInterval(() => {
+      if (slideIndex > dtSlides.length) {
+        slideIndex = 1;
+      }
+      changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+      slideIndex += 1;
+    }, transitionDuration * 1000);
+  };
+  const stopAutoScroll = () => {
+    clearInterval(intervalId);
+  };
+  startAutoScroll();
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseout', startAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseout', startAutoScroll);
 }
