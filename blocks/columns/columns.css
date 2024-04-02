@@ -52,6 +52,10 @@
   display: block;
 }
 
+/* linked variant */
+.columns.linked { cursor: pointer }
+.columns.linked > div:last-child { display:none }
+
 /* clubs sections */
 /* stylelint-disable-next-line no-descending-specificity */
 .columns.club-sections > div {
