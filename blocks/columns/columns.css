@@ -52,7 +52,7 @@
   display: block;
 }
 
-/* linked variant - hide row */
+/* linked variant */
 .columns.linked { cursor: pointer }
 .columns.linked > div:last-child { display:none }
 

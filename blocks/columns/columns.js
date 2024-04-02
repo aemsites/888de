@@ -10,6 +10,7 @@ export default function decorate(block) {
     });
   }
 
+  // linked variant
   const isLinked = block.classList.contains('linked');
   if (isLinked) {
     const link = block.querySelector('.columns.linked > div:last-child > div > a');
