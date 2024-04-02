@@ -3,7 +3,13 @@
  * Recreate an accordion
  * https://www.hlx.live/developer/block-collection/accordion
  */
-import { addLdJsonScript } from '../../scripts/scripts.js';
+
+function addLdJsonQa(parent, json) {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.innerHTML = JSON.stringify(json);
+  parent.append(script);
+}
 
 function addFaqJson(block) {
   const data = {
@@ -21,7 +27,7 @@ function addFaqJson(block) {
       return info;
     }),
   };
-  addLdJsonScript(document.querySelector('head'), data);
+  addLdJsonQa(document.querySelector('head'), data);
 }
 
 function hasWrapper(el) {
