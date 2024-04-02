@@ -279,6 +279,11 @@ main .section.carousel-container {
     max-width: 20vw;
 }
 
+.carousel.block .dt-slides-wrapper .button-container a:hover {
+    background-color: var(--black-color);
+    color: var(--yellow-color);
+}
+
 .carousel.block .dt-slides-wrapper .banner-terms {
     color: var(--med-gray-color);
     font-size: .95vw;
@@ -286,6 +291,14 @@ main .section.carousel-container {
     text-align: center;
     cursor: pointer;
     transition: all .3s ease-in-out;
+}
+
+.carousel.block .dt-slides-wrapper .banner-terms:hover{
+    color: var(--white-color);
+}
+
+.carousel.block .dt-slides-wrapper .banner-terms a {
+    text-decoration: none;
 }
 
 .carousel.block .dt-slides-wrapper .banner-cta-terms {
