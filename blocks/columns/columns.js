@@ -9,6 +9,16 @@ export default function decorate(block) {
       img.style.width = `${img.width}px`;
     });
   }
+
+  const isLinked = block.classList.contains('linked');
+  if (isLinked) {
+    const link = block.querySelector('.columns.linked > div:last-child > div > a');
+    if (link) {
+      const href = link.getAttribute('href');
+      block.addEventListener('click', () => { window.location.href = href; });
+    }
+  }
+
   // setup image columns
   let index = 1;
   [...block.children].forEach((row) => {
