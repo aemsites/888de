@@ -16,10 +16,13 @@ export default function decorate(block) {
     const link = block.querySelector('.columns.linked > div:last-child > div > a');
     if (link) {
       const href = link.getAttribute('href');
-      block.addEventListener('click', () => { window.location.href = href; });
+      const aBlock = document.createElement('a');
+      aBlock.setAttribute('href', href);
+      aBlock.innerHTML = block.innerHTML;
+      block.innerHTML = '';
+      block.appendChild(aBlock);
     }
   }
-
   // setup image columns
   let index = 1;
   [...block.children].forEach((row) => {
