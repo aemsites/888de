@@ -198,6 +198,38 @@ export default function decorate(block) {
 
     slideIndex += 1;
   });
+  // create bouncing arrow
+  const bouncingArrow = document.createElement('a');
+  bouncingArrow.className = 'bouncing-arrow';
+  bouncingArrow.innerHTML = '<span class="icon icon-carousel-chevron"></span>';
+  const carousel = document.querySelector('.carousel');
+  window.addEventListener('scroll', () => {
+    if (carousel) {
+      const carouselBottom = carousel.offsetTop + carousel.offsetHeight;
+      if (window.scrollY > carouselBottom) {
+        bouncingArrow.classList.add('inactive');
+      } else {
+        bouncingArrow.classList.remove('inactive');
+      }
+    }
+  });
+
+  bouncingArrow.addEventListener('click', () => {
+    const slideCount = mobileSlidesWrapper.querySelectorAll('.slide').length;
+    const carouselTop = carousel.offsetTop;
+    const carouselHeight = carousel.offsetHeight;
+    const carouselBottom = carouselTop + carouselHeight;
+    const { scrollY } = window;
+    const scrollBy = (carouselHeight / slideCount) + 10;
+    if (scrollY < carouselBottom) {
+      window.scrollTo({
+        top: scrollY + scrollBy,
+        behavior: 'smooth',
+      });
+    }
+  });
+
+  mobileSlidesWrapper.append(bouncingArrow);
   dtSlidesWrapper.append(dtDotsWrapper);
   dtSlidesWrapper.append(dtBannerBoxWrapper);
   block.replaceChildren(dtSlidesWrapper, mobileSlidesWrapper);
@@ -226,11 +258,22 @@ export default function decorate(block) {
   // auto rotate slides
   const dtSlides = dtSlidesWrapper.querySelectorAll('.slide');
   slideIndex = 1;
-  setInterval(() => {
-    if (slideIndex > dtSlides.length) {
-      slideIndex = 1;
-    }
-    changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
-    slideIndex += 1;
-  }, transitionDuration * 1000);
+  let intervalId;
+  const startAutoScroll = () => {
+    intervalId = setInterval(() => {
+      if (slideIndex > dtSlides.length) {
+        slideIndex = 1;
+      }
+      changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+      slideIndex += 1;
+    }, transitionDuration * 1000);
+  };
+  const stopAutoScroll = () => {
+    clearInterval(intervalId);
+  };
+  startAutoScroll();
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseout', startAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseout', startAutoScroll);
 }
