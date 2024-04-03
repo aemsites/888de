@@ -357,7 +357,7 @@ export async function breadcrumbs(doc) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = 'de';
   const templateName = getMetadata('template');
   decorateTemplateAndTheme(templateName);
 
