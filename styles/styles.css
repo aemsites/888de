@@ -253,17 +253,17 @@ a:hover {
 /* buttons */
 a.button:any-link, button {
   font-family: var(--body-font-family);
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
-  font-size: var(--body-font-size-l);
+  font-size: var(--body-font-size-m);
   border: 2px solid transparent;
-  padding: 5px 30px;
+  padding: 10px 25px;
   text-align: center;
   font-style: normal;
   font-weight: 600;
   cursor: pointer;
-  color: var(--background-color);
+  color: var(--text-color);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -277,6 +277,7 @@ a.button:any-link, button {
 a.button:hover, a.button:focus, button:hover, button:focus  {
   background-color: var(--link-hover-color);
   cursor: pointer;
+  color: var(--yellow-color);
 }
 
 button:disabled, button:disabled:hover {
@@ -288,6 +289,12 @@ a.button.secondary, button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
+}
+
+a.button.secondary:hover, a.button.secondary:focus,
+button.secondary:hover, button.secondary:focus {
+  background-color: var(--yellow-color);
+  cursor: pointer;
 }
 
 a.button.text, button.text {
