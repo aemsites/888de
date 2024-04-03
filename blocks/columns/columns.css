@@ -53,8 +53,8 @@
 }
 
 /* linked variant */
-.columns.linked { cursor: pointer }
-.columns.linked > div:last-child { display:none }
+.columns.linked a { text-decoration: none }
+.columns.linked a > div:last-child { display:none }
 
 /* clubs sections */
 /* stylelint-disable-next-line no-descending-specificity */
