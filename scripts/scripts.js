@@ -116,7 +116,7 @@ export function decorateButtons(element) {
   });
 }
 
-function decorateExternalLinks(main) {
+export function decorateExternalLinks(main) {
   main.querySelectorAll('a').forEach((a) => {
     const href = a.getAttribute('href');
     if (href) {
