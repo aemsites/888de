@@ -130,6 +130,7 @@ body {
   color: var(--text-color);
   background: var(--background-color);
   display: none;
+  width: 100%;
 }
 
 body.appear {
