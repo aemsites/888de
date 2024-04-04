@@ -98,6 +98,7 @@ export default function decorate(block) {
   const slider = document.createElement('div');
   slider.className = 'slider';
   let mobRatio;
+  const vpWidth = window.innerWidth;
 
   const firstPic = block.querySelector('picture').cloneNode(true);
   firstPic.querySelector('img').setAttribute('loading', 'eager');
@@ -119,6 +120,9 @@ export default function decorate(block) {
         img.setAttribute('loading', 'eager');
         const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
         pic.style.paddingBottom = `${ratio}%`;
+        if (vpWidth < 1600) {
+          slider.style.maxHeight = `${img.height}px`;
+        }
         slideContent.img = img.getAttribute('src');
         const mobilePic = col.querySelectorAll('picture')[1];
         if (mobilePic) {
@@ -168,7 +172,6 @@ export default function decorate(block) {
     mobileSlidesWrapper.append(mobSlide);
     const mobileBanner = mobSlide.querySelector('.slide-banner');
     mobileBanner.style.paddingBottom = `${mobRatio}%`;
-    const vpWidth = window.innerWidth;
     mobileBanner.style.maxHeight = `${vpWidth * (mobRatio / 100)}px`;
 
     const dtSlide = document.createElement('div');
@@ -225,11 +228,22 @@ export default function decorate(block) {
   // auto rotate slides
   const dtSlides = dtSlidesWrapper.querySelectorAll('.slide');
   slideIndex = 1;
-  setInterval(() => {
-    if (slideIndex > dtSlides.length) {
-      slideIndex = 1;
-    }
-    changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
-    slideIndex += 1;
-  }, transitionDuration * 1000);
+  let intervalId;
+  const startAutoScroll = () => {
+    intervalId = setInterval(() => {
+      if (slideIndex > dtSlides.length) {
+        slideIndex = 1;
+      }
+      changeSlide(slideIndex, dtSlidesWrapper, dtDotsWrapper, dtBannerBoxWrapper);
+      slideIndex += 1;
+    }, transitionDuration * 1000);
+  };
+  const stopAutoScroll = () => {
+    clearInterval(intervalId);
+  };
+  startAutoScroll();
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseover', stopAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #right').addEventListener('mouseout', startAutoScroll);
+  dtSlidesWrapper.querySelector('.slider #left').addEventListener('mouseout', startAutoScroll);
 }
