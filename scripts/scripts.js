@@ -122,7 +122,8 @@ export function decorateExternalLinks(main) {
     if (href) {
       if (!href.startsWith('/') // in case of local paths
           && !href.startsWith('#')) { // in case of anchors
-        if (!href.includes('888.de')) {
+        if (!href.includes('888.de') // link is internal
+          && a.getAttribute('target') === null) { // external link has target attr
           a.setAttribute('target', '_blank');
         }
       }
