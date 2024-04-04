@@ -5,7 +5,7 @@ footer {
 }
 
 footer p {
-  font-size: var(--body-font-size-xxs);
+  font-size: var(--body-font-size-xxxs);
 }
 
 footer ul {
@@ -24,12 +24,6 @@ footer .footer li {
 
 footer .payment-strip {
   background-color: var(--light-black-color);
-}
-
-footer .sbt-main .columns-container {
-  width: 90%;
-  text-align: left;
-  margin: 0 auto;
 }
 
 footer .license a {
@@ -60,7 +54,17 @@ footer .license {
   padding: 15px 0 60px;
 }
 
-footer .sbt-main .columns > div {
+footer .sbt-main .columns-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+footer .sbt-main .columns div {
+  padding: 0;
+}
+
+footer .sbt-main .columns > div,
+footer .sbt-main .columns a > div:first-of-type {
   display: flex;
   flex-flow: row;
   background-color: var(--light-black-color);
@@ -75,14 +79,14 @@ footer .sbt-main .columns > div {
   gap: 0;
 }
 
-footer .sbt-main .columns > div h2 {
+footer .sbt-main .columns h2 {
   margin: 0;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
   text-align: left;
 }
 
-footer .sbt-main .columns > div p {
+footer .sbt-main .columns p {
   margin: 0;
 }
 
@@ -91,8 +95,8 @@ footer .regulation img {
   width: auto;
 }
 
-footer .sbt-main .columns > div > div:nth-child(1),
-footer .sbt-main .columns > div > div:nth-child(3) {
+footer .sbt-main .columns div > div:nth-child(1),
+footer .sbt-main .columns div > div:nth-child(3) {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
@@ -100,19 +104,24 @@ footer .sbt-main .columns > div > div:nth-child(3) {
   max-width: 128px;
 }
 
-footer .sbt-main .columns > div > div:nth-child(2) {
+footer .sbt-main .columns div > div:nth-child(2) {
   flex-grow: 2;
+  padding-left: 0;
 }
 
-footer .sbt-main .columns > div > div:nth-child(1) img {
+footer .sbt-main .columns div > div:nth-child(1) {
+  padding-right: 0;
+}
+
+footer .sbt-main .columns div > div:nth-child(1) img {
   max-height: 55px;
   width: auto;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
-footer .sbt-main .columns > div > div:nth-child(3) img {
-  max-height: 35px;
+footer .sbt-main .columns div > div:nth-child(3) img {
+  max-height: 25px;
   width: auto;
   vertical-align: middle;
   margin-left: 10px;
@@ -278,12 +287,32 @@ footer .payment-strip .icon {
 }
 
 @media (width >= 500px) {
-  footer .sbt-main .columns > div h2 {
+  footer .sbt-main .columns h2 {
     font-size: var(--heading-font-size-m);
+  }
+
+  footer .sbt-main .columns div {
+    padding: 0 10px;
+  }
+
+  footer .sbt-main .columns div > div:nth-child(1) img {
+    margin-right: 14px;
+  }
+
+  footer .sbt-main .columns div > div:nth-child(2) {
+    padding-left: 2px;
+  }
+
+  footer .sbt-main .columns div > div:nth-child(3) {
+    margin-right: 6px;
+  }
+
+  footer .sbt-main .columns div > div:nth-child(3) img {
+    max-height: 35px;
   }
 }
 
-@media (width>= 768px) {
+@media (width >= 768px) {
   footer .regulation ul {
     display: flex;
     justify-content: center;
@@ -296,11 +325,19 @@ footer .payment-strip .icon {
     margin: 2px;
   }
 
-  footer .sbt-main .columns > div h2 {
+  footer .sbt-main .columns div {
+    padding: 10px 16px;
+  }
+
+  footer .sbt-main .columns div > div:nth-child(3) {
+    margin-right: 20px;
+  }
+
+  footer .sbt-main .columns h2 {
     font-size: var(--body-font-size-xl);
   }
 
-  footer .sbt-main .columns > div > div:nth-child(1) {
+  footer .sbt-main .columns div > div:nth-child(1) {
     max-width: 100px;
   }
 }
@@ -310,7 +347,7 @@ footer .payment-strip .icon {
     padding: 20px 0 0;
   }
 
-  footer .sbt-main .columns > div {
+  footer .sbt-main .columns div {
     padding: 16px;
   }
 
@@ -370,5 +407,11 @@ footer .payment-strip .icon {
 
   footer .site-map details summary a::after {
     display: none;
+  }
+}
+
+@media (width >= 1200px) {
+  footer .sbt-main .columns-container {
+    width: 1080px;
   }
 }
