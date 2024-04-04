@@ -116,13 +116,14 @@ export function decorateButtons(element) {
   });
 }
 
-export function decorateExternalLinks(main) {
+function decorateExternalLinks(main) {
   main.querySelectorAll('a').forEach((a) => {
     const href = a.getAttribute('href');
     if (href) {
       if (!href.startsWith('/') // in case of local paths
           && !href.startsWith('#')) { // in case of anchors
-        if (!href.includes('888.de')) {
+        if (!href.includes('888.de') // link is internal
+          && a.getAttribute('target') === null) { // external link has target attr
           a.setAttribute('target', '_blank');
         }
       }
