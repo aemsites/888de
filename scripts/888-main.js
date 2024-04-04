@@ -5,9 +5,6 @@
 /* eslint-disable no-useless-concat */
 /* eslint-disable func-names */
 
-//  add sCut
-let sCut; // added b/c sCut was not defined & throwing console errors
-
 window.addQueryParameter = (src) => {
   if (!src.href.includes(sCut)) {
     src.href += (src.href.includes('?') ? '&' : '?') + sCut;
