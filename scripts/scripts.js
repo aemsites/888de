@@ -60,6 +60,15 @@ export function buildLinks(main) {
         const value = values.join('=');
         //  a.setAttribute(key.trim(), value.trim());
         a.setAttribute(key, value);
+        // if link has onclick=SmartButton() use it and ignore href
+        const host = window.location.hostname;
+        if (key === 'onclick' && value.includes('SmartButton')
+            && (!host.includes('localhost') || !host.includes('.page') || !host.includes('.live'))) {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            a.onclick();
+          });
+        }
       });
     }
   });
