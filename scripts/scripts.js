@@ -62,9 +62,12 @@ export function buildLinks(main) {
         a.setAttribute(key, value);
         // if link has onclick=SmartButton() use it and ignore href
         const host = window.location.hostname;
+
         if (key === 'onclick' && value.includes('SmartButton')
-            && (!host.includes('localhost') || !host.includes('.page') || !host.includes('.live'))) {
+            && (host !== 'localhost' || !host.includes('.page') || !host.includes('.live'))) {
+          console.log(host);
           a.addEventListener('click', (e) => {
+            alert('clicked');
             e.preventDefault();
             a.onclick();
           });
