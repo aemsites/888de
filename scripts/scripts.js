@@ -68,9 +68,7 @@ export function buildLinks(main) {
             && host !== 'localhost'
             && !host.includes('.page')
             && !host.includes('.live')) {
-          console.log(host);
           a.addEventListener('click', (e) => {
-            alert('clicked');
             e.preventDefault();
             a.onclick();
           });
