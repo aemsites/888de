@@ -60,9 +60,10 @@ export function buildLinks(main) {
         const value = values.join('=');
         //  a.setAttribute(key.trim(), value.trim());
         a.setAttribute(key, value);
-        // if link has onclick=SmartButton() use it and ignore href
-        const host = window.location.hostname;
 
+        // if on CDN and <a> has onclick=SmartButton() use it
+        // otherwise allow href to be used on local, .page and .live
+        const host = window.location.hostname;
         if (key === 'onclick'
             && value.includes('SmartButton')
             && host !== 'localhost'
