@@ -21,8 +21,12 @@
   height: 100%;
   width: 100%;
   overflow: clip;
-  object-position: center;
+}
+
+.errorpage .main-content-image img,
+.errorpage .mobile-content-image img {
   object-fit: cover;
+  object-position: center;
 }
 
 .errorpage .mobile-content-image picture {
@@ -200,8 +204,6 @@
   .errorpage .mobile-content-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 }
 
