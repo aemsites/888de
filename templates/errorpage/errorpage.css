@@ -26,13 +26,14 @@
 }
 
 .errorpage .mobile-content-image picture {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
-.errorpage .main-content-image img,
 .errorpage .mobile-content-image img {
-  width: 100%;
+  height: 500px;
+  max-width: unset;
 }
 
 .errorpage .image-content-wrapper {
@@ -193,6 +194,15 @@
   border-color: var(--pumpkin-orange-color);
   background-color: var(--pumpkin-orange-color);
   color: var(--black-color);
+}
+
+@media (width >=700px) {
+  .errorpage .mobile-content-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 @media (width >=767px) {
