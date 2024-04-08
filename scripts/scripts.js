@@ -68,7 +68,6 @@ export function buildLinks(main) {
           // use SmartButtion function
           a.addEventListener('click', (e) => {
             e.preventDefault();
-            a.onclick();
           });
         }
       });
