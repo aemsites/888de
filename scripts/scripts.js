@@ -61,11 +61,11 @@ export function buildLinks(main) {
         //  a.setAttribute(key.trim(), value.trim());
         a.setAttribute(key, value);
 
-        // if <a> has onclick=SmartButton() and smartButton is defined
-        // use funcion and ignore href
-        if (key === 'onclick'
-            && value.includes('SmartButton')
-            && typeof SmartButton !== 'undefined') {
+        // if <a> has onclick=SmartButton()
+        if (key === 'onclick' && value.includes('SmartButton')) {
+          // set href to #
+          a.setAttribute('href', '#');
+          // use SmartButtion function
           a.addEventListener('click', (e) => {
             e.preventDefault();
             a.onclick();
