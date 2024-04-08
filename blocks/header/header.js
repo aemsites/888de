@@ -1,6 +1,7 @@
 /* eslint-disable function-paren-newline, object-curly-newline */
 import { nav, div, span, a, img, button, i } from '../../scripts/dom-helpers.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { decorateExternalLinks } from '../../scripts/scripts.js';
 
 const $body = document.body;
 let $loginModal;
@@ -30,6 +31,8 @@ async function getNav() {
   const navHTML = await fetchNav.text();
   $nav = nav();
   $nav.innerHTML = navHTML;
+
+  decorateExternalLinks($nav, 'from header.js');
 
   if (navHTML) {
     const $header = document.querySelector('header');

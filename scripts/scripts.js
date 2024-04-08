@@ -60,6 +60,17 @@ export function buildLinks(main) {
         const value = values.join('=');
         //  a.setAttribute(key.trim(), value.trim());
         a.setAttribute(key, value);
+
+        // if <a> has onclick=SmartButton()
+        if (key === 'onclick' && value.includes('SmartButton')) {
+          // set href to #
+          a.setAttribute('href', '#');
+          // use SmartButtion function
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            a.onclick();
+          });
+        }
       });
     }
   });
@@ -122,7 +133,8 @@ export function decorateExternalLinks(main) {
     if (href) {
       if (!href.startsWith('/') // in case of local paths
           && !href.startsWith('#')) { // in case of anchors
-        if (!href.includes('888.de')) {
+        if (!href.includes('888.de') // link is internal
+          && a.getAttribute('target') === null) { // external link has target attr
           a.setAttribute('target', '_blank');
         }
       }
