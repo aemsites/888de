@@ -165,6 +165,7 @@ footer .sbt-main .default-content-wrapper ul {
   height: 30px;
   margin-bottom: 0;
   background-color: var(--text-color);
+  z-index: 1;
 }
 
 footer .site-map .default-content-wrapper {
