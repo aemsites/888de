@@ -4,11 +4,13 @@ import { sampleRUM } from './aem.js';
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
 
+const host = window.location.hostname;
+const isNonProd = (host.includes('localhost') || host.includes('.page') || host.includes('.live'));
+
 // google tag manager
 function loadGTM() {
   // ignore if non-prod
-  const host = window.location.hostname;
-  if (host.includes('localhost') || host.includes('.page') || host.includes('.live')) return;
+  if (isNonProd) return;
 
   const scriptTag = document.createElement('script');
   scriptTag.innerHTML = `
@@ -34,6 +36,8 @@ function addLdJsonScript(parent, json) {
   parent.append(script);
 }
 
-const jsonLdMeta = document.querySelector('meta[name="json-ld"]').content;
-addLdJsonScript(document.querySelector('head'), jsonLdMeta);
-document.querySelector('meta[name="json-ld"]').remove();
+const jsonLdMeta = document.querySelector('meta[name="json-ld"]');
+if (jsonLdMeta) {
+  addLdJsonScript(document.querySelector('head'), jsonLdMeta.content);
+  document.querySelector('meta[name="json-ld"]').remove();
+}
