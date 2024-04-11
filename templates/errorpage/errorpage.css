@@ -27,6 +27,7 @@
 .errorpage .mobile-content-image img {
   object-fit: cover;
   object-position: center;
+  width: 100%;
 }
 
 .errorpage .mobile-content-image picture {
