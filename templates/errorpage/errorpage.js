@@ -18,7 +18,7 @@ export default async function decorate(doc) {
   imageContent.forEach((content) => {
     imageContentWrapper.append(content);
   });
-  heroSection.append(imageContentWrapper);
+  mobileImageWrapper.append(imageContentWrapper.cloneNode(true));
   const brandBox = mainEl.querySelector('.columns-container');
   brandBox.classList.remove('section');
   brandBox.classList.add('brand-box');
