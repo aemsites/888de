@@ -1,6 +1,8 @@
 .errorpage .hero-section {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .errorpage .main-content-image {
@@ -53,6 +55,10 @@
   transform: translateX(-50%);
   bottom: 0;
   background: linear-gradient(to bottom, #10101000, #101010, #101010);
+}
+
+.errorpage .hero-section > .image-content-wrapper {
+  display: none;
 }
 
 
@@ -215,6 +221,10 @@
 }
 
 @media (width >=1024px) {
+  .errorpage .hero-section {
+    display: block;
+  }
+
   .errorpage .mobile-content-image {
     display: none;
   }
@@ -234,6 +244,10 @@
     background: none;
     padding-top: 20px;
     padding-left: 12px;
+  }
+
+  .errorpage .hero-section > .image-content-wrapper {
+    display: block;
   }
 
   .errorpage .image-content-wrapper>* {
