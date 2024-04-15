@@ -1,6 +1,6 @@
 {
   "project": "888de",
-  "host": "",
+  "host": "www.888.de",
   "plugins": [
     {
       "id": "library",
