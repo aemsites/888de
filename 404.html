@@ -12,6 +12,22 @@
   <meta property="og:description" content="404 | 888™">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script src="/scripts/888-main.js" type="module" crossorigin="use-credentials"></script>
+  <script>
+    dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'serial' : '{{sr,}}',
+      'anid' : '{{anid,}}',
+      'flag' : '{{flag,}}',
+      'serachTerm' : '{{searchTerm,}}',
+      'lang' : '{{lang,}}',
+      'country' : '{{country,}}',
+      'mkw' : '{{mkw,}}',
+      'ftd' : '{{ftd,}}',
+      'real' : '{{real,}}',
+      'vip' : '{{vip,}}',
+      'playerStatusID' : '{{playerStatusID,}}'
+    });
+  </script>
   <script type="module">
     import { decorateMain, loadTemplate } from '/scripts/scripts.js';
     window.addEventListener('load', async() => {
