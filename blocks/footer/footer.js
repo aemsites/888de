@@ -37,6 +37,15 @@ export default async function decorate(block) {
   createMobileMenu(footer);
   block.append(footer);
 
+  const details = document.querySelectorAll('footer details');
+
+  details.forEach((detail) => {
+    detail.onclick = () => {
+      // Your code here
+      detail.classList.toggle('open');
+    };
+  });
+
   const [paymentStrip, siteMap, regulation, sbtMain, license] = document.querySelectorAll('div.footer>div>div.section-outer');
   paymentStrip.classList.add('payment-strip');
   siteMap.classList.add('site-map');
