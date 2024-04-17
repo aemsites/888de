@@ -47,13 +47,12 @@ export default async function decorate(block) {
   // open all accordions on desktop, close them all on mobile
   function checkWindowSize() {
     const isMobileScreen = window.matchMedia('(max-width: 1024px)').matches;
+    const details = document.querySelectorAll('footer details');
     if (!isMobileScreen) {
-      const details = document.querySelectorAll('footer details');
       details.forEach((detail) => {
         detail.setAttribute('open', '');
       });
     } else {
-      const details = document.querySelectorAll('footer details');
       details.forEach((detail) => {
         detail.removeAttribute('open');
       });
