@@ -230,7 +230,11 @@ export default function decorate(block) {
   mobileSlidesWrapper.append(bouncingArrow);
   dtSlidesWrapper.append(dtDotsWrapper);
   dtSlidesWrapper.append(dtBannerBoxWrapper);
-  block.replaceChildren(dtSlidesWrapper, mobileSlidesWrapper);
+  if (vpWidth > 600) {
+    block.replaceChildren(dtSlidesWrapper);
+  } else {
+    block.replaceChildren(mobileSlidesWrapper);
+  }
 
   // call change slide on click of dot, click of left and right arrow, on hover of box offer
   const dtLeft = dtSlidesWrapper.querySelector('#left');
