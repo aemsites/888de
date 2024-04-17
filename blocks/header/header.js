@@ -99,7 +99,7 @@ export default async function decorate(block) {
     src: '/icons/888de-logo.svg',
     width: '60',
     height: '60',
-    alt: '888.de',
+    alt: 'Online Slots Spiele & Online Poker Room',
   }));
 
   const $loginBtn = button({ class: 'login' }, 'Einloggen');

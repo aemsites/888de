@@ -341,10 +341,6 @@ main .section.carousel-container {
     color: var(--white-color);
 }
 
-.carousel.block .dt-slides-wrapper .banner-terms a {
-    text-decoration: none;
-}
-
 .carousel.block .dt-slides-wrapper .banner-cta-terms {
     position: absolute;
     max-width: 35%;
