@@ -11,9 +11,7 @@ function createMobileMenu(block) {
       div({ class: 'summary accordion-header' }, accordionItem.querySelector('strong')),
       div({ class: 'accordion-content' }, accordionItem.querySelector('li > ul')),
     );
-    accordionItemNew.onclick = () => {
-      accordionItemNew.classList.toggle('open');
-    };
+    accordionItemNew.onclick = () => accordionItemNew.classList.toggle('open');
     accordionItem.replaceWith(accordionItemNew);
   });
 }

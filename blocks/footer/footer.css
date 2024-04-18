@@ -257,12 +257,14 @@ footer .site-map .details .summary::after {
   width: 8px;
   height: 8px;
   border: var(--background-color) solid;
-  border-width: 2px 2px 0 0;
+  border-width: 2px 2px 0 0; /* needs to be separate */
   transition: all .3s ease-in-out;
   margin-top: 34px;
 }
 
-footer .site-map .details.open .summary::after { transform: translateY(-50%) rotate(-45deg) }
+footer .site-map .details.open .summary::after { 
+  transform: translateY(-50%) rotate(-45deg);
+}
 
 footer .site-map .details .accordion-content {
   overflow: hidden;
