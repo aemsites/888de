@@ -13,6 +13,7 @@ function createMobileSlide(slide, slideContent) {
  </div>`;
 
   setTimeout(() => {
+    console.log(slideContent.mobilePic);
     const slideBanner = slide.querySelector('.slide-banner');
     if (slideContent.mobVideolink || slideContent.dtVideoLink) {
       slideBanner.innerHTML = `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
@@ -100,7 +101,7 @@ export default function decorate(block) {
   let mobRatio;
   const vpWidth = window.innerWidth;
 
-  const firstPic = block.querySelector('picture').cloneNode(true);
+  const firstPic = block.querySelectorAll('picture')[0];
   firstPic.querySelector('img').setAttribute('loading', 'eager');
   populateDtSlidesWrapper(slider, firstPic);
   let slideIndex = 1;
