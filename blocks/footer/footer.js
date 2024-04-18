@@ -1,20 +1,21 @@
+/* eslint-disable function-paren-newline, object-curly-newline */
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { div } from '../../scripts/dom-helpers.js';
 
 // convert the sitemap links to an accordion
 function createMobileMenu(block) {
   const accordionItems = block.querySelectorAll('.section-outer:nth-of-type(2) .default-content-wrapper > ul');
-  for (let i = 0; i < accordionItems.length; i += 1) {
-    const accordionItem = accordionItems[i];
-    const details = document.createElement('details');
-    details.className = 'accordion-item';
-    const summary = document.createElement('summary');
-    summary.className = 'accordion-header';
-    summary.innerHTML = accordionItem.querySelector('strong').outerHTML;
-    details.append(accordionItem.querySelector('li > ul'));
-    details.prepend(summary);
-    accordionItem.replaceWith(details);
-  }
+  accordionItems.forEach((accordionItem) => {
+    const accordionItemNew = div({ class: 'details accordion-item' },
+      div({ class: 'summary accordion-header' }, accordionItem.querySelector('strong')),
+      div({ class: 'accordion-content' }, accordionItem.querySelector('li > ul')),
+    );
+    accordionItemNew.onclick = () => {
+      accordionItemNew.classList.toggle('open');
+    };
+    accordionItem.replaceWith(accordionItemNew);
+  });
 }
 
 /**
@@ -37,15 +38,6 @@ export default async function decorate(block) {
   createMobileMenu(footer);
   block.append(footer);
 
-  const details = document.querySelectorAll('footer details');
-
-  details.forEach((detail) => {
-    detail.onclick = () => {
-      // Your code here
-      detail.classList.toggle('open');
-    };
-  });
-
   const [paymentStrip, siteMap, regulation, sbtMain, license] = document.querySelectorAll('div.footer>div>div.section-outer');
   paymentStrip.classList.add('payment-strip');
   siteMap.classList.add('site-map');
@@ -56,16 +48,8 @@ export default async function decorate(block) {
   // open all accordions on desktop, close them all on mobile
   function checkWindowSize() {
     const isMobileScreen = window.matchMedia('(max-width: 1024px)').matches;
-    const details = document.querySelectorAll('footer details');
-    if (!isMobileScreen) {
-      details.forEach((detail) => {
-        detail.setAttribute('open', '');
-      });
-    } else {
-      details.forEach((detail) => {
-        detail.removeAttribute('open');
-      });
-    }
+    if (!isMobileScreen) siteMap.classList.add('open');
+    else siteMap.classList.remove('open');
   }
   checkWindowSize();
   window.addEventListener('load', checkWindowSize);
