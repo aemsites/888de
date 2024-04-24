@@ -12,14 +12,12 @@ function createMobileSlide(slide, slideContent) {
     ${slideContent.button ? slideContent.button.outerHTML : ''}
  </div>`;
 
-  setTimeout(() => {
-    const slideBanner = slide.querySelector('.slide-banner');
-    if (slideContent.mobVideolink || slideContent.dtVideoLink) {
-      slideBanner.innerHTML = `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
+  const slideBanner = slide.querySelector('.slide-banner');
+  if (slideContent.mobVideolink || slideContent.dtVideoLink) {
+    slideBanner.innerHTML = `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
      <source src="${slideContent.mobVideolink ? slideContent.mobVideolink : slideContent.dtVideoLink}" type="video/mp4">
   </video>`;
-    }
-  }, 3500);
+  }
 }
 
 function populateDtSlidesWrapper(dtSlidesWrapper, pic) {
