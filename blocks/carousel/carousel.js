@@ -198,7 +198,7 @@ export default function decorate(block) {
     slideIndex += 1;
   });
   // create bouncing arrow
-  const bouncingArrow = document.createElement('a');
+  const bouncingArrow = document.createElement('span');
   bouncingArrow.className = 'bouncing-arrow';
   bouncingArrow.innerHTML = '<span class="icon icon-carousel-chevron"></span>';
   const carousel = document.querySelector('.carousel');
