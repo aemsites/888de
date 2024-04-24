@@ -13,7 +13,6 @@ function createMobileSlide(slide, slideContent) {
  </div>`;
 
   setTimeout(() => {
-    console.log(slideContent.mobilePic);
     const slideBanner = slide.querySelector('.slide-banner');
     if (slideContent.mobVideolink || slideContent.dtVideoLink) {
       slideBanner.innerHTML = `<video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.mobileImg ? slideContent.mobileImg : slideContent.img}">
@@ -47,15 +46,13 @@ function createDesktopSlide(slide, slideContent) {
             ${slideContent.button ? slideContent.button.outerHTML : ''}
             <div class="banner-terms">${slideContent.termsLink ? slideContent.termsLink.outerHTML : ''}</div>
          </div>`;
-  setTimeout(() => {
-    slide.innerHTML += `
+  slide.innerHTML += `
          ${(slideContent.dtVideoLink) ? `
          <video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.img ? slideContent.img : ''}">
             <source src="${slideContent.dtVideoLink ? slideContent.dtVideoLink : ''}" type="video/mp4">
         </video>` : (slideContent.pic ? slideContent.pic.outerHTML : '')}
     `;
-    slide.parentElement.querySelector('img').style.visibility = 'hidden';
-  }, 3500);
+  slide.parentElement.querySelector('img').style.visibility = 'hidden';
 }
 
 function createBoxOffer(boxOffer, slideContent) {
