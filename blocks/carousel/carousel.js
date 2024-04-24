@@ -52,7 +52,6 @@ function createDesktopSlide(slide, slideContent) {
             <source src="${slideContent.dtVideoLink ? slideContent.dtVideoLink : ''}" type="video/mp4">
         </video>` : (slideContent.pic ? slideContent.pic.outerHTML : '')}
     `;
-  slide.parentElement.querySelector('img').style.visibility = 'hidden';
 }
 
 function createBoxOffer(boxOffer, slideContent) {
