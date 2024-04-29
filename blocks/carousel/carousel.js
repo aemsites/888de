@@ -46,12 +46,15 @@ function createDesktopSlide(slide, slideContent) {
             ${slideContent.button ? slideContent.button.outerHTML : ''}
             <div class="banner-terms">${slideContent.termsLink ? slideContent.termsLink.outerHTML : ''}</div>
          </div>`;
-  slide.innerHTML += `
+  setTimeout(() => {
+    slide.innerHTML += `
          ${(slideContent.dtVideoLink) ? `
          <video class="mob" autoplay="autoplay" width="100%" loop="" muted="" playsinline="" poster="${slideContent.img ? slideContent.img : ''}">
             <source src="${slideContent.dtVideoLink ? slideContent.dtVideoLink : ''}" type="video/mp4">
         </video>` : (slideContent.pic ? slideContent.pic.outerHTML : '')}
     `;
+    slide.parentElement.querySelector('img').style.visibility = 'hidden';
+  }, 3500);
 }
 
 function createBoxOffer(boxOffer, slideContent) {
@@ -97,7 +100,7 @@ export default function decorate(block) {
   let mobRatio;
   const vpWidth = window.innerWidth;
 
-  const firstPic = block.querySelectorAll('picture')[0];
+  const firstPic = block.querySelector('picture').cloneNode(true);
   firstPic.querySelector('img').setAttribute('loading', 'eager');
   populateDtSlidesWrapper(slider, firstPic);
   let slideIndex = 1;
